@@ -28,7 +28,7 @@ define([
                 dealers.forEach(function(d) {
                     var tpl = handlebars.compile("{{> dealer-tr-partial}}"),
                         tr = $($(tpl(d)[0].firstChild));
-                    tr.appendTo(tBody).delegate("td.td-action", "click", function() {
+                    tr.appendTo(tbody).delegate("td.td-action", "click", function() {
                         var action = $(e.target).data("action");
                         if (action === "edit") {
                             formModal.show("dealer", d, function(_d) {

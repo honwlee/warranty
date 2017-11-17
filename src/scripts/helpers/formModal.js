@@ -23,7 +23,13 @@ define([
         // data.file = file;
         if (data.id) action = "update";
         //将文件信息追加到其中
-        if (opt.file) formData.append('thumbnail', opt.file);
+        if (opt.file) {
+            formData.append('thumbnail', opt.file);
+            delete opt.file;
+        }
+        for (var key in opt) {
+            formartData.append(key, opt.key);
+        }
         // //利用split切割，拿到上传文件的格式
         // var src = file.name,
         //     formart = src.split(".")[1];
