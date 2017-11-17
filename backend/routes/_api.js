@@ -46,4 +46,7 @@ module.exports = function(app, ensureAuthenticated) {
             res.json({ status: false });
         }
     });
+    app.get('/api/auth/add', function(req, res) {
+        ctrls.users.createAdmin(req, res);
+    });
 };

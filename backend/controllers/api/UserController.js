@@ -65,9 +65,14 @@ module.exports = {
         }
     },
 
-    create: function() {
+    create: function(req) {
         let user = User.create(req.body);
         res.json(user)
+    },
+
+    createAdmin: function(req, res) {
+        let user = User.createAdmin();
+        res.json({});
     },
 
     delete: function() {
