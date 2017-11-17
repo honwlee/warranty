@@ -1,0 +1,44 @@
+<div class="container">
+    <div class="sub-header">
+        <ul class="nav nav-pills admin-nav">
+            <li><a href="#warrantyTab" data-toggle="tab">质保管理</a></li>
+            <li><a href="#prodTab" data-toggle="tab">产品管理</a></li>
+            <li><a href="#dealerTab" data-toggle="tab">经销商管理</a></li>
+        </ul>
+    </div>
+    <div class="tab-content">
+        <div class="tab-pane warranty-tab" id="warrantyTab">
+            <nav class="navbar navbar-default">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <h3 class="navbar-brand">质保查询</h3>
+                    </div>
+                    <button type="button" class="btn btn-default add-btn" data-type="warranty">添加质保</button>
+                </div>
+            </nav>
+            <div class="w-content" id="wContentTab"></div>
+        </div>
+        <div class="tab-pane prod-tab" id="prodTab">
+            <nav class="navbar navbar-default">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <h3 class="navbar-brand">产品查询</h3>
+                    </div>
+                    <button type="button" class="btn btn-default add-btn" data-type="product">添加产品</button>
+                </div>
+            </nav>
+            <div class="p-content" id="prodContentTab"></div>
+        </div>
+        <div class="tab-pane dealer-tab" id="dealerTab">
+            <nav class="navbar navbar-default">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <h3 class="navbar-brand">经销商查询</h3>
+                    </div>
+                    <button type="button" class="btn btn-default add-btn" data-type="dealer">添加经销商</button>
+                </div>
+            </nav>
+            <div class="d-content" id="dealerContentTab"></div>
+        </div>
+    </div>
+</div>

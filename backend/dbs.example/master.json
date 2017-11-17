@@ -1,0 +1,39 @@
+{
+    "tables": [
+    {
+        "id": 1,
+        "name": "users",
+        "spaceFileName": "_users.json",
+        "autoOpen": true
+    },
+    {
+        "id": 2,
+        "name": "provinces",
+        "spaceFileName": "_provinces.json",
+        "autoOpen": true
+    },
+    {
+        "id": 3,
+        "name": "dealers",
+        "spaceFileName": "_dealers.json",
+        "autoOpen": true
+    },
+    {
+        "id": 4,
+        "name": "warranties",
+        "spaceFileName": "_warranties.json",
+        "autoOpen": true
+    },
+    {
+        "id": 5,
+        "name": "cities",
+        "spaceFileName": "_cities.json",
+        "autoOpen": true
+    },
+    {
+        "id": 6,
+        "name": "products",
+        "spaceFileName": "_products.json",
+        "autoOpen": true
+    }]
+}

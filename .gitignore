@@ -1,0 +1,7 @@
+node_modules
+build
+backend/dbs
+backend/backup
+dist
+deploy
+

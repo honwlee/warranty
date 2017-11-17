@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Warranty</title>
+    <link rel="stylesheet" href="/assets/stylesheets/main.css">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.1/bootstrap-table.min.css" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>
+    <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.3/require.min.js" data-main="/lib/skylarkjs/skylarkjs.js"></script>
+</head>
+
+<body>
+    <div class="header">
+        <div class="container">
+            <a class="site-logo" href="#">
+        <img style="width: 128px;" src="https://warranty.xpelfilms.com.cn/assets/images/main_logo.png" alt="logo" class="logo-default">
+        </a>
+            <a onclick="openclose(1)" id="open" class="mobi-toggler"><i class="fa fa-bars"></i></a>
+            <a onclick="openclose(2)" id="close" style="display:none;" class="mobi-toggler"><i class="fa fa-bars"></i></a>
+            <!-- BEGIN NAVIGATION -->
+            <ul class="nav navbar-nav pull-right" style="margin-top: 20px; margin-right: -14px;">
+                <li>
+                    <select name="language" class="form-control" onchange="lang_change(this.value)">
+                        <option selected="" value="https://warranty.xpelfilms.com.cn/?la=1">English</option>
+                        <option value="https://warranty.xpelfilms.com.cn/?la=2"> 繁體 </option>
+                        <option value="https://warranty.xpelfilms.com.cn/?la=3"> 简体 </option>
+                    </select>
+                </li>
+            </ul>
+            <div id="div_open" class="header-navigation pull-right font-transform-inherit">
+            </div>
+            <!-- END NAVIGATION -->
+        </div>
+    </div>
+    <div id="main">
+    </div>
+    <div style="margin-top:110px;" class="footer">
+        <div class="container">
+            <div class="row">
+                <!-- BEGIN COPYRIGHT -->
+                <div class="col-md-6 col-sm-6 padding-top-10">
+                    Developed By <a target="_blank" href="http://profilics.com">Profilics</a> </div>
+            </div>
+        </div>
+    </div>
+    <div class="go-top-btn"><i class="fa fa-angle-double-up"></i></div>
+    <div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    确定要删除当前项？
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-cancel btn-default" data-dismiss="modal">取消</button>
+                    <a class="btn btn-danger btn-ok">删除</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="formModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                        <span class="sr-only">关闭</span>
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel"></h4>
+                </div>
+                <!-- Modal Body -->
+                <div class="modal-body">
+                </div>
+                <!-- Modal Footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">
+                        关闭
+                    </button>
+                    <button type="button" class="btn btn-primary save-btn">
+                        保存
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

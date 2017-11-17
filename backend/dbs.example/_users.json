@@ -1,0 +1,16 @@
+{
+  "users": [
+    {
+      "display": "红旺",
+      "username": "lhw",
+      "password": "$2a$08$1UaIm8Y/UBVABGovmrHw0Ooou2m/zZYw71Ph6o/8qBMlx7QnyBVF2",
+      "token": "k6PuUkJsMEJsu2qF_ztF",
+      "email": "lhw@hudaokeji.com",
+      "role": 99,
+      "isAdmin": true,
+      "isSuperAdmin": true,
+      "isActive": true,
+      "id": "B1wUZDC5-"
+    }
+  ]
+}

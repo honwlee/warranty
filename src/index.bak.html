@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Frontend</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta content="Metronic Shop UI description" name="description">
+    <meta content="Metronic Shop UI keywords" name="keywords">
+    <meta content="keenthemes" name="author">
+    <meta property="og:site_name" content="-CUSTOMER VALUE-">
+    <meta property="og:title" content="-CUSTOMER VALUE-">
+    <meta property="og:description" content="-CUSTOMER VALUE-">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="-CUSTOMER VALUE-">
+    <!-- link to image for socio -->
+    <meta property="og:url" content="-CUSTOMER VALUE-">
+    <link rel="shortcut icon" href="favicon.ico">
+    <!-- Fonts START -->
+    <link href="https://warranty.xpelfilms.com.cn/assets/css/font.css" rel="stylesheet" type="text/css">
+    <!-- Fonts END -->
+    <!-- Global styles START -->
+    <link href="https://warranty.xpelfilms.com.cn/assets/assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://warranty.xpelfilms.com.cn/assets/assets/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Global styles END -->
+    <!-- Page level plugin styles START -->
+    <!-- Page level plugin styles END -->
+    <!-- Theme styles START -->
+    <link href="https://warranty.xpelfilms.com.cn/assets/assets/global/css/components.css" rel="stylesheet">
+    <link href="https://warranty.xpelfilms.com.cn/assets/assets/frontend/layout/css/style.css" rel="stylesheet">
+    <link href="https://warranty.xpelfilms.com.cn/assets/assets/frontend/layout/css/style-responsive.css" rel="stylesheet">
+    <!-- Theme styles END -->
+    <script>
+    function openclose(val) {
+        if (val == 1) {
+            document.getElementById('div_open').style.display = "block";
+            document.getElementById('open').style.display = "none";
+            document.getElementById('close').style.display = "block";
+        } else {
+            document.getElementById('div_open').style.display = "none";
+            document.getElementById('open').style.display = "block";
+            document.getElementById('close').style.display = "none";
+        }
+    }
+    </script>
+    <script>
+    function lang_change(val) {
+        location.href = val;
+    }
+    </script>
+</head>
+<!-- Head END -->
+<!-- Body BEGIN -->
+
+<body class="corporate">
+    <!-- BEGIN STYLE CUSTOMIZER -->
+    <div class="color-panel hidden-sm">
+        <div class="color-mode-icons icon-color"></div>
+        <div class="color-mode-icons icon-color-close"></div>
+        <div class="color-mode">
+            <p>THEME COLOR</p>
+            <ul class="inline">
+                <li class="color-red current color-default" data-style="red"></li>
+                <li class="color-blue" data-style="blue"></li>
+                <li class="color-green" data-style="green"></li>
+                <li class="color-orange" data-style="orange"></li>
+                <li class="color-gray" data-style="gray"></li>
+                <li class="color-turquoise" data-style="turquoise"></li>
+            </ul>
+        </div>
+    </div>
+    <!-- END BEGIN STYLE CUSTOMIZER -->
+    <!-- BEGIN HEADER -->
+    <div class="header">
+        <div class="container">
+            <a class="site-logo" href="#">
+        <img style="width: 128px;" src="https://warranty.xpelfilms.com.cn/assets/images/main_logo.png" alt="logo" class="logo-default"/>
+        </a>
+            <a onClick="openclose(1)" id="open" class="mobi-toggler"><i class="fa fa-bars"></i></a>
+            <a onClick="openclose(2)" id="close" style="display:none;" class="mobi-toggler"><i class="fa fa-bars"></i></a>
+            <!-- BEGIN NAVIGATION -->
+            <ul class="nav navbar-nav pull-right" style="margin-top: 20px; margin-right: -14px;">
+                <li>
+                    <select name="language" class="form-control" onChange="lang_change(this.value)">
+                        <option value="https://warranty.xpelfilms.com.cn/?la=1">English</option>
+                        <option value="https://warranty.xpelfilms.com.cn/?la=2"> 繁體 </option>
+                        <option selected value="https://warranty.xpelfilms.com.cn/?la=3"> 简体 </option>
+                    </select>
+                </li>
+            </ul>
+            <div id="div_open" class="header-navigation pull-right font-transform-inherit">
+            </div>
+            <!-- END NAVIGATION -->
+        </div>
+    </div>
+    <!-- Header END -->
+    <script src="https://warranty.xpelfilms.com.cn/assets/js/myjquery.js"></script>
+    <!--<script src="https://warranty.xpelfilms.com.cn/assets/fancybox/jquery.fancybox.js?v=2.1.5" type="text/javascript"></script>
+<link href="https://warranty.xpelfilms.com.cn/assets/fancybox/jquery.fancybox.css?v=2.1.5" rel="stylesheet">
+<link href="https://warranty.xpelfilms.com.cn/assets/fancybox/lightbox_css.css" rel="stylesheet">
+<script type="text/javascript">
+    $(document).ready(function() {
+        /*
+         *  Simple image gallery. Uses default settings
+         */
+        $('.fancybox').fancybox();
+        /*
+         *  Different effects
+         */
+        // Change title type, overlay closing speed
+        $(".fancybox-effects-a").fancybox({
+            helpers: {
+                title : {
+                    type : 'outside'
+                },
+                overlay : {
+                    speedOut : 0
+                }
+            }
+        });
+    });
+</script>-->
+    <script>
+    function fun_out() {
+        var value_id = document.getElementById('value_id').value;
+        var input_value = document.getElementById('input_value').value;
+
+        if (value_id == '') { document.getElementById('div1').style.display = "block"; return false; } else { document.getElementById('div1').style.display = "none"; }
+
+        document.getElementById('input_value').value = '';
+
+    }
+
+    function fun_city(val) {
+        if (val == 0) {
+            document.getElementById('city_err').style.display = "block";
+            return false;
+        } else {
+            document.getElementById('city_err').style.display = "none";
+        }
+    }
+
+    function fun_out_warr() {
+        var Warranty_id = document.getElementById('Warranty_id').value;
+        var input_value_2 = document.getElementById('input_value_2').value;
+
+        if (Warranty_id == '') { document.getElementById('div3').style.display = "block"; return false; } else { document.getElementById('div3').style.display = "none"; }
+
+        document.getElementById('input_value_2').value = '';
+
+    }
+
+    function fun_out_pro() {
+        var product_id = document.getElementById('product_id').value;
+        var input_value_3 = document.getElementById('input_value_3').value;
+
+        if (product_id == '') { document.getElementById('div5').style.display = "block"; return false; } else { document.getElementById('div5').style.display = "none"; }
+
+        document.getElementById('input_value_3').value = '';
+
+    }
+
+    function search_dealar_change() {
+        var Province_id = document.getElementById('Province_id').value;
+        if (Province_id == 0) {
+            document.getElementById('provine_err').style.display = "block";
+            return false;
+        } else {
+            document.getElementById('provine_err').style.display = "none";
+            var city = document.getElementById('city').value;
+            if (city == 0) {
+                document.getElementById('city_err').style.display = "block";
+                return false;
+            } else {
+                document.getElementById('warrenty_data_img').style.display = "none";
+                document.getElementById('product_data_img').style.display = "none";
+                document.getElementById('dealar_data_img').style.display = "block";
+                var dataString = 'city=' + city;
+                //alert(city);
+                if (city != '34') {
+                    ///
+                    $.ajax({
+                        type: "POST",
+                        url: "https://warranty.xpelfilms.com.cn/front/search_dealar_by_city",
+                        data: dataString,
+                        success: function(msg) {
+                            document.getElementById('dealar_data').innerHTML = msg;
+                            document.getElementById('dealar_data_img').style.display = "none";
+                        }
+                    });
+                } else {
+                    $.ajax({
+                        type: "POST",
+                        url: "https://warranty.xpelfilms.com.cn/front/search_dealar_by_city_taiwan",
+                        data: dataString,
+                        success: function(msg) {
+                            document.getElementById('dealar_data').innerHTML = msg;
+                            document.getElementById('dealar_data_img').style.display = "none";
+                        }
+                    });
+                }
+            }
+        }
+    }
+
+    function search_dealar() {
+        var value_id = document.getElementById('value_id').value;
+        if (value_id == '') {
+            document.getElementById('div1').style.display = "block";
+            return false;
+        } else {
+            document.getElementById('div1').style.display = "none";
+        }
+
+        if (value_id == 3) {
+            var region = document.getElementById('region_id').value;
+
+            if (region == 0) {
+                document.getElementById('region_err').style.display = "block";
+                return false;
+            } else {
+                document.getElementById('region_err').style.display = "none";
+                var Province_id = document.getElementById('Province_id').value;
+                if (Province_id == 0) {
+                    document.getElementById('provine_err').style.display = "block";
+                    return false;
+                } else {
+                    document.getElementById('provine_err').style.display = "none";
+                    var city = document.getElementById('city').value;
+                    if (city == 0) {
+                        document.getElementById('city_err').style.display = "block";
+                        return false;
+                    } else {
+                        document.getElementById('warrenty_data_img').style.display = "none";
+                        document.getElementById('product_data_img').style.display = "none";
+                        document.getElementById('dealar_data_img').style.display = "block";
+                        var dataString = 'value_id=' + value_id + "&city=" + city;
+                        ///
+                        $.ajax({
+                            type: "POST",
+                            url: "https://warranty.xpelfilms.com.cn/front/search_dealar_by_city",
+                            data: dataString,
+                            success: function(msg) {
+                                document.getElementById('dealar_data').innerHTML = msg;
+                                document.getElementById('dealar_data_img').style.display = "none";
+                            }
+                        });
+                    }
+                }
+            }
+
+        } else {
+            var input_value = document.getElementById('input_value').value;
+
+            if (input_value == '') {
+                document.getElementById('div2').style.display = "block";
+                return false;
+            } else {
+                document.getElementById('div2').style.display = "none";
+            }
+
+            document.getElementById('warrenty_data_img').style.display = "none";
+            document.getElementById('product_data_img').style.display = "none";
+            document.getElementById('dealar_data_img').style.display = "block";
+
+            var dataString = 'value_id=' + value_id + "&input_value=" + input_value;
+
+            ///
+            $.ajax({
+
+                type: "POST",
+                url: "https://warranty.xpelfilms.com.cn/front/search_dealar",
+                data: dataString,
+                success: function(msg) {
+                    document.getElementById('dealar_data').innerHTML = msg;
+                    document.getElementById('dealar_data_img').style.display = "none";
+                }
+            });
+        }
+    }
+
+    function search_warrenty() {
+        var Warranty_id = document.getElementById('Warranty_id').value;
+        var input_value_2 = document.getElementById('input_value_2').value;
+
+        if (Warranty_id == '') {
+            document.getElementById('div3').style.display = "block";
+            return false;
+        } else {
+            document.getElementById('div3').style.display = "none";
+        }
+
+        if (input_value_2 == '') {
+            document.getElementById('div4').style.display = "block";
+            return false;
+        } else {
+            document.getElementById('div4').style.display = "none";
+        }
+
+        /*  document.getElementById('warrenty_data').innerHTML='<div style="text-align:center;"><img src="https://warranty.xpelfilms.com.cn//assets/images/progress.gif"></div>';*/
+
+        document.getElementById('warrenty_data_img').style.display = "block";
+        document.getElementById('product_data_img').style.display = "none";
+        document.getElementById('dealar_data_img').style.display = "none";
+
+
+        var dataString = 'Warranty_id=' + Warranty_id + "&input_value=" + input_value_2;
+
+        ///
+        $.ajax({
+            type: "POST",
+            url: "https://warranty.xpelfilms.com.cn/front/search_warrenty",
+            data: dataString,
+            success: function(msg) {
+                document.getElementById('warrenty_data').innerHTML = msg;
+                document.getElementById('warrenty_data_img').style.display = "none";
+            }
+        });
+    }
+
+    function search_product() {
+        var product_id = document.getElementById('product_id').value;
+        var input_value_3 = document.getElementById('input_value_3').value;
+
+        if (product_id == '') {
+            document.getElementById('div5').style.display = "block";
+            return false;
+        } else {
+            document.getElementById('div5').style.display = "none";
+        }
+
+        if (input_value_3 == '') {
+            document.getElementById('div6').style.display = "block";
+            return false;
+        } else {
+            document.getElementById('div6').style.display = "none";
+        }
+
+        document.getElementById('warrenty_data_img').style.display = "none";
+        document.getElementById('product_data_img').style.display = "block";
+        document.getElementById('dealar_data_img').style.display = "none";
+
+        var dataString = 'product_id=' + product_id + "&input_value=" + input_value_3;
+
+        ///
+        $.ajax({
+            type: "POST",
+            url: "https://warranty.xpelfilms.com.cn/front/search_product",
+            data: dataString,
+            success: function(msg) {
+                document.getElementById('product_data').innerHTML = msg;
+                document.getElementById('product_data_img').style.display = "none";
+            }
+        });
+    }
+    </script>
+    <script>
+    function get_inputs(id) {
+        document.getElementById('div1').style.display = "none";
+        if (id != 0) {
+            document.getElementById('input_div').innerHTML = '<img style="margin:10px;" src="https://warranty.xpelfilms.com.cn//assets/images/ajax_loading.gif">';
+            // var dataString = 'id='+ id;
+            var dataString = 'input_id=' + id;
+            $.ajax({
+                type: "GET",
+                url: "https://warranty.xpelfilms.com.cn/front/getInputsByID",
+                data: dataString,
+                success: function(msg) {
+                    document.getElementById('input_div').innerHTML = msg;
+                }
+            });
+        }
+    }
+    </script>
+    <script>
+    function get_province(id) {
+        document.getElementById('region_err').style.display = "none";
+        document.getElementById('province_div').innerHTML = '<img style="margin:10px;" src="https://warranty.xpelfilms.com.cn//assets/images/ajax_loading.gif">';
+        // var dataString = 'id='+ id;
+        var dataString = '';
+
+        $.ajax({
+            type: "GET",
+            url: "https://warranty.xpelfilms.com.cn/front/getProvinceByID/" + id,
+            data: dataString,
+            success: function(msg) {
+                document.getElementById('province_div').innerHTML = msg;
+            }
+        });
+    }
+    </script>
+    <script>
+    function get_cities(id) {
+        document.getElementById('provine_err').style.display = "none";
+        document.getElementById('city_div').innerHTML = '<img style="margin:10px;" src="https://warranty.xpelfilms.com.cn//assets/images/ajax_loading.gif">';
+        var dataString = '';
+        if (id != 34) {
+            $.ajax({
+                type: "GET",
+                url: "https://warranty.xpelfilms.com.cn/front/getcityByID/" + id,
+                data: dataString,
+                success: function(msg) {
+                    document.getElementById('city_div').innerHTML = msg;
+                }
+            });
+        } else {
+            $.ajax({
+                type: "GET",
+                url: "https://warranty.xpelfilms.com.cn/front/getcityTaiwan/" + id,
+                data: dataString,
+                success: function(msg) {
+                    document.getElementById('city_div').innerHTML = msg;
+                }
+            });
+        }
+    }
+    </script>
+    <style>
+    p {
+        text-align: justify;
+    }
+
+
+    .input-group .form-control {
+        border-radius: 10px !important;
+    }
+
+    th {
+        font-size: 18px;
+    }
+
+    .table td .img-responsive {
+        height: 250px;
+        width: 100%;
+    }
+
+    .container-home {
+        border: 1px solid #000;
+        border-radius: 8px !important;
+        padding-bottom: 2px;
+        padding-left: 2px;
+        padding-right: 2px;
+        padding-top: 10px !important;
+    }
+
+    .faq-tabbable {
+        border: 0 !important;
+    }
+
+    .portlet.box.blue {
+        border: 0px;
+    }
+
+    .ssa-img-div {
+        margin-top: 4%;
+        position: absolute;
+        text-align: center;
+        width: 100%;
+    }
+
+    .tab-pane {
+        min-height: 420px;
+    }
+    </style>
+    <div class="main">
+        <div class="container container-home">
+            <div class="row margin-bottom-40">
+                <!-- BEGIN CONTENT -->
+                <div class="col-md-12 col-sm-12">
+                    <div class="content-page">
+                        <div class="row">
+                            <div class="col-md-3 col-sm-3">
+                                <div class="container-home" style="margin-left:10px">
+                                    <ul class="tabbable faq-tabbable">
+                                        <li class="active"><a href="#tab_1" data-toggle="tab">&#36136&#20445&#25628&#32034</a></li>
+                                        <li><a href="#tab_2" data-toggle="tab">产品真伪查询</a></li>
+                                        <li><a href="#tab_3" data-toggle="tab">授权经销商查询</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-md-9 col-sm-9">
+                                <div class="tab-content" style="padding:0; background: #fff;">
+                                    <!-- START TAB 1 -->
+                                    <div class="tab-pane active container-home" id="tab_1">
+                                        <!-- BEGIN SAMPLE FORM PORTLET-->
+                                        <div class="portlet box blue">
+                                            <div class="portlet-title">
+                                                <div class="caption">
+                                                    &#36136&#20445&#25628&#32034 </div>
+                                            </div>
+                                            <div class="portlet-body form">
+                                                <div class="form-body">
+                                                    <div class="form-group">
+                                                        <label class="col-lg-2 control-label">质保 ID</label>
+                                                        <div class="input-group col-lg-4">
+                                                            <select onChange="fun_out_warr();" class="form-control" name="Warranty_id" id="Warranty_id">
+                                                                <option value="">&#36873&#25321&#20219&#24847&#20540</option>
+                                                                <option value="1">&#30005&#35805&#21495&#30721</option>
+                                                                <option value="2">&#29260&#29031</option>
+                                                                <option value="3">质保 ID</option>
+                                                            </select>
+                                                            <div id="div3" style="display: none;margin-bottom: 0;padding: 1px 1px 1px 10px;" class="alert alert-danger alert-dismissable"> &#35831&#36873&#25321&#20540</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-lg-2 control-label">&#36755&#20837</label>
+                                                        <div class="input-group col-lg-4">
+                                                            <input type="text" class="form-control" name="input_value_2" id="input_value_2" onkeyup="myFunction(event,'search_warrenty()');">
+                                                            <div id="div4" style="display: none;margin-bottom: 0;padding: 1px 1px 1px 10px;" class="alert alert-danger alert-dismissable"> &#35831&#25554&#20837&#20540</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-actions">
+                                                    <button onClick="search_warrenty();" class="btn blue" type="button">&#25628&#32034</button>
+                                                </div>
+                                                <div style="text-align:center; display:none;" id="warrenty_data_img" class="ssa-img-div">
+                                                    <img src="https://warranty.xpelfilms.com.cn/assets/images/preloader.gif">
+                                                </div>
+                                                <div id="warrenty_data">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- END SAMPLE FORM PORTLET-->
+                                    </div>
+                                    <!-- END TAB 1 -->
+                                    <!-- START TAB 2 -->
+                                    <div class="tab-pane container-home" id="tab_2">
+                                        <!-- BEGIN SAMPLE FORM PORTLET-->
+                                        <div class="portlet box blue">
+                                            <div class="portlet-title">
+                                                <div class="caption">
+                                                    产品真伪查询 </div>
+                                            </div>
+                                            <div class="portlet-body form">
+                                                <div class="form-body">
+                                                    <div class="form-group">
+                                                        <label class="col-lg-2 control-label">&#36873&#25321&#26631&#35782</label>
+                                                        <div class="input-group col-lg-4">
+                                                            <select onChange="fun_out_pro();" class="form-control" name="product_id" id="product_id">
+                                                                <option value="">&#36873&#25321&#20219&#24847&#20540</option>
+                                                                <option value="1">卷号</option>
+                                                                <option value="2">车专用套件 ID</option>
+                                                            </select>
+                                                            <div id="div5" style="display: none;margin-bottom: 0;padding: 1px 1px 1px 10px;" class="alert alert-danger alert-dismissable"> &#35831&#36873&#25321&#20540</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-lg-2 control-label">&#36755&#20837</label>
+                                                        <div class="input-group col-lg-4">
+                                                            <input type="text" class="form-control" name="input_value_3" id="input_value_3" onkeyup="myFunction(event,'search_product()');">
+                                                            <div id="div6" style="display: none;margin-bottom: 0;padding: 1px 1px 1px 10px;" class="alert alert-danger alert-dismissable"> &#35831&#25554&#20837&#20540</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-actions">
+                                                    <button class="btn blue" onClick="search_product();" type="button">&#25628&#32034</button>
+                                                </div>
+                                                <div style="text-align:center; display:none;" id="product_data_img" class="ssa-img-div">
+                                                    <img src="https://warranty.xpelfilms.com.cn/assets/images/preloader.gif">
+                                                </div>
+                                                <div id="product_data">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- END SAMPLE FORM PORTLET-->
+                                    </div>
+                                    <!-- END TAB 3 -->
+                                    <!-- START TAB 3 -->
+                                    <div class="tab-pane container-home" id="tab_3">
+                                        <!-- BEGIN SAMPLE FORM PORTLET-->
+                                        <div class="portlet box blue">
+                                            <div class="portlet-title">
+                                                <div class="caption">
+                                                    授权经销商查询 </div>
+                                            </div>
+                                            <div class="portlet-body form">
+                                                <div class="form-body">
+                                                    <div class="form-group">
+                                                        <label class="col-lg-2 control-label">&#30465</label>
+                                                        <div class="input-group col-lg-4">
+                                                            <select class="form-control" id="Province_id" name="Province_id" onChange="get_cities(this.value)">
+                                                                <option value="0">&#36873&#25321</option>
+                                                                <option value="3">&#19978;&#28023;&#24066;</option>
+                                                                <option value="25">&#20113;&#21335;&#30465;</option>
+                                                                <option value="7">&#20869;&#33945;&#21476;</option>
+                                                                <option value="1">&#21271;&#20140;&#24066;</option>
+                                                                <option value="34">&#21488;&#28286;</option>
+                                                                <option value="9">&#21513;&#26519;&#30465;</option>
+                                                                <option value="23">&#22235;&#24029;&#30465;</option>
+                                                                <option value="2">&#22825;&#27941;&#24066;</option>
+                                                                <option value="30">&#23425;&#22799;</option>
+                                                                <option value="13">&#23433;&#24509;&#30465;</option>
+                                                                <option value="16">&#23665;&#19996;&#30465;</option>
+                                                                <option value="6">&#23665;&#35199;&#30465;</option>
+                                                                <option value="20">&#24191;&#19996;&#30465;</option>
+                                                                <option value="21">&#24191;&#35199;&#30465;</option>
+                                                                <option value="31">&#26032;&#30086;</option>
+                                                                <option value="11">&#27743;&#33487;&#30465;</option>
+                                                                <option value="15">&#27743;&#35199;&#30465;</option>
+                                                                <option value="5">&#27827;&#21271;&#30465;</option>
+                                                                <option value="17">&#27827;&#21335;&#30465;</option>
+                                                                <option value="12">&#27993;&#27743;&#30465;</option>
+                                                                <option value="22">&#28023;&#21335;&#30465;</option>
+                                                                <option value="18">&#28246;&#21271;&#30465;</option>
+                                                                <option value="19">&#28246;&#21335;&#30465;</option>
+                                                                <option value="33">&#28595;&#38376;</option>
+                                                                <option value="28">&#29976;&#32899;&#30465;</option>
+                                                                <option value="14">&#31119;&#24314;&#30465;</option>
+                                                                <option value="26">&#35199;&#34255;</option>
+                                                                <option value="24">&#36149;&#24030;&#30465;</option>
+                                                                <option value="8">&#36797;&#23425;&#30465;</option>
+                                                                <option value="4">&#37325;&#24198;&#24066;</option>
+                                                                <option value="27">&#38485;&#35199;&#30465;</option>
+                                                                <option value="29">&#38738;&#28023;&#30465;</option>
+                                                                <option value="32">&#39321;&#28207;</option>
+                                                                <option value="10">&#40657;&#40857;&#27743;&#30465;</option>
+                                                            </select>
+                                                            <div id="provine_err" style="display: none;margin-bottom: 0;padding: 1px 1px 1px 10px;" class="alert alert-danger alert-dismissable"> &#35831&#36873&#25321&#30465</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-lg-2 control-label"> </label>
+                                                        <div class="input-group col-lg-4">
+                                                            <span id="city_div">
+                                        </span>
+                                                            <div id="city_err" style="display: none;margin-bottom: 0;padding: 1px 1px 1px 10px;" class="alert alert-danger alert-dismissable"> &#35831&#36755&#20837&#22478&#24066&#21517&#31216</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-actions">
+                                                    <button class="btn blue" type="button" onClick="search_dealar_change();">&#25628&#32034</button>
+                                                </div>
+                                                <div style="text-align:center; display:none;" id="dealar_data_img" class="ssa-img-div">
+                                                    <img src="https://warranty.xpelfilms.com.cn/assets/images/preloader.gif">
+                                                </div>
+                                                <div id="dealar_data">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- END SAMPLE FORM PORTLET-->
+                                    </div>
+                                    <!-- END TAB 3 -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- END CONTENT -->
+            </div>
+        </div>
+    </div>
+    <script>
+    function myFunction(event, fun) {
+        var x = event.which || event.keyCode;
+        if (x == 13) {
+            // alert(fun);
+            setTimeout(fun, 100);
+        }
+    }
+    </script>
+    <!-- BEGIN PRE-FOOTER -->
+    <!-- END PRE-FOOTER -->
+    <!-- BEGIN FOOTER -->
+    <div style="margin-top:110px;" class="footer">
+        <div class="container">
+            <div class="row">
+                <!-- BEGIN COPYRIGHT -->
+                <div class="col-md-6 col-sm-6 padding-top-10">
+                    Developed By <a target="_blank" href="http://profilics.com">Profilics</a> </div>
+                <!-- END COPYRIGHT -->
+                <!-- BEGIN PAYMENTS -->
+                <!--<div class="col-md-6 col-sm-6">
+            <ul class="social-footer list-unstyled list-inline pull-right">
+              <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+              <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+              <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+              <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+              <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+              <li><a href="#"><i class="fa fa-skype"></i></a></li>
+              <li><a href="#"><i class="fa fa-github"></i></a></li>
+              <li><a href="#"><i class="fa fa-youtube"></i></a></li>
+              <li><a href="#"><i class="fa fa-dropbox"></i></a></li>
+            </ul>
+          </div>-->
+                <!-- END PAYMENTS -->
+            </div>
+        </div>
+    </div>
+    <!-- END FOOTER -->
+    <!-- Load javascripts at bottom, this will reduce page load time -->
+    <!-- BEGIN CORE PLUGINS (REQUIRED FOR ALL PAGES) -->
+    <!--[if lt IE 9]>
+    <script src="assets/global/plugins/respond.min.js"></script>
+    <![endif]-->
+    <script src="https://warranty.xpelfilms.com.cn/assets/assets/global/plugins/jquery-migrate.min.js" type="text/javascript"></script>
+    <script src="https://warranty.xpelfilms.com.cn/assets/assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="https://warranty.xpelfilms.com.cn/assets/assets/frontend/layout/scripts/back-to-top.js" type="text/javascript"></script>
+    <!-- END CORE PLUGINS -->
+    <!-- BEGIN PAGE LEVEL PLUGINS -->
+    <!-- END PAGE LEVEL PLUGINS -->
+    <!-- BEGIN PAGE LEVEL SCRIPTS -->
+    <script src="https://warranty.xpelfilms.com.cn/assets/assets/global/scripts/metronic.js" type="text/javascript"></script>
+    <script src="https://warranty.xpelfilms.com.cn/assets/assets/admin/pages/scripts/components-pickers.js" type="text/javascript"></script>
+    <!-- END PAGE LEVEL SCRIPTS -->
+    <script>
+    /*jQuery(document).ready(function() {
+               // initiate layout and plugins
+               Metronic.init(); // init metronic core components
+    Layout.init(); // init current layout
+    Demo.init(); // init demo features
+               ComponentsPickers.init();
+            }); */
+    </script>
+    <!-- END PAGE LEVEL JAVASCRIPTS -->
+</body>
+<!-- END BODY -->
+
+</html>
