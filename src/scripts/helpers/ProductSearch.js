@@ -10,7 +10,7 @@ define([
     var langx = skylarkjs.langx;
 
     function formatDate(d) {
-        let date = new Date(d);
+        var date = new Date(d);
         return date.getFullYear() + "." + (date.getMonth() + 1) + "." + date.getDate();
     }
 

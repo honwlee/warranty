@@ -101,10 +101,8 @@ function serve(slaxApp, options) {
         console.log(chalk.blue('*'), 'Serving files at:', chalk.cyan('http://localhost:' + options.port));
         console.log(chalk.blue('*'), 'Press', chalk.yellow.bold('Ctrl+C'), 'to shutdown.');
         return server;
-    }, function() {
-        server.startBackend();
-        // server.extendSpaRoutes();
     });
+    server.startBackend();
 }
 const npm_argv = JSON.parse(process.env.npm_config_argv || "{}");
 
