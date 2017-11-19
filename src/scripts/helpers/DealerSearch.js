@@ -19,16 +19,19 @@ define([
             var self = this;
             server().connect("dealers", "get", "index?cityId=" + cityId).then(function(dealers) {
                 var table = selector.find("#dealerData").find("table").empty(),
+                    thead = $("<thead>").attr({
+                        class: "text-center"
+                    }).appendTo(table),
                     tbody = $("<tbody>").appendTo(table);
                 $("<tr>").html("<th>公司名称</th>" +
-                    "<th>地址</th>"
-                ).appendTo(tbody);
+                    "<th>地址</th>"+
+                    "<th>操作</th>"
+                ).appendTo(thead);
                 partial.get("dealer-tr-partial");
 
                 dealers.forEach(function(d) {
-                    var tpl = handlebars.compile("{{> dealer-tr-partial}}"),
-                        tr = $($(tpl(d)[0].firstChild));
-                    tr.appendTo(tbody).delegate("td.td-action", "click", function() {
+                    var tpl = handlebars.compile("{{> dealer-tr-partial}}");
+                    $(tpl(d)).appendTo(tbody).delegate("td.td-action .btn", "click", function() {
                         var action = $(e.target).data("action");
                         if (action === "edit") {
                             formModal.show("dealer", d, function(_d) {

@@ -25,14 +25,18 @@ define([
         search: function(selector, dataString) {
             var self = this;
             server().connect("warranties", "get", "show?" + dataString).then(function(warranty) {
-                self.fillItem(self._formatData(warranty), selector);
+                if(warranty) {
+                    self.fillItem(self._formatData(warranty), selector);
+                } else {
+                    toastr.warning("没有找到对应的结果！")
+                }
             });
         },
 
         _formatData: function(warranty) {
             return {
                 id: warranty.id,
-                imagePath: warranty.file.path,
+                imagePath: warranty.file ? warranty.file.path : null,
                 type: warranty.type,
                 exeDate: formatDate(warranty.exeDate),
                 shop: warranty.shop,
@@ -53,9 +57,7 @@ define([
             $("<div>").attr({
                 class: "row featurebox"
             }).html(tpl(warranty)).appendTo(container);
-            var actionSelector = $("<div>").attr({
-                class: "actions"
-            }).html(actionTpl()).appendTo(container);
+            var actionSelector = $(actionTpl()).appendTo(container);
             actionSelector.find(".del-btn").on("click", function() {
                 self.remove(warranty, function() {
                     container.empty();

@@ -1,8 +1,8 @@
 const passport = require('passport'),
     api = require("./_api");
 
-module.exports = function(app, ensureAuthenticated) {
-    api(app, ensureAuthenticated);
+module.exports = function(app, ensureAuthenticated, rootPath) {
+    api(app, ensureAuthenticated, rootPath);
     app.post('/registry', passport.authenticate('local-signup'), function(req, res) {
         let result = req.result
         if (result.status) {

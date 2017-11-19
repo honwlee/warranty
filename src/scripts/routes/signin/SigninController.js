@@ -9,8 +9,8 @@ define([
     return spa.RouteController.inherit({
         klassName: "SigninController",
         preparing: function(e) {
-            e.result = server().connect("auth", "get", "check").then(function(data) {
-                if (data.status) {
+            e.result = server().connect("auth", "get", "check").then(function(result) {
+                if (result) {
                     window.go("/admin");
                 } else {
                     toastr.error("请登录！");

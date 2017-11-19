@@ -28,7 +28,7 @@ define([
             delete opt.file;
         }
         for (var key in opt) {
-            formartData.append(key, opt.key);
+            formData.append(key, opt[key]);
         }
         // //利用split切割，拿到上传文件的格式
         // var src = file.name,
@@ -85,7 +85,7 @@ define([
                     modal.modal('hide');
                 });
             });
-            selector.find("#prodForm input.thumbnail").on("change", function(e) {
+            modal.find("#prodForm input.thumbnail").on("change", function(e) {
                 self.files.product = this.files[0];
             });
         },

@@ -4,4 +4,5 @@ backend/dbs
 backend/backup
 dist
 deploy
+src/assets/images/upload
 

@@ -1,5 +1,5 @@
-<div class="container">
-    <div class="sub-header">
+<div class="container admin">
+    <div class="header">
         <ul class="nav nav-pills admin-nav">
             <li><a href="#warrantyTab" data-toggle="tab">质保管理</a></li>
             <li><a href="#prodTab" data-toggle="tab">产品管理</a></li>
@@ -11,9 +11,13 @@
             <nav class="navbar navbar-default">
                 <div class="container-fluid">
                     <div class="navbar-header">
-                        <h3 class="navbar-brand">质保查询</h3>
+                        <h3>质保查询</h3>
                     </div>
-                    <button type="button" class="btn btn-default add-btn" data-type="warranty">添加质保</button>
+                    <div class="navbar-collapse collapse" aria-expanded="false">
+                        <button type="button" data-type="warranty" class="btn add-btn btn-default navbar-btn navbar-right">
+                            <i class="fa fa-plus"></i>添加质保
+                        </button>
+                    </div>
                 </div>
             </nav>
             <div class="w-content" id="wContentTab"></div>
@@ -22,9 +26,13 @@
             <nav class="navbar navbar-default">
                 <div class="container-fluid">
                     <div class="navbar-header">
-                        <h3 class="navbar-brand">产品查询</h3>
+                        <h3>产品查询</h3>
                     </div>
-                    <button type="button" class="btn btn-default add-btn" data-type="product">添加产品</button>
+                    <div class="navbar-collapse collapse" aria-expanded="false">
+                        <button type="button" data-type="product" class="btn add-btn btn-default navbar-btn navbar-right">
+                            <i class="fa fa-plus"></i>添加产品
+                        </button>
+                    </div>
                 </div>
             </nav>
             <div class="p-content" id="prodContentTab"></div>
@@ -33,9 +41,13 @@
             <nav class="navbar navbar-default">
                 <div class="container-fluid">
                     <div class="navbar-header">
-                        <h3 class="navbar-brand">经销商查询</h3>
+                        <h3>经销商查询</h3>
                     </div>
-                    <button type="button" class="btn btn-default add-btn" data-type="dealer">添加经销商</button>
+                    <div class="navbar-collapse collapse" aria-expanded="false">
+                        <button type="button" data-type="dealer" class="btn add-btn btn-default navbar-btn navbar-right">
+                            <i class="fa fa-plus"></i>添加经销商
+                        </button>
+                    </div>
                 </div>
             </nav>
             <div class="d-content" id="dealerContentTab"></div>

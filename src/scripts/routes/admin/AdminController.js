@@ -63,15 +63,15 @@ define([
         klassName: "AdminController",
         preparing: function(e) {
             var self = this;
-            e.result = server().connect("auth", "get", "check").then(function(data) {
-                if (data.status) {
+            e.result = server().connect("auth", "get", "check").then(function(result) {
+                if (result) {
                     var dealer = new DealerSearch(),
                         product = new ProductSearch(),
                         warranty = new WarrantySearch();
                     product.getDom().appendTo(selector.find("#prodContentTab").empty());
                     warranty.getDom().appendTo(selector.find("#wContentTab").empty());
                     selector.delegate(".add-btn", "click", function(e) {
-                        var type = $(e.target).data("type");
+                        var type = $(e.currentTarget).data("type");
                         if(type === "dealer") {
                             formModal.show(type, {}, function() {
 

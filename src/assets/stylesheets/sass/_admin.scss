@@ -1,0 +1,27 @@
+.admin-form {
+    img {
+        width: 100px;
+        height: auto;
+        max-height: 100px;
+    }
+}
+
+.admin {
+    .tab-content {
+        .navbar {
+            h3 {
+                margin-top: 10px;
+            }
+        }
+        .btn {
+            i {
+                padding: 0 5px;
+            }
+        }
+    }
+    table {
+        td.td-action {
+            width: 180px;
+        }
+    }
+}

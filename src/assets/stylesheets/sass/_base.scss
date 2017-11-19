@@ -12,17 +12,11 @@
 }
 
 
-.main-wrap {
+.main {
     opacity: 0;
-    top: 50px;
-    position: relative;
+    min-height: 530px;
+    padding: 20px 0;
     overflow: hidden;
-    .main-contents {
-        overflow: hidden;
-        .transform180 {
-            transform: rotateX(180deg);
-        }
-    }
 }
 
 .go-top-btn {

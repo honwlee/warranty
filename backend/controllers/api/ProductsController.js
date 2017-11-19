@@ -9,7 +9,11 @@ module.exports = {
         let opt = {};
         opt[req.query.key] = req.query.value;
         let product = Product.findBy(opt);
-        res.json(product);
+        if (product) {
+            res.json(product);
+        } else {
+            res.json({ status: false, msg: "no results!" });
+        }
     },
 
     update: function(req, res) {

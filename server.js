@@ -74,7 +74,7 @@ SlaxServer.prototype.startBackend = function(callback) {
             next();
         });
 
-        routes(app, ensureAuthenticated);
+        routes(app, ensureAuthenticated, this.root);
 
         backupDb();
     }
@@ -111,5 +111,6 @@ if (!(npm_argv && npm_argv.cooked instanceof Array)) {
 }
 
 serve("deploy/" + slaxAppName + ".slax", {
-    port: npm_argv.cooked[3] || 8087
+    port: npm_argv.cooked[3] || 8087,
+    root: path.join(__dirname, 'src')
 });

@@ -9,7 +9,11 @@ module.exports = {
         let opt = {};
         opt[req.query.key] = req.query.value;
         let warranty = Warranty.findBy(opt);
-        res.json(warranty);
+        if(warranty) {
+            res.json(warranty);
+        } else {
+            res.json({status: false, msg: "no results!"});
+        }
     },
 
     update: function(req, res) {

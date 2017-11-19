@@ -17,17 +17,17 @@
     <div class="header">
         <div class="container">
             <a class="site-logo" href="#">
-        <img style="width: 128px;" src="https://warranty.xpelfilms.com.cn/assets/images/main_logo.png" alt="logo" class="logo-default">
-        </a>
+                <img style="width: 128px;" src="https://warranty.xpelfilms.com.cn/assets/images/main_logo.png" alt="logo" class="logo-default">
+            </a>
             <a onclick="openclose(1)" id="open" class="mobi-toggler"><i class="fa fa-bars"></i></a>
             <a onclick="openclose(2)" id="close" style="display:none;" class="mobi-toggler"><i class="fa fa-bars"></i></a>
             <!-- BEGIN NAVIGATION -->
             <ul class="nav navbar-nav pull-right" style="margin-top: 20px; margin-right: -14px;">
                 <li>
                     <select name="language" class="form-control" onchange="lang_change(this.value)">
-                        <option selected="" value="https://warranty.xpelfilms.com.cn/?la=1">English</option>
-                        <option value="https://warranty.xpelfilms.com.cn/?la=2"> 繁體 </option>
-                        <option value="https://warranty.xpelfilms.com.cn/?la=3"> 简体 </option>
+                        <option value="?la=1">English</option>
+                        <option value="?la=2"> 繁體 </option>
+                        <option selected="" value="la=3"> 简体 </option>
                     </select>
                 </li>
             </ul>
@@ -36,17 +36,7 @@
             <!-- END NAVIGATION -->
         </div>
     </div>
-    <div id="main">
-    </div>
-    <div style="margin-top:110px;" class="footer">
-        <div class="container">
-            <div class="row">
-                <!-- BEGIN COPYRIGHT -->
-                <div class="col-md-6 col-sm-6 padding-top-10">
-                    Developed By <a target="_blank" href="http://profilics.com">Profilics</a> </div>
-            </div>
-        </div>
-    </div>
+    <div id="main" class="main"></div>
     <div class="go-top-btn"><i class="fa fa-angle-double-up"></i></div>
     <div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
         <div class="modal-dialog">

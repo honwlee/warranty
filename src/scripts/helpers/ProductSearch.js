@@ -25,14 +25,18 @@ define([
         search: function(selector, dataString) {
             var self = this;
             server().connect("products", "get", "show?" + dataString).then(function(product) {
-                self.fillItem(self._formatData(product), selector);
+                if(product) {
+                    self.fillItem(self._formatData(product), selector);
+                } else {
+                    toastr.warning("没有找到对应的结果！");
+                }
             });
         },
 
         _formatData: function(product) {
             return {
                 id: product.id,
-                imagePath: product.file.path,
+                imagePath: product.file ? product.file.path : null,
                 modelNum: product.modelNum,
                 createdDate: formatDate(product.createdDate),
                 createdAddress: product.createdAddress,
@@ -55,9 +59,7 @@ define([
             $("<div>").attr({
                 class: "row featurebox"
             }).html(tpl(product)).appendTo(container);
-            $("<div>").attr({
-                class: "actions"
-            }).html(actionTpl()).appendTo(container);
+            actionSelector = $(actionTpl()).appendTo(container);
             actionSelector.find(".del-btn").on("click", function() {
                 self.remove(warranty, function() {
                     container.empty();
@@ -97,7 +99,7 @@ define([
                 if (!self.searchKey) return toastr.warning("请选择查询选项！");
                 if (!searchVal) return toastr.warning("请填写查询值！");
                 var dataString = "key=" + self.searchKey + "&value=" + searchVal;
-                search(selector, dataString);
+                self.search(selector, dataString);
             });
             return this.selector;
         },

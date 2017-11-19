@@ -1,19 +1,20 @@
 'use strict';
 const ctrls = require("../controllers/api/controllers"),
     path = require("path"),
-    multer = require('multer'),
-    storage = multer.diskStorage({
-        destination: function(req, file, cb) {
-            cb(null, path.join(__dirname, '../../src/assets/images/upload/'));
-        },
-        filename: function(req, file, cb) {
-            // cb(null, file.fieldname + '-' + Date.now())
-            cb(null, Date.now() + "-" + file.originalname);
-        }
-    }),
-    upload = multer({ storage: storage });
-module.exports = function(app, ensureAuthenticated) {
+    multer = require('multer');
+
+module.exports = function(app, ensureAuthenticated, rootPath) {
     // api
+    let storage = multer.diskStorage({
+            destination: function(req, file, cb) {
+                cb(null, path.join(rootPath, 'assets/images/upload/'));
+            },
+            filename: function(req, file, cb) {
+                // cb(null, file.fieldname + '-' + Date.now())
+                cb(null, Date.now() + "-" + file.originalname);
+            }
+        }),
+        upload = multer({ storage: storage });
     Object.keys(ctrls).forEach(function(key) {
         ["update", "create", "show", "delete", "index"].forEach(function(name) {
             let method;

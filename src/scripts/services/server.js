@@ -74,8 +74,11 @@ define([
                                 if (self.memory[name]) self.memory[name][action] = data;
                                 throb.remove();
                                 main.style.opacity = 1;
-                                deferred.resolve(data);
-
+                                if(data.status == false) {
+                                    deferred.resolve(null);
+                                } else {
+                                    deferred.resolve(data);
+                                }
                             });
                         }
                     });
