@@ -34,7 +34,16 @@ define([
         },
 
         entered: function() {
+            $("#headerNav").html('<li>' +
+                '<select name="language" class="form-control">' +
+                '<option value="en">English</option>' +
+                '<option value="zh"> 繁體 </option>' +
+                '<option selected="" value="zh-cn"> 简体 </option>' +
+                '</select>' +
+                '</li>'
+            ).find("select").off("change").on("change", function() {
 
+            });
         },
         exited: function() {}
     });

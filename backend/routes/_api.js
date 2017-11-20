@@ -1,9 +1,19 @@
 'use strict';
 const ctrls = require("../controllers/api/controllers"),
     path = require("path"),
+    dbpath = path.join(__dirname, "../dbs"),
+    jsonServer = require('../lib/restsrv/'),
+    // bodyParser = require('./lib/restsrv/body-parser');
+    plural = require('../lib/restsrv/router/plural'),
+    nested = require('../lib/restsrv/router/nested'),
+    dbms = require('../lib/dbms/'),
+    jsondb = dbms(dbpath, {
+        master_file_name: "master.json"
+    }),
+    _ = require('lodash'),
     multer = require('multer');
 
-module.exports = function(app, ensureAuthenticated, rootPath) {
+module.exports = function(app, router, ensureAuthenticated, rootPath) {
     // api
     let storage = multer.diskStorage({
             destination: function(req, file, cb) {
@@ -35,10 +45,22 @@ module.exports = function(app, ensureAuthenticated, rootPath) {
             }
         });
     });
+
     // app.get('/api/provinces/import', ensureAuthenticated, function(req, res) {
     app.get('/api/provinces/import', ensureAuthenticated, function(req, res) {
         ctrls.provinces.import(req, res);
     });
+    app.get('/api/dealers/list', function(req, res) {
+        ctrls.dealers.list(req, res);
+    });
+    // router.use("/lala", function(req, res) {
+    //     res.json({
+    //         la: "laal"
+    //     })
+    // });
+    // router.use("/api/rest/warranties", plural(jsondb, "warranties"));
+    // router.use("/api/rest/products", plural(jsondb, "products"));
+    // router.use("/api/rest/dealers", plural(jsondb, "dealers"));
 
     app.get('/api/auth/check', function(req, res) {
         if (req.isAuthenticated()) {

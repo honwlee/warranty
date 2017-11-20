@@ -17,15 +17,18 @@ define([
     return langx.Evented.inherit({
         klassName: "ProductSearch",
         searchKey: null,
+        doAction: false,
         searchValue: null,
         init: function(config) {
+            config = config || {};
+            this.doAction = config.doAction;
             this._buildDom();
         },
 
         search: function(selector, dataString) {
             var self = this;
             server().connect("products", "get", "show?" + dataString).then(function(product) {
-                if(product) {
+                if (product) {
                     self.fillItem(self._formatData(product), selector);
                 } else {
                     toastr.warning("没有找到对应的结果！");
@@ -38,7 +41,7 @@ define([
                 id: product.id,
                 imagePath: product.file ? product.file.path : null,
                 modelNum: product.modelNum,
-                createdDate: formatDate(product.createdDate),
+                createdDate: product.createdDate,
                 createdAddress: product.createdAddress,
                 saleAddress: product.saleAddress,
                 prodNumber: product.prodNumber,
@@ -59,18 +62,20 @@ define([
             $("<div>").attr({
                 class: "row featurebox"
             }).html(tpl(product)).appendTo(container);
-            actionSelector = $(actionTpl()).appendTo(container);
-            actionSelector.find(".del-btn").on("click", function() {
-                self.remove(warranty, function() {
-                    container.empty();
-                    toastr.success("删除成功！");
+            if (this.doAction) {
+                var actionSelector = $(actionTpl()).appendTo(container);
+                actionSelector.find(".del-btn").on("click", function() {
+                    self.remove(warranty, function() {
+                        container.empty();
+                        toastr.success("删除成功！");
+                    });
                 });
-            });
-            actionSelector.find(".edit-btn").on("click", function() {
-                formModal.show("product", product, function(_p) {
-                    self.fillItem(_p, selector);
+                actionSelector.find(".edit-btn").on("click", function() {
+                    formModal.show("product", product, function(_p) {
+                        self.fillItem(_p, selector);
+                    });
                 });
-            });
+            }
         },
 
         remove: function(product, callback) {
@@ -100,6 +105,7 @@ define([
                 if (!searchVal) return toastr.warning("请填写查询值！");
                 var dataString = "key=" + self.searchKey + "&value=" + searchVal;
                 self.search(selector, dataString);
+                selector.find(".panel-heading").removeClass("hide");
             });
             return this.selector;
         },

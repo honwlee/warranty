@@ -3,8 +3,8 @@ const path = require('path'),
     dbpath = path.join(__dirname, "../dbs"),
     Q = require('q'),
     fs = require('fs'),
-    dbms = require('../lib/dbms/'),
     request = require('request'),
+    dbms = require('../lib/dbms/'),
     jsondb = dbms(dbpath, {
         master_file_name: "master.json"
     }),

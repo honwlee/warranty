@@ -17,8 +17,11 @@ define([
     return langx.Evented.inherit({
         klassName: "WarrantySearch",
         searchKey: null,
+        doAction: false,
         searchValue: null,
         init: function(config) {
+            config = config || {};
+            this.doAction = config.doAction;
             this._buildDom();
         },
 
@@ -38,7 +41,7 @@ define([
                 id: warranty.id,
                 imagePath: warranty.file ? warranty.file.path : null,
                 type: warranty.type,
-                exeDate: formatDate(warranty.exeDate),
+                exeDate: warranty.exeDate,
                 shop: warranty.shop,
                 carNumber: warranty.carNumber,
                 prodNumber: warranty.prodNumber,
@@ -57,18 +60,20 @@ define([
             $("<div>").attr({
                 class: "row featurebox"
             }).html(tpl(warranty)).appendTo(container);
-            var actionSelector = $(actionTpl()).appendTo(container);
-            actionSelector.find(".del-btn").on("click", function() {
-                self.remove(warranty, function() {
-                    container.empty();
-                    toastr.success("删除成功！");
+            if(this.doAction) {
+                var actionSelector = $(actionTpl()).appendTo(container);
+                actionSelector.find(".del-btn").on("click", function() {
+                    self.remove(warranty, function() {
+                        container.empty();
+                        toastr.success("删除成功！");
+                    });
                 });
-            });
-            actionSelector.find(".edit-btn").on("click", function() {
-                formModal.show("warranty", warranty, function(_w) {
-                    self.fillItem(_w, selector);
+                actionSelector.find(".edit-btn").on("click", function() {
+                    formModal.show("warranty", warranty, function(_w) {
+                        self.fillItem(_w, selector);
+                    });
                 });
-            });
+            }
         },
 
         getPrepareData: function() {},
@@ -100,6 +105,7 @@ define([
                 if (!searchVal) return toastr.warning("请填写查询值！");
                 var dataString = "key=" + self.searchKey + "&value=" + searchVal;
                 self.search(selector, dataString);
+                selector.find(".panel-heading").removeClass("hide");
             });
             return this.selector;
         },

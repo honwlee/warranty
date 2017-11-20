@@ -69,9 +69,13 @@ define([
             if (main) {
                 throb = window.addThrob(main, function() {
                     require(["bootstrap"], function() {
-                        main.style.opacity = 1;
-                        throb.remove();
-                        deferred.resolve();
+                        require(["bootstrapTb"], function() {
+                            require(["bootstrapTbZh"], function() {
+                                main.style.opacity = 1;
+                                throb.remove();
+                                deferred.resolve();
+                            });
+                        });
                     });
                 });
             }

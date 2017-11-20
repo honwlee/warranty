@@ -1,18 +1,20 @@
 'use strict';
 const Warranty = require('../../models/Warranty').Warranty;
+const parse = require('../../exts/parseList').parse;
 module.exports = {
     index: function(req, res) {
-        res.json(Warranty.list());
+        parse("warranties", req, res, ["prodNumber", "carNumber"]);
+        // res.json(Warranty.list());
     },
 
     show: function(req, res) {
         let opt = {};
         opt[req.query.key] = req.query.value;
         let warranty = Warranty.findBy(opt);
-        if(warranty) {
+        if (warranty) {
             res.json(warranty);
         } else {
-            res.json({status: false, msg: "no results!"});
+            res.json({ status: false, msg: "no results!" });
         }
     },
 

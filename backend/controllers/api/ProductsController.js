@@ -1,8 +1,10 @@
 'use strict';
 const Product = require('../../models/Product').Product;
+const parse = require('../../exts/parseList').parse;
 module.exports = {
     index: function(req, res) {
-        res.json(Product.list());
+        parse("products", req, res, ["prodNumber"]);
+        // res.json(Product.list());
     },
 
     show: function(req, res) {

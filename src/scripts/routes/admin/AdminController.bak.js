@@ -3,13 +3,12 @@ define([
     "server",
     "toastr",
     "skylarkjs",
-    "scripts/helpers/list",
     "scripts/helpers/formModal",
     "scripts/helpers/DealerSearch",
     "scripts/helpers/ProductSearch",
     "scripts/helpers/WarrantySearch",
     "text!scripts/routes/admin/admin.html"
-], function($, server, toastr, skylarkjs, list, formModal, DealerSearch, ProductSearch, WarrantySearch, adminTpl) {
+], function($, server, toastr, skylarkjs, formModal, DealerSearch, ProductSearch, WarrantySearch, adminTpl) {
     var spa = skylarkjs.spa,
         langx = skylarkjs.langx;
 
@@ -66,21 +65,26 @@ define([
             var self = this;
             e.result = server().connect("auth", "get", "check").then(function(result) {
                 if (result) {
-                    var defers = [];
-                    // defers.push(list.initDealerTable(selector.find("#dealerContentTab"), true));
-                    // defers.push(list.initProdTable(selector.find("#prodContentTab"), true));
-                    // defers.push(list.initWarrantyTable(selector.find("#wContentTab"), true));
+                    var dealer = new DealerSearch({ doAction: true }),
+                        product = new ProductSearch({ doAction: true }),
+                        warranty = new WarrantySearch({ doAction: true });
+                    product.getDom().appendTo(selector.find("#prodContentTab").empty());
+                    warranty.getDom().appendTo(selector.find("#wContentTab").empty());
                     selector.delegate(".add-btn", "click", function(e) {
                         var type = $(e.currentTarget).data("type");
-                        formModal.show(type, {}, function(data) {
-                            selector.find("#" + type + "Table").bootstrapTable('prepend', data);
-                        });
+                        if (type === "dealer") {
+                            formModal.show(type, {}, function() {
+
+                            }, dealer.getPrepareData());
+                        } else {
+                            formModal.show(type, {}, function() {
+
+                            });
+                        }
                     });
-                    selector.find('.admin-nav a').on('shown.bs.tab', function(e) {
-                        var type = $(e.currentTarget).data("type");
-                        list.initTable(type, selector.find("#" + type + "Table"), true);
+                    return dealer.preparing().then(function() {
+                        dealer.getDom().appendTo(selector.find("#dealerContentTab").empty());
                     });
-                    return langx.Deferred.all(defers);
                 } else {
                     window.go("/signin");
                 }
@@ -99,9 +103,7 @@ define([
             selector.find('.admin-nav a:first').tab('show');
         },
 
-        entered: function() {
-            $("#headerNav").html('<li><a class="nav-item" data-spa-router="false" href="/logout">退出</a></li>');
-        },
+        entered: function() {},
         exited: function() {}
     });
 });

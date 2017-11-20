@@ -51,7 +51,7 @@ define([
         xhr.onreadystatechange = function() {
             if (xhr.readyState === 4) {
                 if (xhr.status === 200) {
-                    callback();
+                    callback(JSON.parse(xhr.response || xhr.responseText));
                 } else {
                     toastr.error(xhr.statusText);
                 }
@@ -59,8 +59,35 @@ define([
         };
         xhr.send(formData);
     };
+
     return {
         files: {},
+        _formatPData: function(product) {
+            return {
+                id: product.id,
+                imagePath: product.file ? product.file.path : null,
+                modelNum: product.modelNum,
+                createdDate: product.createdDate,
+                createdAddress: product.createdAddress,
+                saleAddress: product.saleAddress,
+                prodNumber: product.prodNumber,
+                checker: product.checker,
+                checkAddress: product.checkAddress
+            }
+        },
+        _formatWData: function(warranty) {
+            return {
+                id: warranty.id,
+                imagePath: warranty.file ? warranty.file.path : null,
+                type: warranty.type,
+                exeDate: warranty.exeDate,
+                shop: warranty.shop,
+                carNumber: warranty.carNumber,
+                prodNumber: warranty.prodNumber,
+                engineer: warranty.engineer,
+                proDate: warranty.proDate
+            }
+        },
         show: function(type, data, callback, prepareData) {
             this.modal = $("#formModal");
             this["show_" + type](data, callback, prepareData);
@@ -69,6 +96,7 @@ define([
         },
 
         show_product: function(data, callback) {
+            data = this._formatPData(data);
             var self = this,
                 modal = this.modal,
                 text = data.id ? "编辑产品" : "添加产品";
@@ -80,6 +108,7 @@ define([
                 save("products", modal, {
                     file: self.files.product
                 }, function(product) {
+                    self.files.product = null;
                     toastr.success("已保存！");
                     callback(product);
                     modal.modal('hide');
@@ -91,6 +120,7 @@ define([
         },
 
         show_warranty: function(data, callback) {
+            data = this._formatWData(data);
             var self = this,
                 modal = this.modal,
                 text = data.id ? "编辑质保" : "添加质保";
@@ -103,6 +133,7 @@ define([
                     file: self.files.warranty
                 }, function(warranty) {
                     toastr.success("已保存！");
+                    self.files.warranty = null;
                     callback(warranty);
                     modal.modal('hide');
                 });
@@ -116,25 +147,38 @@ define([
             var self = this,
                 modal = this.modal,
                 text = data.id ? "编辑经销商" : "添加经销商";
-            partial.get("dealer-form-partial");
-            var dealerTpl = handlebars.compile("{{> dealer-form-partial}}");
-            modal.find(".modal-body").html(dealerTpl({
-                provinces: prepareData,
-                dealer: data
-            }));
-            var _cs = modal.find("#fCityS");
-            modal.find("#fProvinceS").on("change", function() {
-                if (!this.value) toastr.warning("请选择省份！");
-                server().getCities(this.value, _cs);
-            });
-            modal.find(".modal-title").html(text);
-            modal.find(".save-btn").off("click").on("click", function() {
-                save("dealers", modal, {
-                    cityId: _cs.val()
-                }, function(dealer) {
-                    toastr.success("已保存！");
-                    callback(dealer);
-                    modal.modal('hide');
+            server().getProvinces().then(function(prepareData) {
+                partial.get("dealer-form-partial");
+                var dealerTpl = handlebars.compile("{{> dealer-form-partial}}");
+                modal.find(".modal-body").html(dealerTpl({
+                    provinces: prepareData,
+                    dealer: data
+                }));
+                var _cs = modal.find("#fCityS"),
+                    _ps = modal.find("#fProvinceS");
+                modal.find("#fProvinceS").on("change", function() {
+                    if (!this.value) toastr.warning("请选择省份！");
+                    server().getCities(this.value, _cs);
+                });
+                if (data.id) {
+                    _ps.val(data.provinceId);
+                    _ps.off('change').on('change', function() {
+                        server().getCities(this.value, _cs).then(function() {
+                            _cs.val(data.cityId);
+                        });
+                    });
+                    _ps.change();
+                }
+                modal.find(".modal-title").html(text);
+                modal.find(".save-btn").off("click").on("click", function() {
+                    save("dealers", modal, {
+                        provinceId: _ps.val(),
+                        cityId: _cs.val()
+                    }, function(dealer) {
+                        toastr.success("已保存！");
+                        callback(dealer);
+                        modal.modal('hide');
+                    });
                 });
             });
         }

@@ -74,7 +74,7 @@ SlaxServer.prototype.startBackend = function(callback) {
             next();
         });
 
-        routes(app, ensureAuthenticated, this.root);
+        routes(app, null, ensureAuthenticated, this.root);
 
         backupDb();
     }

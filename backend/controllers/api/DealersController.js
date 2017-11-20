@@ -1,10 +1,20 @@
 'use strict';
 const Dealer = require('../../models/Dealer').Dealer;
+const parse = require('../../exts/parseList').parse;
 module.exports = {
     index: function(req, res) {
-        res.json(Dealer.list(req.query.sort).filter(function(d) {
-            return d.cityId == req.query.cityId;
-        }));
+        parse("dealers", req, res, ["company"]);
+    },
+
+    list: function(req, res) {
+        let dealers = Dealer.list(req.query.sort);
+        if (req.query.cityId) {
+            res.json(dealers.filter(function(d) {
+                return d.cityId == req.query.cityId;
+            }));
+        } else {
+            res.json(dealers);
+        }
     },
 
     show: function(req, res) {

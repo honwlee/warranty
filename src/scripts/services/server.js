@@ -37,9 +37,25 @@ define([
                 }
             },
 
+            getProvinces: function() {
+                var self = this;
+                if (this.memory.provinces.index) {
+                    return langx.Deferred.when(this.memory.provinces.index);
+                }
+                return this.connect("provinces", "get", "index").then(function(data) {
+                    self.memory.provinces.index = data;
+                    return data;
+                });
+            },
+
+            getProvincesByCity: function(cityId) {
+                var city = this.memory.cities.index.filter(function(c) { return c.id === cityId })[0];
+                return city ? this.memory.provinces.filter(function(p) { return p.id === city.provinceId })[0] : null;
+            },
+
             getCities: function(provinceId, cs) {
                 cs.empty();
-                this.connect("cities", "get", "index?provinceId=" + provinceId).then(function(cities) {
+                return this.connect("cities", "get", "index?provinceId=" + provinceId).then(function(cities) {
                     $('<option value="0">选择</option>').appendTo(cs);
                     cities.forEach(function(c) {
                         $("<option>").attr({
@@ -74,7 +90,7 @@ define([
                                 if (self.memory[name]) self.memory[name][action] = data;
                                 throb.remove();
                                 main.style.opacity = 1;
-                                if(data.status == false) {
+                                if (data.status == false) {
                                     deferred.resolve(null);
                                 } else {
                                     deferred.resolve(data);
