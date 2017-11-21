@@ -1,6 +1,7 @@
 'use strict';
 const Product = require('../../models/Product').Product;
 const parse = require('../../exts/parseList').parse;
+const validate = require('../../exts/validation').validate;
 module.exports = {
     index: function(req, res) {
         parse("products", req, res, ["prodNumber"]);
@@ -21,14 +22,12 @@ module.exports = {
     update: function(req, res) {
         req.body.file = req.file;
         let product = Product.update(req.body);
-        res.json(product)
+        res.json({ status: true, result: product });
     },
 
     create: function(req, res) {
         req.body.file = req.file;
-        let product = Product.create(req.body);
-        res.json(product);
-        // });
+        validate(Product, { prodNumber: req.body.prodNumber }, req, res);
     },
 
     delete: function(req, res) {

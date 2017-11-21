@@ -39,6 +39,8 @@ class Model {
     }
     static create(name, args) {
         args.id = shortid.generate();
+        args.createdAt = new Date();
+        args.updatedAt = new Date();
         if (args.file && args.file.path) {
             args.file.path = args.file.path.replace(path.join(__dirname, "../../src"), "");
         }
@@ -50,6 +52,9 @@ class Model {
         query[key] = args.key;
         let result = jsondb.get(name).find(query).value();
         if (!result) {
+            args.id = shortid.generate();
+            args.createdAt = new Date();
+            args.updatedAt = new Date();
             if (args.file && args.file.path) {
                 args.file.path = args.file.path.replace(path.join(__dirname, "../../src"), "");
             }
@@ -60,6 +65,7 @@ class Model {
     static update(name, queryKey, args) {
         let opt = {};
         opt[queryKey] = args[queryKey];
+        args.updatedAt = new Date();
         let result = jsondb.get(name).find(opt);
         if (args.file && args.file.path) {
             let file = result.value().file;

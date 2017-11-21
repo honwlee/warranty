@@ -95,17 +95,21 @@ define([
                 tpl = handlebars.compile("{{> product-search-partial}}"),
                 div = $("<div>").html(tpl()),
                 selector = this.selector = $(div[0].firstChild);
-
+            self.searchKey = selector.find("#productS").val();
             selector.find("#productS").on("change", function() {
                 self.searchKey = this.value;
             });
-            selector.find("#searchProductBtn").on("click", function() {
+            var _searchFunc = function() {
                 var searchVal = selector.find("#prodValue").val();
                 if (!self.searchKey) return toastr.warning("请选择查询选项！");
                 if (!searchVal) return toastr.warning("请填写查询值！");
                 var dataString = "key=" + self.searchKey + "&value=" + searchVal;
                 self.search(selector, dataString);
                 selector.find(".panel-heading").removeClass("hide");
+            };
+            selector.find("#searchProductBtn").on("click", _searchFunc);
+            selector.off('keypress').on('keypress', function(e) {
+                if (e.keyCode === 13) _searchFunc();
             });
             return this.selector;
         },

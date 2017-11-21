@@ -26,6 +26,7 @@ passport.use('local-signin', new LocalStrategy({ passReqToCallback: true }, //al
                     done(null, result.user);
                 } else {
                     console.log("COULD NOT LOG IN");
+                    console.log(result);
                     done(null, result.user);
 
                 }

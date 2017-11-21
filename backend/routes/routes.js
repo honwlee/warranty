@@ -35,9 +35,25 @@ module.exports = function(app, router, ensureAuthenticated, rootPath) {
     //     failureRedirect: '/signin'
     // }));
     //
-    app.post('/login', passport.authenticate('local-signin'), function(req, res) {
-        res.json(req.result);
+
+    app.post('/login', function(req, res, next) {
+        passport.authenticate('local-signin', function(err, user, info) {
+            if (err) { return res.json({ status: false, msg: err }); }
+            if (!user) { return res.json({ status: false, msg: err }); }
+            req.logIn(user, function(err) {
+                if (err) { return next(err); }
+                return res.json({ status: true, user });;
+            });
+        })(req, res, next);
     });
+
+    // app.post('/login', passport.authenticate('local-signin'), function(req, res) {
+    //     console.log(req.result);
+    //     return res.json(req.result);
+    // }, function(err, req, res, next) {
+    //     req.flash(err);
+    //     return res.json(err);
+    // });
 
     //logs user out of site, deleting them from the session, and returns to homepage
     app.get('/logout', function(req, res) {

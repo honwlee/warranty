@@ -24,8 +24,7 @@ module.exports = {
         delete req.query.page;
         delete req.query.order;
         delete req.query.limit;
-        console.log(chain.size());
-        console.log("@@@@@@@@")
+
         // Automatically delete query parameters that can't be found
         // in the database
         Object.keys(req.query).forEach(function(query) {
@@ -83,7 +82,6 @@ module.exports = {
                 })();
             }
         });
-
         // Sort
         if (_sort) {
             _order = _order || 'ASC';

@@ -85,10 +85,10 @@ define([
                 events: {
                     'click .edit': function(e, value, row, index) {
                         formModal.show("product", row, function(_p) {
-                            selector.bootstrapTable('refresh', {
-                                    url: '/api/products/index'
-                                });
                             // selector.bootstrapTable('updateRow', { index: index, row: _p });
+                            selector.bootstrapTable('refresh', {
+                                url: '/api/products/index'
+                            });
                         });
                     },
                     'click .remove': function(e, value, row, index) {
@@ -96,10 +96,10 @@ define([
                             server().connect("products", "post", "delete", {
                                 id: row.id
                             }).then(function() {
+                                // selector.bootstrapTable('remove', { field: 'id', values: [row.id] });
                                 selector.bootstrapTable('refresh', {
                                     url: '/api/products/index'
                                 });
-                                // selector.bootstrapTable('remove', { field: 'id', values: [row.id] });
                                 $("#confirmDeleteModal").modal('hide');
                             });
                         });
@@ -114,7 +114,7 @@ define([
             },
             uniqueId: "id",
             search: true,
-            sortName: "createdDate",
+            sortName: "prodNumber",
             showRefresh: true,
             sortOrder: "desc",
             url: '/api/products/index',
@@ -153,8 +153,8 @@ define([
                     'click .edit': function(e, value, row, index) {
                         formModal.show("dealer", row, function(_p) {
                             selector.bootstrapTable('refresh', {
-                                    url: '/api/dealers/index'
-                                });
+                                url: '/api/dealers/index'
+                            });
                             // selector.bootstrapTable('updateRow', { index: index, row: _p });
                         });
                     },
@@ -250,8 +250,8 @@ define([
                     'click .edit': function(e, value, row, index) {
                         formModal.show("warranty", row, function(_p) {
                             selector.bootstrapTable('refresh', {
-                                    url: '/api/warranties/index'
-                                });
+                                url: '/api/warranties/index'
+                            });
                             // selector.bootstrapTable('updateRow', { index: index, row: _p });
                         });
                     },
@@ -277,7 +277,7 @@ define([
                 return res;
             },
             uniqueId: "id",
-            sortName: "exeDate",
+            sortName: "prodNumber",
             search: true,
             sortOrder: "desc",
             showRefresh: true,

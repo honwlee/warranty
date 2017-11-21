@@ -46,6 +46,7 @@ exports.localAuth = function(username, password) {
     let result = User.findBy({
         username: username
     });
+    console.log("@@@@@@@@@@@@@@")
     if (null == result) {
         deferred.resolve({
             status: false,
@@ -54,7 +55,7 @@ exports.localAuth = function(username, password) {
     } else {
         let hash = result.password;
         console.log("FOUND USER: " + result.username);
-        if (result.isActive) {
+        if (bcrypt.compareSync(password, hash)) {
             deferred.resolve({
                 status: true,
                 user: result
@@ -63,7 +64,7 @@ exports.localAuth = function(username, password) {
             console.log("AUTHENTICATION FAILED");
             deferred.resolve({
                 status: false,
-                user: result,
+                user: null,
                 msg: "密码或者账号错误，请确认后再试！"
             });
         }
