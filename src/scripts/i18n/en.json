@@ -1,3 +1,26 @@
 {
-    "warranty-query": "Warranty Query"
+    "warrantyQuery": "Warranty Query",
+    "productQuery": "Product Query",
+        "warrantyQuery": "warrantyQuery",
+    "productAuthenticityQuery": "productAuthenticityQuery",
+    "province": "province",
+    "warranty ID": "warranty",
+    "authorizedDealersQuery": "authorizedDealersQuery",
+"VehicleMounted": "VehicleMounted",
+"ConstructionTime": "ConstructionTime",
+"constructionStore": "constructionStore",
+"licensePlateNO.OrFrameNO.": "licensePlateNO.OrFrameNO.",
+"ProductNO.": "ProductNO",
+"constructionTechnician": "constructionTechnician",
+"WarrantyTime": "WarrantyTime",
+"SelectionIdentifier": "SelectionIdentifier",
+"Input": "Input",
+"Model": "Model",
+"ProductionTime": "ProductionTime",
+"ProducingPlace": "ProducingPlace",
+"SalePlace": "SalePlace",
+"ProductNO.": "ProductNO",
+"Inspectors": "Inspectors",
+"InspectionGround": "InspectionGround",
+"SearchResult": "SearchResult"
 }
