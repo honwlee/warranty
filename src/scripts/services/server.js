@@ -56,9 +56,11 @@ define([
             getCities: function(provinceId, cs) {
                 cs.empty();
                 return this.connect("cities", "get", "index?provinceId=" + provinceId).then(function(cities) {
-                    $('<option value="0">选择</option>').appendTo(cs);
+                    $('<option value="0" class="--i18n--" data-i18n-key="select">选择</option>').appendTo(cs);
                     cities.forEach(function(c) {
                         $("<option>").attr({
+                            class: "--i18n--",
+                            "data-i18n-key": c.enName,
                             value: c.id
                         }).html(c.name).appendTo(cs);
                     });

@@ -1,6 +1,7 @@
 'use strict';
 const ctrls = require("../controllers/api/controllers"),
     path = require("path"),
+    fs = require('fs'),
     dbpath = path.join(__dirname, "../dbs"),
     jsonServer = require('../lib/restsrv/'),
     // bodyParser = require('./lib/restsrv/body-parser');
@@ -17,7 +18,9 @@ module.exports = function(app, router, ensureAuthenticated, rootPath) {
     // api
     let storage = multer.diskStorage({
             destination: function(req, file, cb) {
-                cb(null, path.join(rootPath, 'assets/images/upload/'));
+                let _p = path.join(rootPath, 'assets/images/upload/');
+                if (!fs.existsSync(_p)) fs.mkdirSync(_p);
+                cb(null, _p);
             },
             filename: function(req, file, cb) {
                 // cb(null, file.fieldname + '-' + Date.now())

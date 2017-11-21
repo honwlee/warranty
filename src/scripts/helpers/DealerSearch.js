@@ -3,10 +3,11 @@ define([
     "server",
     "./Partial",
     "./formModal",
+    "./itemActions",
     "toastr",
     "jquery",
     "handlebars"
-], function(skylarkjs, server, partial, formModal, toastr, $, handlebars) {
+], function(skylarkjs, server, partial, formModal, itemActions, toastr, $, handlebars) {
     var langx = skylarkjs.langx;
     var __provinces;
 

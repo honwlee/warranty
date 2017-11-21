@@ -3,6 +3,7 @@
     "title": "warranty",
     "runtime":
     {
+        "waitSeconds": 60,
         "skylarkjs":
         {
             "version": "0.9.5"

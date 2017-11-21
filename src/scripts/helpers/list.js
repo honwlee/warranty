@@ -3,10 +3,11 @@ define([
     "server",
     "./Partial",
     "./formModal",
+    "./itemActions",
     "toastr",
     "jquery",
     "handlebars"
-], function(skylarkjs, server, partial, formModal, toastr, $, handlebars) {
+], function(skylarkjs, server, partial, formModal, itemActions, toastr, $, handlebars) {
     var langx = skylarkjs.langx;
 
     function totalTextFormatter(data) {
@@ -15,6 +16,10 @@ define([
 
     function operateFormatter(value, row, index) {
         return [
+            '<a class="view" href="javascript:void(0)" title="查看">',
+            '<i class="glyphicon glyphicon-eye-open"></i>',
+            '</a>',
+
             '<a class="remove" href="javascript:void(0)" title="删除">',
             '<i class="glyphicon glyphicon-remove"></i>',
             '</a>',
@@ -83,6 +88,11 @@ define([
                 title: '操作',
                 align: 'center',
                 events: {
+                    'click .view': function(e, value, row, index) {
+                        var modal = $("#contentModal");
+                        itemActions.productItem(modal.find(".modal-body"), row);
+                        modal.modal('show');
+                    },
                     'click .edit': function(e, value, row, index) {
                         formModal.show("product", row, function(_p) {
                             // selector.bootstrapTable('updateRow', { index: index, row: _p });
@@ -92,15 +102,10 @@ define([
                         });
                     },
                     'click .remove': function(e, value, row, index) {
-                        $("#confirmDeleteModal").modal('show').find(".btn-ok").off('click').on('click', function(e) {
-                            server().connect("products", "post", "delete", {
-                                id: row.id
-                            }).then(function() {
-                                // selector.bootstrapTable('remove', { field: 'id', values: [row.id] });
-                                selector.bootstrapTable('refresh', {
-                                    url: '/api/products/index'
-                                });
-                                $("#confirmDeleteModal").modal('hide');
+                        itemActions.removeProduct(row, function() {
+                            // selector.bootstrapTable('remove', { field: 'id', values: [row.id] });
+                            selector.bootstrapTable('refresh', {
+                                url: '/api/products/index'
                             });
                         });
                     }
@@ -150,6 +155,11 @@ define([
                 title: '操作',
                 align: 'center',
                 events: {
+                    'click .view': function(e, value, row, index) {
+                        var modal = $("#contentModal");
+                        itemActions.dealerItem(modal.find(".modal-body"), row);
+                        modal.modal('show');
+                    },
                     'click .edit': function(e, value, row, index) {
                         formModal.show("dealer", row, function(_p) {
                             selector.bootstrapTable('refresh', {
@@ -159,16 +169,11 @@ define([
                         });
                     },
                     'click .remove': function(e, value, row, index) {
-                        $("#confirmDeleteModal").modal('show').find(".btn-ok").off('click').on('click', function(e) {
-                            server().connect("dealers", "post", "delete", {
-                                id: row.id
-                            }).then(function() {
-                                selector.bootstrapTable('refresh', {
-                                    url: '/api/dealers/index'
-                                });
-                                // selector.bootstrapTable('remove', { field: 'id', values: [row.id] });
-                                $("#confirmDeleteModal").modal('hide');
+                        itemActions.removeDealer(row, function() {
+                            selector.bootstrapTable('refresh', {
+                                url: '/api/dealers/index'
                             });
+                            // selector.bootstrapTable('remove', { field: 'id', values: [row.id] });
                         });
                     }
                 },
@@ -206,7 +211,7 @@ define([
             formatter: totalTextFormatter
         }, {
             field: 'prodNumber',
-            title: '产品编号',
+            title: '产品卷号',
             sortable: false,
             align: 'center',
             formatter: totalTextFormatter
@@ -247,6 +252,11 @@ define([
                 title: '操作',
                 align: 'center',
                 events: {
+                    'click .view': function(e, value, row, index) {
+                        var modal = $("#contentModal");
+                        itemActions.warrantyItem(modal.find(".modal-body"), row);
+                        modal.modal('show');
+                    },
                     'click .edit': function(e, value, row, index) {
                         formModal.show("warranty", row, function(_p) {
                             selector.bootstrapTable('refresh', {
@@ -256,16 +266,11 @@ define([
                         });
                     },
                     'click .remove': function(e, value, row, index) {
-                        $("#confirmDeleteModal").modal('show').find(".btn-ok").off('click').on('click', function(e) {
-                            server().connect("warranties", "post", "delete", {
-                                id: row.id
-                            }).then(function() {
-                                selector.bootstrapTable('refresh', {
-                                    url: '/api/warranties/index'
-                                });
-                                // selector.bootstrapTable('remove', { field: 'id', values: [row.id] });
-                                $("#confirmDeleteModal").modal('hide');
+                        itemActions.removeWarranty(row, function() {
+                            selector.bootstrapTable('refresh', {
+                                url: '/api/warranties/index'
                             });
+                            // selector.bootstrapTable('remove', { field: 'id', values: [row.id] });
                         });
                     }
                 },

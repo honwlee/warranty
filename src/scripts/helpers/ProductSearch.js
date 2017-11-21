@@ -2,11 +2,12 @@ define([
     "skylarkjs",
     "server",
     "./Partial",
+    "./itemActions",
     "./formModal",
     "toastr",
     "jquery",
     "handlebars"
-], function(skylarkjs, server, partial, formModal, toastr, $, handlebars) {
+], function(skylarkjs, server, partial, itemActions, formModal, toastr, $, handlebars) {
     var langx = skylarkjs.langx;
 
     function formatDate(d) {
@@ -29,39 +30,21 @@ define([
             var self = this;
             server().connect("products", "get", "show?" + dataString).then(function(product) {
                 if (product) {
-                    self.fillItem(self._formatData(product), selector);
+                    self.fillItem(product, selector);
                 } else {
                     toastr.warning("没有找到对应的结果！");
                 }
             });
         },
 
-        _formatData: function(product) {
-            return {
-                id: product.id,
-                imagePath: product.file ? product.file.path : null,
-                modelNum: product.modelNum,
-                createdDate: product.createdDate,
-                createdAddress: product.createdAddress,
-                saleAddress: product.saleAddress,
-                prodNumber: product.prodNumber,
-                checker: product.checker,
-                checkAddress: product.checkAddress
-            }
-        },
-
         getPrepareData: function() {},
 
         fillItem: function(product, selector) {
-            var self = this;
-            partial.get("product-result-partial");
+            var self = this,
+                container = selector.find("#productData");
+            itemActions.productItem(container, product);
             partial.get("item-action-partial");
-            var container = selector.find("#productData").empty(),
-                tpl = handlebars.compile("{{> product-result-partial}}"),
-                actionTpl = handlebars.compile("{{> item-action-partial}}");
-            $("<div>").attr({
-                class: "row featurebox"
-            }).html(tpl(product)).appendTo(container);
+            var actionTpl = handlebars.compile("{{> item-action-partial}}");
             if (this.doAction) {
                 var actionSelector = $(actionTpl()).appendTo(container);
                 actionSelector.find(".del-btn").on("click", function() {
@@ -79,14 +62,7 @@ define([
         },
 
         remove: function(product, callback) {
-            $("#confirmDeleteModal").modal('show').on('click', '.btn-ok', function(e) {
-                server().connect("products", "post", "delete", {
-                    id: product.id
-                }).then(function() {
-                    callback();
-                    $("#confirmDeleteModal").modal('hide');
-                });
-            });
+            itemActions.removeProduct(product, callback);
         },
 
         _buildDom: function(provinces) {

@@ -3,10 +3,11 @@ define([
     "server",
     "skylarkjs",
     "./Partial",
+    "./itemActions",
     "toastr",
     "text!./_partials.hbs",
     "handlebars"
-], function($, server, skylarkjs, partial, toastr, partialsTpl, handlebars) {
+], function($, server, skylarkjs, partial, itemActions, toastr, partialsTpl, handlebars) {
     var langx = skylarkjs.langx;
 
     function save(name, selector, opt, callback) {
@@ -29,8 +30,8 @@ define([
             var src = opt.file.name,
                 formart = src.split(".")[1];
             //使用if判断上传文件格式是否符合
-            if (!(formart == "jpg" && formart == "png")) {
-                return toastr.error("上传的缩略图只支持jpg或者png格式！");
+            if (!(/(gif|jpg|jpeg|png)$/i).test(formart)) {
+                return toastr.error("缩略图格式只支持gif、jpg或者png！");
             }
             delete opt.file;
         }
@@ -119,30 +120,10 @@ define([
     return {
         files: {},
         _formatPData: function(product) {
-            return {
-                id: product.id,
-                imagePath: product.file ? product.file.path : null,
-                modelNum: product.modelNum,
-                createdDate: product.createdDate,
-                createdAddress: product.createdAddress,
-                saleAddress: product.saleAddress,
-                prodNumber: product.prodNumber,
-                checker: product.checker,
-                checkAddress: product.checkAddress
-            }
+            return itemActions.formatPData(product);
         },
         _formatWData: function(warranty) {
-            return {
-                id: warranty.id,
-                imagePath: warranty.file ? warranty.file.path : null,
-                type: warranty.type,
-                exeDate: warranty.exeDate,
-                shop: warranty.shop,
-                carNumber: warranty.carNumber,
-                prodNumber: warranty.prodNumber,
-                engineer: warranty.engineer,
-                proDate: warranty.proDate
-            }
+            return itemActions.formatWData(warranty);
         },
         show: function(type, data, callback, prepareData) {
             this.modal = $("#formModal");

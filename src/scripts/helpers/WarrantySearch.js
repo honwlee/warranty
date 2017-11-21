@@ -3,10 +3,11 @@ define([
     "server",
     "./Partial",
     "./formModal",
+    "./itemActions",
     "toastr",
     "jquery",
     "handlebars"
-], function(skylarkjs, server, partial, formModal, toastr, $, handlebars) {
+], function(skylarkjs, server, partial, formModal, itemActions, toastr, $, handlebars) {
     var langx = skylarkjs.langx;
 
     function formatDate(d) {
@@ -29,37 +30,20 @@ define([
             var self = this;
             server().connect("warranties", "get", "show?" + dataString).then(function(warranty) {
                 if (warranty) {
-                    self.fillItem(self._formatData(warranty), selector);
+                    self.fillItem(warranty, selector);
                 } else {
                     toastr.warning("没有找到对应的结果！")
                 }
             });
         },
 
-        _formatData: function(warranty) {
-            return {
-                id: warranty.id,
-                imagePath: warranty.file ? warranty.file.path : null,
-                type: warranty.type,
-                exeDate: warranty.exeDate,
-                shop: warranty.shop,
-                carNumber: warranty.carNumber,
-                prodNumber: warranty.prodNumber,
-                engineer: warranty.engineer,
-                proDate: warranty.proDate
-            }
-        },
-
         fillItem: function(warranty, selector) {
-            var self = this;
-            partial.get("warranty-result-partial");
+            var self = this,
+                container = selector.find("#warrantyData");
+            itemActions.warrantyItem(container, warranty);
+
             partial.get("item-action-partial");
-            var container = selector.find("#warrantyData").empty(),
-                tpl = handlebars.compile("{{> warranty-result-partial}}"),
-                actionTpl = handlebars.compile("{{> item-action-partial}}");
-            $("<div>").attr({
-                class: "row featurebox"
-            }).html(tpl(warranty)).appendTo(container);
+            var actionTpl = handlebars.compile("{{> item-action-partial}}");
             if (this.doAction) {
                 var actionSelector = $(actionTpl()).appendTo(container);
                 actionSelector.find(".del-btn").on("click", function() {
@@ -79,14 +63,7 @@ define([
         getPrepareData: function() {},
 
         remove: function(warranty, callback) {
-            $("#confirmDeleteModal").modal('show').on('click', '.btn-ok', function(e) {
-                server().connect("warranties", "post", "delete", {
-                    id: warranty.id
-                }).then(function() {
-                    callback();
-                    $("#confirmDeleteModal").modal('hide');
-                });
-            });
+            itemActions.removeWarranty(warranty, callback);
         },
 
         _buildDom: function(provinces) {

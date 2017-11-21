@@ -66,10 +66,6 @@ define([
             var self = this;
             e.result = server().connect("auth", "get", "check").then(function(result) {
                 if (result) {
-                    var defers = [];
-                    // defers.push(list.initDealerTable(selector.find("#dealerContentTab"), true));
-                    // defers.push(list.initProdTable(selector.find("#prodContentTab"), true));
-                    // defers.push(list.initWarrantyTable(selector.find("#wContentTab"), true));
                     selector.delegate(".add-btn", "click", function(e) {
                         var type = $(e.currentTarget).data("type");
                         formModal.show(type, {}, function(data) {
@@ -80,7 +76,7 @@ define([
                         var type = $(e.currentTarget).data("type");
                         list.initTable(type, selector.find("#" + type + "Table"), true);
                     });
-                    return langx.Deferred.all(defers);
+                    return langx.Deferred.when(true);
                 } else {
                     window.go("/signin");
                 }

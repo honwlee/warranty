@@ -4,12 +4,12 @@
             <div class="form-container">
                 <div class="form-body">
                     <div class="form-group">
-                        <label class="col-lg-2 control-label" class="--i18n--" data-i18n-key="province">省</label>
+                        <label class="col-lg-2 control-label --i18n--" data-i18n-key="province">省</label>
                         <div class="input-group col-lg-4">
                             <select class="form-control" id="provinceS">
-                                <option value="0">选择</option>
+                                <option value="0" class="--i18n--" data-i18n-key="select">选择</option>
                                 {{#each provinces}}
-                                    <option value="{{id}}">{{name}}</option>
+                                    <option value="{{id}}" class="--i18n" data-i18n-key={{enName}}>{{name}}</option>
                                 {{/each}}
                             </select>
                         </div>
@@ -23,7 +23,7 @@
                     </div>
                 </div>
                 <div class="form-actions text-right">
-                    <button class="btn blue" type="button" id="searchDealerBtn">搜索</button>
+                    <button class="btn blue --i18n--" type="button" id="searchDealerBtn" data-i18n-key="search">搜索</button>
                 </div>
             </div>
             <div class="panel panel-default result-container">
@@ -45,6 +45,19 @@
                 <button class="btn btn-default" data-action="edit"><i class="fa fa-edit"></i>编辑</button>
             </td>
         </tr>
+    </script>
+
+    <script id="dealer-result-partial"  type="text/x-handlebars-template">
+        <div class="col-md-12 col-sm-12 col-xs-12" id="term">
+            <p class="company">
+                <label class="--i18n--" data-i18n-key="company">公司名称：</label>
+                <span>{{company}}</span>
+            </p>
+            <p class="address">
+                <label class="--i18n--" data-i18n-key="ProductionTime">地址：</label>
+                <span>{{address}}</span>
+            </p>
+        </div>
     </script>
 
     <script id="dealer-form-partial"  type="text/x-handlebars-template">
@@ -92,30 +105,28 @@
             <div class="form-container">
                 <div class="form-body">
                     <div class="form-group">
-                        <label class="col-lg-2 control-label" class="--i18n--" data-i18n-key="warranty ID">质保 ID</label>
+                        <label class="col-lg-2 control-label --i18n--" data-i18n-key="warranty ID">质保 ID</label>
                         <div class="input-group col-lg-4">
                             <select class="form-control" name="warrantyS" id="warrantyS">
                                 {{!-- <option value="">请选择</option> --}}
-                                <option select="true" value="prodNumber">产品卷号</option>
-                                <option value="carNumber">车牌号/车架号</option>
+                                <option select="true" value="prodNumber" class="--i18n--" data-i18n-key="prodNumber">产品卷号</option>
+                                <option value="carNumber" class="--i18n--" data-i18n-key="carNumber">车牌号/车架号</option>
                             </select>
-                            <div id="div3" style="display: none;margin-bottom: 0;padding: 1px 1px 1px 10px;" class="alert alert-danger alert-dismissable"> 请选择值</div>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-lg-2 control-label">输入</label>
+                        <label class="col-lg-2 control-label --i18n--" data-i18n-key="input">输入</label>
                         <div class="input-group col-lg-4">
                             <input type="text" class="form-control" name="warrantyValue" id="warrantyValue">
-                            <div id="div4" style="display: none;margin-bottom: 0;padding: 1px 1px 1px 10px;" class="alert alert-danger alert-dismissable"> 请插入值</div>
                         </div>
                     </div>
                 </div>
                 <div class="form-actions text-right">
-                    <button id="searchWarrentyBtn" class="btn blue" type="button">搜索</button>
+                    <button id="searchWarrentyBtn" class="btn blue --i18n--" type="button" data-i18n-key="search">搜索</button>
                 </div>
             </div>
             <div class="panel panel-default result-container">
-                <div class="panel-heading hide"><h3 class="panel-title">查询结果</h3></div>
+                <div class="panel-heading hide"><h3 class="panel-title --i18n--" data-i18n-key="SearchResult">查询结果</h3></div>
                 <div id="warrantyData" class="panel-body"></div>
             </div>
         </div>
@@ -145,7 +156,7 @@
             </div>
             <div class="col-md-4 col-sm-6 col-xs-6 content">
                 <p class="prodNumber">
-                    <label class="--i18n--" data-i18n-key="ProductNO.">产品编号：</label>
+                    <label class="--i18n--" data-i18n-key="ProductNO.">产品卷号：</label>
                     <span>{{prodNumber}}</span>
                 </p>
                 <p id="engineer">
@@ -213,6 +224,7 @@
                 <label class="col-sm-2 control-label" for="thumbnail">缩略图</label>
                 <div class="col-sm-10">
                     <input type="file" class="form-control thumbnail" name="thumbnail" id="thumbnail" />
+                    <p class="fieldset info text-right"><span class="text-warning text-info">缩略图格式只支持gif、jpg或者png！</span></p>
                 </div>
             </div>
             <div class="form-group text-center">
@@ -236,14 +248,14 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-lg-2 control-label" --i18n--" data-i18n-key="Input">输入</label>
+                        <label class="col-lg-2 control-label --i18n--" data-i18n-key="input">输入</label>
                         <div class="input-group col-lg-4">
                             <input type="text" class="form-control" name="prodValue" id="prodValue">
                         </div>
                     </div>
                 </div>
                 <div class="form-actions text-right">
-                    <button class="btn blue" id="searchProductBtn" type="button">搜索</button>
+                    <button id="searchProductBtn" class="btn blue --i18n--" type="button" data-i18n-key="search">搜索</button>
                 </div>
             </div>
             <div class="panel panel-default result-container">
@@ -278,7 +290,7 @@
             </div>
             <div class="col-md-4 col-sm-6 col-xs-6 content">
                 <p class="prodNumber">
-                    <label class="--i18n--" data-i18n-key="ProductNO.">产品编号：</label>
+                    <label class="--i18n--" data-i18n-key="ProductNO.">产品卷号：</label>
                     <span>{{prodNumber}}</span>
                 </p>
                 <p id="checker">
@@ -346,6 +358,7 @@
                 <label class="col-sm-2 control-label" for="prodDate">缩略图</label>
                 <div class="col-sm-10">
                     <input type="file" class="form-control thumbnail" name="thumbnail" id="thumbnail" />
+                    <p class="fieldset info text-right"><span class="text-warning text-info">缩略图格式只支持gif、jpg或者png！</span></p>
                 </div>
             </div>
             <div class="form-group text-center">

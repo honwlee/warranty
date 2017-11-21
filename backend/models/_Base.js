@@ -67,13 +67,19 @@ class Model {
         opt[queryKey] = args[queryKey];
         args.updatedAt = new Date();
         let result = jsondb.get(name).find(opt);
+        console.log(args.file);
         if (args.file && args.file.path) {
             let file = result.value().file;
             if (file && file.path) {
+                console.log(33333)
                 let fPath = path.join(__dirname, "../../src", file.path);
                 if (fs.existsSync(fPath)) fs.unlinkSync(fPath);
             }
+            console.log(22222)
             args.file.path = args.file.path.replace(path.join(__dirname, "../../src"), "");
+        } else {
+            console.log("1111111");
+            args.file = result.value().file;
         }
         result.assign(args).write();
         return result;
