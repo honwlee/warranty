@@ -73,7 +73,7 @@ define([
                     selector.delegate(".add-btn", "click", function(e) {
                         var type = $(e.currentTarget).data("type");
                         formModal.show(type, {}, function(data) {
-                            selector.find("#" + type + "Table").bootstrapTable('prepend', data);
+                            selector.find("#" + type + "Table").bootstrapTable('refresh');
                         });
                     });
                     selector.find('.admin-nav a').on('shown.bs.tab', function(e) {

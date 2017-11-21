@@ -28,7 +28,7 @@ define([
         search: function(selector, dataString) {
             var self = this;
             server().connect("warranties", "get", "show?" + dataString).then(function(warranty) {
-                if(warranty) {
+                if (warranty) {
                     self.fillItem(self._formatData(warranty), selector);
                 } else {
                     toastr.warning("没有找到对应的结果！")
@@ -60,7 +60,7 @@ define([
             $("<div>").attr({
                 class: "row featurebox"
             }).html(tpl(warranty)).appendTo(container);
-            if(this.doAction) {
+            if (this.doAction) {
                 var actionSelector = $(actionTpl()).appendTo(container);
                 actionSelector.find(".del-btn").on("click", function() {
                     self.remove(warranty, function() {
@@ -95,17 +95,21 @@ define([
                 tpl = handlebars.compile("{{> warranty-search-partial}}"),
                 div = $("<div>").html(tpl()),
                 selector = this.selector = $(div[0].firstChild);
-
+            self.searchKey = selector.find("#warrantyS").val();
             selector.find("#warrantyS").on("change", function() {
                 self.searchKey = this.value;
             });
-            selector.find("#searchWarrentyBtn").on("click", function() {
+            var _searchFunc = function() {
                 var searchVal = selector.find("#warrantyValue").val();
                 if (!self.searchKey) return toastr.warning("请选择查询选项！");
                 if (!searchVal) return toastr.warning("请填写查询值！");
                 var dataString = "key=" + self.searchKey + "&value=" + searchVal;
                 self.search(selector, dataString);
                 selector.find(".panel-heading").removeClass("hide");
+            };
+            selector.find("#searchWarrentyBtn").on("click", _searchFunc);
+            selector.off('keypress').on('keypress', function(e) {
+                if (e.keyCode === 13) _searchFunc();
             });
             return this.selector;
         },

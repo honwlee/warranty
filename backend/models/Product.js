@@ -11,12 +11,9 @@ exports.Product = class Product extends Model {
         return Model.findBy("products", args);
     }
     static create(args) {
-        args.createdAt = new Date();
-        args.updatedAt = new Date();
         return Model.create("products", args);
     }
     static update(args) {
-        args.updatedAt = new Date();
         return Model.update("products", "id", args);
     }
     static delete(args) {

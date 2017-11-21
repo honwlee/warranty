@@ -89,11 +89,15 @@ define([
                 if (!this.value) toastr.warning("请选择省份！");
                 server().getCities(this.value, _cs);
             });
-            selector.find("#searchDealerBtn").on("click", function() {
+            var _searchFunc = function() {
                 var val = _cs.val();
                 if (!val) toastr.warning("请选择城市！");
                 self.search(val, selector);
                 selector.find(".panel-heading").removeClass("hide");
+            };
+            selector.find("#searchDealerBtn").on("click", _searchFunc);
+            selector.off('keypress').on('keypress', function(e) {
+                if (e.keyCode === 13) _searchFunc();
             });
             return this.selector;
         },

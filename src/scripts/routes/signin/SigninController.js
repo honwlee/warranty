@@ -22,7 +22,7 @@ define([
         },
 
         rendered: function(e) {
-            $("#loginBtn").on("click", function() {
+            var signin = function() {
                 $.post("/login", {
                     username: $("#loginForm input.username").val(),
                     password: $("#loginForm input.password").val(),
@@ -30,10 +30,14 @@ define([
                     if (data.status) {
                         window.go("/admin", true);
                     } else {
-                        toastr.error(data.msg);
+                        toastr.error(data.msg || "用户名或密码错误！");
                     }
                 })
-            })
+            };
+            $("#loginBtn").on("click", signin);
+            $(document.body).off('keypress').on('keypress', function(e) {
+                if (e.keyCode === 13) signin();
+            });
         },
 
         entered: function() {},

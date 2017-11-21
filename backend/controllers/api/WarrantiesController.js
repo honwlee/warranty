@@ -1,6 +1,7 @@
 'use strict';
 const Warranty = require('../../models/Warranty').Warranty;
 const parse = require('../../exts/parseList').parse;
+const validate = require('../../exts/validation').validate;
 module.exports = {
     index: function(req, res) {
         parse("warranties", req, res, ["prodNumber", "carNumber"]);
@@ -21,13 +22,19 @@ module.exports = {
     update: function(req, res) {
         req.body.file = req.file;
         let warranty = Warranty.update(req.body);
-        res.json(warranty)
+        if (warranty) {
+            res.json({ status: true, result: warranty });
+        } else {
+            res.json({ status: false, msg: "no results!" });
+        }
     },
 
     create: function(req, res) {
         req.body.file = req.file;
-        let warranty = Warranty.create(req.body);
-        res.json(warranty);
+        validate(Warranty, {
+            prodNumber: req.body.prodNumber,
+            carNumber: req.body.carNumber
+        }, req, res);
     },
 
     delete: function(req, res) {

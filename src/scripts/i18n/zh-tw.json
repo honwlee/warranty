@@ -1,89 +1,25 @@
 {
-    "name": "warranty",
-    "title": "warranty",
-    "runtime":
-    {
-        "skylarkjs":
-        {
-            "version": "0.9.5"
-        },
-        "paths":
-        {
-            "server": "scripts/services/server",
-            "jquery": "https://cdn.bootcss.com/jquery/2.2.0/jquery.min",
-            "toastr": "https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min",
-            "bootstrapTb": "https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.1/bootstrap-table",
-            "bootstrapTbZh": "https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.1/locale/bootstrap-table-zh-CN.min",
-            "bootstrap": "https://cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.min",
-            "handlebars": "https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.amd.min",
-            "text": "https://cdnjs.cloudflare.com/ajax/libs/require-text/2.0.12/text"
-        }
-    },
-    "spaModule": "scripts/helpers/spa",
-    "page":
-    {
-        "routeViewer": "#main"
-    },
-    "plugins":
-    {
-        "app":
-        {
-            "hookers": "starting started",
-            "controller":
-            {
-                "type": "scripts/plugins/app/AppController"
-            }
-        }
-    },
-    "routes":
-    {
-        "home":
-        {
-            "pathto": "/",
-            "controller":
-            {
-                "type": "scripts/routes/home/HomeController"
-            }
-        },
-        "admin":
-        {
-            "pathto": "/admin",
-            "controller":
-            {
-                "type": "scripts/routes/admin/AdminController"
-            }
-        },
-        "products":
-        {
-            "pathto": "/products",
-            "controller":
-            {
-                "type": "scripts/routes/products/ProductsController"
-            }
-        },
-        "warranties":
-        {
-            "pathto": "/warranties",
-            "controller":
-            {
-                "type": "scripts/routes/warranties/WarrantiesController"
-            }
-        },
-        "dealers":
-        {
-            "pathto": "/dealers",
-            "controller":
-            {
-                "type": "scripts/routes/dealers/DealersController"
-            }
-        },
-        "signin":
-        {
-            "pathto": "/signin",
-            "controller":
-            {
-                "type": "scripts/routes/signin/SigninController"
-            }
-        }
-    }
+    // "warranty-query": "質保查詢"
+    "warrantyQuery": "質保查詢",
+    "productAuthenticityQuery": "產品真偽查詢",
+    "province": "省",
+    "warranty ID": "質保查詢",
+    "authorizedDealersQuery": "授權經銷商查詢",
+"VehicleMounted": "裝貼查詢",
+"ConstructionTime": "施工時間",
+"constructionStore": "施工門店",
+"licensePlateNO.OrFrameNO.": "車牌號/車架號",
+"ProductNO.": "產品編碼",
+"constructionTechnician": "施工技師",
+"WarrantyTime": "質保時間",
+"SelectionIdentifier": "選擇標識",
+"Input": "輸入",
+"Model": "型號",
+"ProductionTime": "生產時間",
+"ProducingPlace": "生產地",
+"SalePlace": "銷售地",
+"ProductNO.": "產品編碼",
+"Inspectors": "檢驗人員",
+"InspectionGround": "檢驗地",
+"SearchResult": "查詢結果"
 }

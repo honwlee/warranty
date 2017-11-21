@@ -1,6 +1,7 @@
 'use strict';
 const Dealer = require('../../models/Dealer').Dealer;
 const parse = require('../../exts/parseList').parse;
+const validate = require('../../exts/validation').validate;
 module.exports = {
     index: function(req, res) {
         parse("dealers", req, res, ["company"]);
@@ -31,17 +32,12 @@ module.exports = {
     update: function(req, res) {
         req.body.file = req.file;
         let dealer = Dealer.update(req.body);
-        if (dealer) {
-            res.json(dealer)
-        } else {
-            res.json({ status: false, msg: "no results!" });
-        }
+        res.json({ status: true, result: dealer });
     },
 
     create: function(req, res) {
         req.body.file = req.file;
-        let dealer = Dealer.create(req.body);
-        res.json(dealer)
+        validate(Dealer, { company: req.body.company }, req, res);
     },
 
     delete: function(req, res) {

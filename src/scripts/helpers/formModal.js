@@ -25,25 +25,18 @@ define([
         //将文件信息追加到其中
         if (opt.file) {
             formData.append('thumbnail', opt.file);
+            //利用split切割，拿到上传文件的格式
+            var src = opt.file.name,
+                formart = src.split(".")[1];
+            //使用if判断上传文件格式是否符合
+            if (!(formart == "jpg" && formart == "png")) {
+                return toastr.error("上传的缩略图只支持jpg或者png格式！");
+            }
             delete opt.file;
         }
         for (var key in opt) {
             formData.append(key, opt[key]);
         }
-        // //利用split切割，拿到上传文件的格式
-        // var src = file.name,
-        //     formart = src.split(".")[1];
-        // //使用if判断上传文件格式是否符合
-        // if (formart == "jpg" || formart == "png") {
-
-        // }
-        // server().connect(name, "post", action, formData).then(function(cbData) {
-        //     if (data.id) {
-
-        //     } else {
-
-        //     }
-        // });
 
         var url = "/api/" + name + "/" + action;
         var xhr = new XMLHttpRequest();
@@ -51,13 +44,76 @@ define([
         xhr.onreadystatechange = function() {
             if (xhr.readyState === 4) {
                 if (xhr.status === 200) {
-                    callback(JSON.parse(xhr.response || xhr.responseText));
+                    var result = JSON.parse(xhr.response || xhr.responseText);
+                    if (result.status) {
+                        callback(result.result);
+                    } else {
+                        toastr.error("数据已存在：(" + result.key + ":" + result.value + ")");
+                        // selector.modal('hide');
+                    }
                 } else {
-                    toastr.error(xhr.statusText);
+                    toastr.error("系统错误，请联系管理员！");
+                    // selector.modal('hide');
                 }
             }
         };
         xhr.send(formData);
+    };
+    var validates = {
+        prodNumber: {
+            emptyMsg: "产品卷号不能为空",
+            numsMsg: "用户名不能少于6位",
+            numlMsg: "用户名不能多于14位",
+            snMsg: "用户名必须以字母开头",
+            validateMsg: "用户名不能包含字符",
+            check: function(value) {
+                var _us = $("#prodNumber");
+                if (!_us.val()) {
+                    //     if (value.length < 6) {
+                    //         _us.focus();
+                    //         return { error: true, msg: this.numsMsg };
+                    //     }
+                    //     if (value.length > 14) {
+                    //         _us.focus();
+                    //         return { error: true, msg: this.numlMsg };
+                    //     }
+                    //     if (!value.match(/^[a-zA-Z0-9]+$/)) {
+                    //         _us.focus();
+                    //         return { error: true, msg: this.validateMsg };
+                    //     }
+                    //     if (value.match(/^[^a-zA-Z]/)) {
+                    //         _us.focus();
+                    //         return { error: true, msg: this.snMsg };
+                    //     }
+                    // } else {
+                    _us.focus();
+                    return { error: true, msg: this.emptyMsg };
+                }
+                return { error: false };
+            }
+        },
+        carNumber: {
+            emptyMsg: "车牌号/车架号不能为空",
+            check: function(value) {
+                var _us = $("#carNumber");
+                if (!_us.val()) {
+                    _us.focus();
+                    return { error: true, msg: this.emptyMsg };
+                }
+                return { error: false };
+            }
+        },
+        company: {
+            emptyMsg: "公司名称不能为空",
+            check: function(value) {
+                var _us = $("#company");
+                if (!_us.val()) {
+                    _us.focus();
+                    return { error: true, msg: this.emptyMsg };
+                }
+                return { error: false };
+            }
+        }
     };
 
     return {
@@ -105,14 +161,19 @@ define([
             modal.find(".modal-body").html(prodTpl(data));
             modal.find(".modal-title").html(text);
             modal.find(".save-btn").off("click").on("click", function() {
-                save("products", modal, {
-                    file: self.files.product
-                }, function(product) {
-                    self.files.product = null;
-                    toastr.success("已保存！");
-                    callback(product);
-                    modal.modal('hide');
-                });
+                var result = validates.prodNumber.check();
+                if (result.error) {
+                    toastr.error(result.msg);
+                } else {
+                    save("products", modal, {
+                        file: self.files.product
+                    }, function(product) {
+                        self.files.product = null;
+                        toastr.success("已保存！");
+                        callback(product);
+                        modal.modal('hide');
+                    });
+                }
             });
             modal.find("#prodForm input.thumbnail").on("change", function(e) {
                 self.files.product = this.files[0];
@@ -129,19 +190,31 @@ define([
             modal.find(".modal-body").html(warrantyTpl(data));
             modal.find(".modal-title").html(text);
             modal.find(".save-btn").off("click").on("click", function() {
-                save("warranties", modal, {
-                    file: self.files.warranty
-                }, function(warranty) {
-                    toastr.success("已保存！");
-                    self.files.warranty = null;
-                    callback(warranty);
-                    modal.modal('hide');
-                });
+                var result = validates.prodNumber.check();
+                if (result.error) {
+                    toastr.error(result.msg);
+                } else {
+                    var result = validates.carNumber.check();
+                    if (result.error) {
+                        toastr.error(result.msg);
+                    } else {
+                        save("warranties", modal, {
+                            file: self.files.warranty
+                        }, function(warranty) {
+                            toastr.success("已保存！");
+                            self.files.warranty = null;
+                            callback(warranty);
+                            modal.modal('hide');
+                        });
+                    }
+                }
             });
             modal.find("#wForm input.thumbnail").on("change", function(e) {
                 self.files.warranty = this.files[0];
             });
         },
+
+
 
         show_dealer: function(data, callback, prepareData) {
             var self = this,
@@ -171,14 +244,19 @@ define([
                 }
                 modal.find(".modal-title").html(text);
                 modal.find(".save-btn").off("click").on("click", function() {
-                    save("dealers", modal, {
-                        provinceId: _ps.val(),
-                        cityId: _cs.val()
-                    }, function(dealer) {
-                        toastr.success("已保存！");
-                        callback(dealer);
-                        modal.modal('hide');
-                    });
+                    var result = validates.company.check();
+                    if (result.error) {
+                        toastr.error(result.msg);
+                    } else {
+                        save("dealers", modal, {
+                            provinceId: _ps.val(),
+                            cityId: _cs.val()
+                        }, function(dealer) {
+                            toastr.success("已保存！");
+                            callback(dealer);
+                            modal.modal('hide');
+                        });
+                    }
                 });
             });
         }
