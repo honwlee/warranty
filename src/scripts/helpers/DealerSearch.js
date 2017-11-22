@@ -21,37 +21,42 @@ define([
         search: function(cityId, selector) {
             var self = this;
             server().connect("dealers", "get", "list?cityId=" + cityId).then(function(dealers) {
-                var table = selector.find("#dealerData").find("table").empty(),
-                    thead = $("<thead>").attr({
-                        class: "text-center"
-                    }).appendTo(table),
-                    tbody = $("<tbody>").appendTo(table);
-                $("<tr>").html("<th>公司名称</th>" +
-                    "<th>地址</th>" +
-                    (this.doAction ? "<th>操作</th>" : "")
-                ).appendTo(thead);
-                partial.get("dealer-tr-partial");
-                dealers.forEach(function(d) {
-                    var tpl = handlebars.compile("{{> dealer-tr-partial}}"),
-                        tr = $(tpl(d)).appendTo(tbody);
-                    if (this.doAction) {
-                        tr.delegate("td.td-action .btn", "click", function(e) {
-                            var action = $(e.target).data("action");
-                            if (action === "edit") {
-                                formModal.show("dealer", d, function(_d) {
-                                    tr.find(".company").html(_d.company);
-                                    tr.find(".address").html(_d.address);
-                                });
-                            } else {
-                                self.remove(d, function() {
-                                    tr.remove();
-                                });
-                            }
-                        });
-                    } else {
-                        tr.find("td.td-action").remove();
-                    }
-                });
+                var table = selector.find("#dealerData").find("table").empty();
+                if (dealers.length > 0) {
+                    var thead = $("<thead>").attr({
+                            class: "text-center"
+                        }).appendTo(table),
+                        tbody = $("<tbody>").appendTo(table);
+                    $("<tr>").html("<th>公司名称</th>" +
+                        "<th>地址</th>" +
+                        (this.doAction ? "<th>操作</th>" : "")
+                    ).appendTo(thead);
+                    partial.get("dealer-tr-partial");
+                    dealers.forEach(function(d) {
+                        var tpl = handlebars.compile("{{> dealer-tr-partial}}"),
+                            tr = $(tpl(d)).appendTo(tbody);
+                        if (this.doAction) {
+                            tr.delegate("td.td-action .btn", "click", function(e) {
+                                var action = $(e.target).data("action");
+                                if (action === "edit") {
+                                    formModal.show("dealer", d, function(_d) {
+                                        tr.find(".company").html(_d.company);
+                                        tr.find(".address").html(_d.address);
+                                    });
+                                } else {
+                                    self.remove(d, function() {
+                                        tr.remove();
+                                    });
+                                }
+                            });
+                        } else {
+                            tr.find("td.td-action").remove();
+                        }
+                    });
+                    selector.find(".no-result").addClass("hide");
+                } else {
+                    selector.find(".no-result").removeClass("hide");
+                }
             });
         },
         preparing: function(e) {
@@ -77,6 +82,7 @@ define([
         },
 
         _buildDom: function(provinces) {
+            partial.get("search-no-result-partial");
             partial.get("dealer-search-partial");
             var self = this,
                 tpl = handlebars.compile("{{> dealer-search-partial}}"),

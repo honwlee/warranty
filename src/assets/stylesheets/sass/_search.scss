@@ -9,10 +9,20 @@
     .result-container {
         padding: 20px 10px;
         .panel-body {
-            padding: 15px 0;
+            // padding: 15px 0;
         }
     }
     .control-label{
         padding-top: 5px;
+    }
+    .no-result{
+        background-color: #f2dede;
+    border-color: #ebccd1;
+        width:80%;margin-left:auto;margin-right:auto;
+        p{
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
     }
 }

@@ -29,9 +29,14 @@ define([
         search: function(selector, dataString) {
             var self = this;
             server().connect("warranties", "get", "show?" + dataString).then(function(warranty) {
+                selector.find("#warrantyData").empty();
                 if (warranty) {
                     self.fillItem(warranty, selector);
+                    selector.find(".no-result").addClass("hide");
+                    selector.find(".thanks").removeClass("hide");
                 } else {
+                    selector.find(".no-result").removeClass("hide");
+                    selector.find(".thanks").addClass("hide");
                     toastr.warning("没有找到对应的结果！")
                 }
             });
@@ -67,6 +72,7 @@ define([
         },
 
         _buildDom: function(provinces) {
+            partial.get("search-no-result-partial");
             partial.get("warranty-search-partial");
             var self = this,
                 tpl = handlebars.compile("{{> warranty-search-partial}}"),

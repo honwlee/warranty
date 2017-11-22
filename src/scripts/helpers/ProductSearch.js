@@ -29,10 +29,15 @@ define([
         search: function(selector, dataString) {
             var self = this;
             server().connect("products", "get", "show?" + dataString).then(function(product) {
+                selector.find("#productData").empty();
                 if (product) {
                     self.fillItem(product, selector);
+                    selector.find(".no-result").addClass("hide");
+                    selector.find(".thanks").removeClass("hide");
                 } else {
                     toastr.warning("没有找到对应的结果！");
+                    selector.find(".thanks").addClass("hide");
+                    selector.find(".no-result").removeClass("hide");
                 }
             });
         },
@@ -66,6 +71,7 @@ define([
         },
 
         _buildDom: function(provinces) {
+            partial.get("search-no-result-partial");
             partial.get("product-search-partial");
             var self = this,
                 tpl = handlebars.compile("{{> product-search-partial}}"),
