@@ -1,8 +1,11 @@
 node_modules
-build
+build/node_modules
 backend/dbs
 backend/backup
 dist
 deploy
 src/assets/images/upload
+data
+dump.rdb
+npm-debugs.log
 

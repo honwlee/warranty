@@ -1,10 +1,31 @@
 'use strict';
 const Province = require('../../models/Province').Province,
     City = require('../../models/City').City,
-    pinyin = require("node-pinyin"),
+    hanzi = require("hanzi"),
+    _ = require("lodash"),
     baseUrl = "http://ube.ihudao.dt.hudaokeji.com:3000",
     request = require('request'),
     json2xls = require('json2xls');
+hanzi.start();
+
+function getName(name) {
+    console.log(name);
+    console.log("@@@@@@@@@@@@@");
+    let result = hanzi.definitionLookup(name);
+    console.log(result);
+    if (result) {
+        result = result[0];
+        return {
+            traditional: result.traditional,
+            pinyin: _.camelCase(result.pinyin.replace(/\d/g, '')),
+            tonePinyin: result.pinyin,
+            definition: result.definition
+        }
+    } else {
+        return {};
+    }
+};
+
 module.exports = {
     index: function(req, res) {
         res.json(Province.list(req.query.sort, req.query.direction));
@@ -36,30 +57,42 @@ module.exports = {
     },
 
     import: function(req, res) {
-        Province.delete();
-        City.delete();
-        request.get(baseUrl + '/ubase/api/v1/orgs/provinces?private_token=xxo8r1PT4NfEFV8az9a3', function(error, response, body) {
-            JSON.parse(body).forEach(function(p) {
-                let province = Province.create({
-                    name: p.name,
-                    enName: pinyin(p.name, {
-                        style: "normal"
-                    }).join(" ")
-                });
-                p.children.forEach(function(c) {
-                    City.create({
-                        name: c.name,
-                        enName: pinyin(c.name, {
-                            style: "normal"
-                        }).join(" "),
-                        provinceName: province.enName,
-                        provinceId: province.id
+        try {
+            // Province.delete();
+            // City.delete();
+            let pResults = [],
+                cResults = [];
+            request.get(baseUrl + '/ubase/api/v1/orgs/provinces?private_token=xxo8r1PT4NfEFV8az9a3', function(error, response, body) {
+                JSON.parse(body).forEach(function(p) {
+                    let pr = getName(p.name),
+                        province = Province.create({
+                            name: p.name,
+                            traditional: pr.traditional,
+                            definition: pr.definition,
+                            tonePinyin: pr.tonePinyin,
+                            pinyin: pr.pinyin
+                        });
+                    pResults.push(pr);
+                    p.children.forEach(function(c) {
+                        let cr = getName(c.name);
+                        City.create({
+                            name: c.name,
+                            traditional: cr.traditional,
+                            definition: cr.definition,
+                            tonePinyin: cr.tonePinyin,
+                            pinyin: cr.pinyin,
+                            provinceName: province.pinyin,
+                            provinceId: province.id
+                        });
+                        cResults.push(getName(c.name))
                     });
                 });
+                res.json({ provinces: pResults, cities: cResults });
             });
-            res.json({ status: true, msg: "provinces: " + Province.size() + " cities: " + City.size() });
-        });
-
+        } catch (error) {
+            res.json({ status: false, msg: error });
+            throw error;
+        }
     },
 
 

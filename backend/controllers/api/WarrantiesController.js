@@ -22,11 +22,7 @@ module.exports = {
     update: function(req, res) {
         req.body.file = req.file;
         let warranty = Warranty.update(req.body);
-        if (warranty) {
-            res.json({ status: true, result: warranty });
-        } else {
-            res.json({ status: false, msg: "no results!" });
-        }
+        res.json({ status: true, result: warranty });
     },
 
     create: function(req, res) {

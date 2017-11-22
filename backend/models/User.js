@@ -16,6 +16,9 @@ exports.User = class User extends Model {
     static findBy(args) {
         return Model.findBy("users", args);
     }
+    static findOrCreate(args, key = "username") {
+        return Model.findOrCreate("users", key, args);
+    }
     static create(args) {
         args.role = 1;
         args.isActive = false;
@@ -39,7 +42,7 @@ exports.User = class User extends Model {
         let result = Model.findBy("users", {
             username: "admin"
         });
-        if(!result) {
+        if (!result) {
             opt.password = bcrypt.hashSync(opt.password, 8);
             result = Model.create("users", opt);
         }

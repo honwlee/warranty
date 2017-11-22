@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "browse": "sjs browse ./deploy/warranty.slax",
-    "serve": "node server.js",
+    "serve": "pm2 start server.js",
     "build": "sjs build .",
     "deploy": "sjs deploy .",
     "route-add": "sjs routes add . ",
@@ -25,6 +25,7 @@
     "express": "^4.13.4",
     "express-handlebars": "^3.0.0",
     "express-session": "^1.15.6",
+    "hanzi": "^1.1.0",
     "http": "0.0.0",
     "json2xls": "^0.1.2",
     "lowdb": "^1.0.0",
