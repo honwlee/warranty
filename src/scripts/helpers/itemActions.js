@@ -75,6 +75,9 @@ define([
             return {
                 id: warranty.id,
                 imagePath: warranty.file ? warranty.file.path : null,
+                customerName: warranty.customerName,
+                customerPhone: warranty.customerPhone,
+                vehicleType: warranty.vehicleType,
                 type: warranty.type,
                 exeDate: warranty.exeDate,
                 shop: warranty.shop,

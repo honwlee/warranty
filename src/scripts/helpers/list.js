@@ -206,6 +206,18 @@ define([
             align: 'center',
             formatter: totalTextFormatter
         }, {
+            field: 'customerName',
+            title: '客户姓名',
+            formatter: totalTextFormatter
+        }, {
+            field: 'customerPhone',
+            title: '客户电话',
+            formatter: totalTextFormatter
+        }, {
+            field: 'vehicleType',
+            title: '装贴种类',
+            formatter: totalTextFormatter
+        }, {
             field: 'type',
             title: '装贴车型',
             formatter: totalTextFormatter
