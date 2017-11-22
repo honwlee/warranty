@@ -1,0 +1,17 @@
+[
+{
+    "display": "hudao",
+    "username": "hudao",
+    "password": "2017-hudao",
+    "isAdmin": true,
+    "isSuperAdmin": true,
+    "isActive": true
+},
+{
+    "display": "admin",
+    "username": "admin",
+    "password": "2017-123456",
+    "isAdmin": true,
+    "isSuperAdmin": false,
+    "isActive": true
+}]
