@@ -61,14 +61,14 @@ define([
         xhr.send(formData);
     };
     var validates = {
-        prodNumber: {
+        warrantyID: {
             emptyMsg: "产品卷号不能为空",
             numsMsg: "用户名不能少于6位",
             numlMsg: "用户名不能多于14位",
             snMsg: "用户名必须以字母开头",
             validateMsg: "用户名不能包含字符",
             check: function(value) {
-                var _us = $("#prodNumber");
+                var _us = $("#warrantyID");
                 if (!_us.val()) {
                     //     if (value.length < 6) {
                     //         _us.focus();
@@ -93,10 +93,10 @@ define([
                 return { error: false };
             }
         },
-        carNumber: {
+        licensePlate: {
             emptyMsg: "车牌号/车架号不能为空",
             check: function(value) {
-                var _us = $("#carNumber");
+                var _us = $("#licensePlate");
                 if (!_us.val()) {
                     _us.focus();
                     return { error: true, msg: this.emptyMsg };
@@ -142,7 +142,7 @@ define([
             modal.find(".modal-body").html(prodTpl(data));
             modal.find(".modal-title").html(text);
             modal.find(".save-btn").off("click").on("click", function() {
-                var result = validates.prodNumber.check();
+                var result = validates.warrantyID.check();
                 if (result.error) {
                     toastr.error(result.msg);
                 } else {
@@ -171,11 +171,11 @@ define([
             modal.find(".modal-body").html(warrantyTpl(data));
             modal.find(".modal-title").html(text);
             modal.find(".save-btn").off("click").on("click", function() {
-                var result = validates.prodNumber.check();
+                var result = validates.warrantyID.check();
                 if (result.error) {
                     toastr.error(result.msg);
                 } else {
-                    var result = validates.carNumber.check();
+                    var result = validates.licensePlate.check();
                     if (result.error) {
                         toastr.error(result.msg);
                     } else {

@@ -42,41 +42,41 @@ define([
             align: 'center',
             formatter: totalTextFormatter
         }, {
-            field: 'prodNumber',
+            field: 'productRoll',
             title: '产品卷号',
             formatter: totalTextFormatter
         }, {
-            field: 'createdDate',
+            field: 'productionTime',
             title: '生产时间',
             sortable: false,
             align: 'center',
             formatter: totalTextFormatter
         }, {
-            field: 'createdAddress',
+            field: 'producingPlace',
             title: '生产地',
             sortable: false,
             align: 'center',
             formatter: totalTextFormatter
         }, {
-            field: 'checker',
+            field: 'inspectors',
             title: '检验人员',
             sortable: false,
             align: 'center',
             formatter: totalTextFormatter
         }, {
-            field: 'checkAddress',
+            field: 'inspectionGround',
             title: '检验地',
             sortable: false,
             align: 'center',
             formatter: totalTextFormatter
         }, {
-            field: 'modelNum',
+            field: 'model',
             title: '型号',
             sortable: false,
             align: 'center',
             formatter: totalTextFormatter
         }, {
-            field: 'saleAddress',
+            field: 'salePlace',
             title: '销售地',
             sortable: false,
             align: 'center',
@@ -119,7 +119,7 @@ define([
             },
             uniqueId: "id",
             search: true,
-            sortName: "prodNumber",
+            sortName: "warrantyID",
             showRefresh: true,
             sortOrder: "desc",
             url: '/api/products/index',
@@ -218,41 +218,41 @@ define([
             title: '装贴种类',
             formatter: totalTextFormatter
         }, {
-            field: 'type',
+            field: 'vehicleMounted',
             title: '装贴车型',
             formatter: totalTextFormatter
         }, {
-            field: 'prodNumber',
-            title: '产品卷号',
+            field: 'warrantyID',
+            title: '质保 ID',
             sortable: false,
             align: 'center',
             formatter: totalTextFormatter
         }, {
-            field: 'carNumber',
+            field: 'licensePlate',
             title: '车牌号/车架号',
             sortable: false,
             align: 'center',
             formatter: totalTextFormatter
         }, {
-            field: 'engineer',
+            field: 'constructionTechnician',
             title: '施工技师',
             sortable: false,
             align: 'center',
             formatter: totalTextFormatter
         }, {
-            field: 'shop',
+            field: 'constructionStore',
             title: '施工门店',
             sortable: false,
             align: 'center',
             formatter: totalTextFormatter
         }, {
-            field: 'exeDate',
+            field: 'constructionTime',
             title: '施工时间',
             sortable: false,
             align: 'center',
             formatter: totalTextFormatter
         }, {
-            field: 'proDate',
+            field: 'warrantyTime',
             title: '质保时间',
             sortable: false,
             align: 'center',
@@ -294,7 +294,7 @@ define([
                 return res;
             },
             uniqueId: "id",
-            sortName: "prodNumber",
+            sortName: "warrantyID",
             search: true,
             sortOrder: "desc",
             showRefresh: true,

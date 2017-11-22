@@ -111,8 +111,8 @@
                     <div class="input-group col-lg-4">
                         <select class="form-control" name="warrantyS" id="warrantyS">
                             {{!-- <option value="">请选择</option> --}}
-                            <option select="true" value="prodNumber" class="--i18n--" data-i18n-key="warrantyID">质保 ID</option>
-                            <option value="carNumber" class="--i18n--" data-i18n-key="licensePlate">车牌号/车架号</option>
+                            <option select="true" value="warrantyID" class="--i18n--" data-i18n-key="warrantyID">质保 ID</option>
+                            <option value="licensePlate" class="--i18n--" data-i18n-key="licensePlate">车牌号/车架号</option>
                         </select>
                     </div>
                 </div>
@@ -145,47 +145,47 @@
             <img id="thumbnail" src="{{imagePath}}">
         </div>
         <div class="col-md-4 col-sm-6 col-xs-6 content">
-            <p class="type">
+            <p class="customerName">
                 <label class="--i18n--" data-i18n-key="customerName">客户姓名：</label>
                 <span>{{customerName}}</span>
             </p>
-            <p class="type">
+            <p class="customerPhone">
                 <label class="--i18n--" data-i18n-key="customerPhone">客户电话：</label>
                 <span>{{customerPhone}}</span>
             </p>
-            <p class="type">
+            <p class="vehicleType">
                 <label class="--i18n--" data-i18n-key="vehicleType">装贴种类：</label>
                 <span>{{vehicleType}}</span>
             </p>
-            <p class="type">
+            <p class="vehicleMounted">
                 <label class="--i18n--" data-i18n-key="vehicleMounted">装贴车型：</label>
-                <span>{{type}}</span>
+                <span>{{vehicleMounted}}</span>
             </p>
-            <p class="exeDate">
+            <p class="constructionTime">
                 <label class="--i18n--" data-i18n-key="constructionTime">施工时间：</label>
-                <span>{{exeDate}}</span>
+                <span>{{constructionTime}}</span>
             </p>
-            <p class="shop">
+            <p class="constructionStore">
                 <label class="--i18n--" data-i18n-key="constructionStore">施工门店：</label>
-                <span>{{shop}}</span>
+                <span>{{constructionStore}}</span>
             </p>
-            <p class="carNumber">
+            <p class="licensePlate">
                 <label class="--i18n--" data-i18n-key="licensePlate">车牌号/车架号：</label>
-                <span>{{carNumber}}</span>
+                <span>{{licensePlate}}</span>
             </p>
         </div>
         <div class="col-md-4 col-sm-6 col-xs-6 content">
-            <p class="prodNumber">
+            <p class="warrantyID">
                 <label class="--i18n--" data-i18n-key="warrantyID">质保 ID：</label>
-                <span>{{prodNumber}}</span>
+                <span>{{warrantyID}}</span>
             </p>
-            <p id="engineer">
+            <p id="constructionTechnician">
                 <label class="--i18n--" data-i18n-key="constructionTechnician">施工技师：</label>
-                <span>{{engineer}}</span>
+                <span>{{constructionTechnician}}</span>
             </p>
-            <p id="proDate">
+            <p id="warrantyTime">
                 <label class="--i18n--" data-i18n-key="warrantyTime">质保时间：</label>
-                <span>{{proDate}}</span>
+                <span>{{warrantyTime}}</span>
             </p>
         </div>
     </div>
@@ -222,39 +222,39 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-2 control-label" for="prodNumber">产品卷号</label>
+            <label class="col-sm-2 control-label" for="warrantyID">质保 ID</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" name="prodNumber" id="prodNumber" value="{{prodNumber}}" placeholder="请输入产品卷号" />
+                <input type="text" class="form-control" name="warrantyID" id="warrantyID" value="{{warrantyID}}" placeholder="请输入产品卷号" />
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-2 control-label" for="carNumber">车牌号/车架号</label>
+            <label class="col-sm-2 control-label" for="licensePlate">车牌号/车架号</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" name="carNumber" id="carNumber" value="{{carNumber}}" placeholder="请输入车牌号/车架号" />
+                <input type="text" class="form-control" name="licensePlate" id="licensePlate" value="{{licensePlate}}" placeholder="请输入车牌号/车架号" />
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-2 control-label" for="engineer">施工技师</label>
+            <label class="col-sm-2 control-label" for="constructionTechnician">施工技师</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" name="engineer" id="engineer" value="{{engineer}}" placeholder="请输入施工技师" />
+                <input type="text" class="form-control" name="constructionTechnician" id="constructionTechnician" value="{{constructionTechnician}}" placeholder="请输入施工技师" />
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-2 control-label" for="shop">施工门店</label>
+            <label class="col-sm-2 control-label" for="constructionStore">施工门店</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" name="shop" id="shop" value="{{shop}}" placeholder="请输入施工门店" />
+                <input type="text" class="form-control" name="constructionStore" id="constructionStore" value="{{constructionStore}}" placeholder="请输入施工门店" />
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-2 control-label" for="exeDate">施工时间</label>
+            <label class="col-sm-2 control-label" for="constructionTime">施工时间</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" name="exeDate" id="exeDate" value="{{exeDate}}" placeholder="请输入施工时间" />
+                <input type="text" class="form-control" name="constructionTime" id="constructionTime" value="{{constructionTime}}" placeholder="请输入施工时间" />
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-2 control-label" for="proDate">质保时间</label>
+            <label class="col-sm-2 control-label" for="warrantyTime">质保时间</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" name="proDate" id="proDate" value="{{proDate}}" placeholder="请输入质保时间" />
+                <input type="text" class="form-control" name="warrantyTime" id="warrantyTime" value="{{warrantyTime}}" placeholder="请输入质保时间" />
             </div>
         </div>
         <div class="form-group">
@@ -278,8 +278,8 @@
                     <div class="input-group col-lg-4">
                         <select class="form-control" name="productS" id="productS">
                             {{!-- <option value="">请选择</option> --}}
-                            <option select="true" value="prodNumber"class="--i18n--" data-i18n-key="productRoll">产品卷号</option>
-                            {{!-- <option value="carNumber">车牌号/车架号</option> --}}
+                            <option select="true" value="warrantyID"class="--i18n--" data-i18n-key="productRoll">产品卷号</option>
+                            {{!-- <option value="licensePlate">车牌号/车架号</option> --}}
                         </select>
                     </div>
                 </div>
@@ -314,35 +314,35 @@
             <img id="thumbnail" src="{{imagePath}}">
         </div>
         <div class="col-md-4 col-sm-6 col-xs-6 content">
-            <p class="modelNum">
+            <p class="model">
                 <label class="--i18n--" data-i18n-key="model">型号：</label>
-                <span>{{modelNum}}</span>
+                <span>{{model}}</span>
             </p>
-            <p class="createdDate">
+            <p class="productionTime">
                 <label class="--i18n--" data-i18n-key="productionTime">生产时间：</label>
-                <span>{{createdDate}}</span>
+                <span>{{productionTime}}</span>
             </p>
-            <p class="createdAddress">
+            <p class="producingPlace">
                 <label class="--i18n--" data-i18n-key="producingPlace">生产地：</label>
-                <span>{{createdAddress}}</span>
+                <span>{{producingPlace}}</span>
             </p>
-            <p class="saleAddress">
+            <p class="salePlace">
                 <label class="--i18n--" data-i18n-key="salePlace">销售地：</label>
-                <span>{{saleAddress}}</span>
+                <span>{{salePlace}}</span>
             </p>
         </div>
         <div class="col-md-4 col-sm-6 col-xs-6 content">
-            <p class="prodNumber">
-                <label class="--i18n--" data-i18n-key="productNO.">产品卷号：</label>
-                <span>{{prodNumber}}</span>
+            <p class="productRoll">
+                <label class="--i18n--" data-i18n-key="productRoll">产品卷号：</label>
+                <span>{{productRoll}}</span>
             </p>
-            <p id="checker">
+            <p id="inspectors">
                 <label class="--i18n--" data-i18n-key="inspectors">检验人员：</label>
-                <span>{{checker}}</span>
+                <span>{{inspectors}}</span>
             </p>
-            <p id="checkAddress">
+            <p id="inspectionGround">
                 <label class="--i18n--" data-i18n-key="inspectionGround">检验地：</label>
-                <span>{{checkAddress}}</span>
+                <span>{{inspectionGround}}</span>
             </p>
         </div>
     </div>
@@ -355,45 +355,45 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-2 control-label" for="prodNumber">产品卷号</label>
+            <label class="col-sm-2 control-label" for="productRoll">产品卷号</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" name="prodNumber" id="prodNumber" value="{{prodNumber}}" placeholder="请输入产品卷号" />
+                <input type="text" class="form-control" name="productRoll" id="productRoll" value="{{productRoll}}" placeholder="请输入产品卷号" />
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-2 control-label" for="createdDate">生产时间</label>
+            <label class="col-sm-2 control-label" for="productionTime">生产时间</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" name="createdDate" id="createdDate" value="{{createdDate}}" placeholder="请输入生产时间" />
+                <input type="text" class="form-control" name="productionTime" id="productionTime" value="{{productionTime}}" placeholder="请输入生产时间" />
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-2 control-label" for="createdAddress">生产地</label>
+            <label class="col-sm-2 control-label" for="producingPlace">生产地</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" name="createdAddress" id="createdAddress" value="{{createdAddress}}" placeholder="请输入生产地" />
+                <input type="text" class="form-control" name="producingPlace" id="producingPlace" value="{{producingPlace}}" placeholder="请输入生产地" />
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-2 control-label" for="checker">检验人员</label>
+            <label class="col-sm-2 control-label" for="inspectors">检验人员</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" name="checker" id="checker" value="{{checker}}" placeholder="请输入检验人员" />
+                <input type="text" class="form-control" name="inspectors" id="inspectors" value="{{inspectors}}" placeholder="请输入检验人员" />
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-2 control-label" for="checkAddress">检验地</label>
+            <label class="col-sm-2 control-label" for="inspectionGround">检验地</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" name="checkAddress" id="checkAddress" value="{{checkAddress}}" placeholder="请输入检验地" />
+                <input type="text" class="form-control" name="inspectionGround" id="inspectionGround" value="{{inspectionGround}}" placeholder="请输入检验地" />
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-2 control-label" for="modelNum">型号</label>
+            <label class="col-sm-2 control-label" for="model">型号</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" name="modelNum" id="modelNum" value="{{modelNum}}" placeholder="请输入型号" />
+                <input type="text" class="form-control" name="model" id="model" value="{{model}}" placeholder="请输入型号" />
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-2 control-label" for="saleAddress">销售地</label>
+            <label class="col-sm-2 control-label" for="salePlace">销售地</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" name="saleAddress" id="saleAddress" value="{{saleAddress}}" placeholder="请输入销售地" />
+                <input type="text" class="form-control" name="salePlace" id="salePlace" value="{{salePlace}}" placeholder="请输入销售地" />
             </div>
         </div>
         <div class="form-group">

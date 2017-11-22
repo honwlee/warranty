@@ -13,13 +13,13 @@ define([
             return {
                 id: product.id,
                 imagePath: product.file ? product.file.path : null,
-                modelNum: product.modelNum,
-                createdDate: product.createdDate,
-                createdAddress: product.createdAddress,
-                saleAddress: product.saleAddress,
-                prodNumber: product.prodNumber,
-                checker: product.checker,
-                checkAddress: product.checkAddress
+                model: product.model,
+                productionTime: product.productionTime,
+                producingPlace: product.producingPlace,
+                salePlace: product.salePlace,
+                warrantyID: product.warrantyID,
+                inspectors: product.inspectors,
+                inspectionGround: product.inspectionGround
             }
         },
 
@@ -81,10 +81,10 @@ define([
                 type: warranty.type,
                 exeDate: warranty.exeDate,
                 shop: warranty.shop,
-                carNumber: warranty.carNumber,
-                prodNumber: warranty.prodNumber,
-                engineer: warranty.engineer,
-                proDate: warranty.proDate
+                licensePlate: warranty.licensePlate,
+                warrantyID: warranty.warrantyID,
+                constructionTechnician: warranty.constructionTechnician,
+                warrantyTime: warranty.warrantyTime
             }
         },
 
