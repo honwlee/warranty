@@ -3,6 +3,8 @@ const gulp = require('gulp'),
     gutil = require('gulp-util'),
     util = require('../utils'),
     del = require('del'),
+    fs = require('fs'),
+    path = require('path'),
     argv = require('yargs').argv,
     User = require('../../../backend/models/User').User,
     Province = require('../../../backend/models/Province').Province,
@@ -36,6 +38,11 @@ function importProvinces() {
     hanzi.start();
     Province.delete();
     City.delete();
+    let pcData = {
+        en: {},
+        zh: {},
+        zhTw: {}
+    };
     provincesJson.forEach(function(p) {
         let pr = getName(p.name),
             province = Province.create({
@@ -45,6 +52,9 @@ function importProvinces() {
                 tonePinyin: pr.tonePinyin,
                 pinyin: pr.pinyin
             });
+        pcData.en[pr.pinyin] = pr.tonePinyin.replace(/\d/g, '');
+        pcData.zh[pr.pinyin] = p.name;
+        pcData.zhTw[pr.pinyin] = pr.traditional;
         p.children.forEach(function(c) {
             let cr = getName(c.name);
             City.create({
@@ -56,8 +66,12 @@ function importProvinces() {
                 provinceName: province.pinyin,
                 provinceId: province.id
             });
+            pcData.en[cr.pinyin] = cr.tonePinyin ? cr.tonePinyin.replace(/\d/g, '') : "";
+            pcData.zh[cr.pinyin] = c.name;
+            pcData.zhTw[cr.pinyin] = cr.traditional;
         });
     });
+    fs.writeFileSync(path.join(__dirname, '../../../backend/data/pcData.json'), JSON.stringify(pcData), 'utf8');
 };
 
 function importUser() {

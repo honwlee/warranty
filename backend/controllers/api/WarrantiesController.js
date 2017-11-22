@@ -4,8 +4,7 @@ const parse = require('../../exts/parseList').parse;
 const validate = require('../../exts/validation').validate;
 module.exports = {
     index: function(req, res) {
-        parse("warranties", req, res, ["prodNumber", "carNumber"]);
-        // res.json(Warranty.list());
+        parse("warranties", req, res, ["warrantyID", "licensePlate"]);
     },
 
     show: function(req, res) {
@@ -28,8 +27,8 @@ module.exports = {
     create: function(req, res) {
         req.body.file = req.file;
         validate(Warranty, {
-            prodNumber: req.body.prodNumber,
-            carNumber: req.body.carNumber
+            warrantyID: req.body.warrantyID,
+            licensePlate: req.body.licensePlate
         }, req, res);
     },
 

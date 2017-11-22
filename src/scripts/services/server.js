@@ -60,7 +60,7 @@ define([
                     cities.forEach(function(c) {
                         $("<option>").attr({
                             class: "--i18n--",
-                            "data-i18n-key": c.enName,
+                            "data-i18n-key": c.pinyin,
                             value: c.id
                         }).html(c.name).appendTo(cs);
                     });

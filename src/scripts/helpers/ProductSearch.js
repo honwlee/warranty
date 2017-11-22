@@ -35,7 +35,6 @@ define([
                     selector.find(".no-result").addClass("hide");
                     selector.find(".thanks").removeClass("hide");
                 } else {
-                    toastr.warning("没有找到对应的结果！");
                     selector.find(".thanks").addClass("hide");
                     selector.find(".no-result").removeClass("hide");
                 }

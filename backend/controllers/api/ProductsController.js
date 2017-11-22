@@ -4,8 +4,7 @@ const parse = require('../../exts/parseList').parse;
 const validate = require('../../exts/validation').validate;
 module.exports = {
     index: function(req, res) {
-        parse("products", req, res, ["prodNumber"]);
-        // res.json(Product.list());
+        parse("products", req, res, ["productRoll"]);
     },
 
     show: function(req, res) {
@@ -27,7 +26,7 @@ module.exports = {
 
     create: function(req, res) {
         req.body.file = req.file;
-        validate(Product, { prodNumber: req.body.prodNumber }, req, res);
+        validate(Product, { productRoll: req.body.productRoll }, req, res);
     },
 
     delete: function(req, res) {

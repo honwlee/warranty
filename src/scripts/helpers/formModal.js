@@ -62,7 +62,7 @@ define([
     };
     var validates = {
         warrantyID: {
-            emptyMsg: "产品卷号不能为空",
+            emptyMsg: "质保ID不能为空",
             numsMsg: "用户名不能少于6位",
             numlMsg: "用户名不能多于14位",
             snMsg: "用户名必须以字母开头",
@@ -87,6 +87,17 @@ define([
                     //         return { error: true, msg: this.snMsg };
                     //     }
                     // } else {
+                    _us.focus();
+                    return { error: true, msg: this.emptyMsg };
+                }
+                return { error: false };
+            }
+        },
+        productRoll: {
+            emptyMsg: "产品卷号不能为空",
+            check: function(value) {
+                var _us = $("#productRoll");
+                if (!_us.val()) {
                     _us.focus();
                     return { error: true, msg: this.emptyMsg };
                 }
@@ -142,7 +153,7 @@ define([
             modal.find(".modal-body").html(prodTpl(data));
             modal.find(".modal-title").html(text);
             modal.find(".save-btn").off("click").on("click", function() {
-                var result = validates.warrantyID.check();
+                var result = validates.productRoll.check();
                 if (result.error) {
                     toastr.error(result.msg);
                 } else {

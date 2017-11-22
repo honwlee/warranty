@@ -37,7 +37,6 @@ define([
                 } else {
                     selector.find(".no-result").removeClass("hide");
                     selector.find(".thanks").addClass("hide");
-                    toastr.warning("没有找到对应的结果！")
                 }
             });
         },
