@@ -17,10 +17,10 @@ const gulp = require('gulp'),
     json2xls = require('json2xls');
 
 function getName(name) {
-    console.log(name);
-    console.log("@@@@@@@@@@@@@");
+    // console.log(name);
+    // console.log("@@@@@@@@@@@@@");
     let result = hanzi.definitionLookup(name);
-    console.log(result);
+    // console.log(result);
     if (result) {
         result = result[0];
         return {
@@ -30,6 +30,7 @@ function getName(name) {
             definition: result.definition
         }
     } else {
+        console.log(name);
         return {};
     }
 };
@@ -44,14 +45,14 @@ function importProvinces() {
         zhTw: {}
     };
     provincesJson.forEach(function(p) {
-        let pr = getName(p.name),
-            province = Province.create({
-                name: p.name,
-                traditional: pr.traditional,
-                definition: pr.definition,
-                tonePinyin: pr.tonePinyin,
-                pinyin: pr.pinyin
-            });
+        let pr = getName(p.name);
+        let province = Province.create({
+            name: p.name,
+            traditional: pr.traditional,
+            definition: pr.definition,
+            tonePinyin: pr.tonePinyin,
+            pinyin: pr.pinyin
+        });
         pcData.en[pr.pinyin] = pr.tonePinyin.replace(/\d/g, '');
         pcData.zh[pr.pinyin] = p.name;
         pcData.zhTw[pr.pinyin] = pr.traditional;
