@@ -28,9 +28,9 @@ define([
                             class: "text-center"
                         }).appendTo(table),
                         tbody = $("<tbody>").appendTo(table);
-                    $("<tr>").html("<th>公司名称</th>" +
-                        "<th>地址</th>" +
-                        (this.doAction ? "<th>操作</th>" : "")
+                    $("<tr>").html("<th class='--i18n--' data-i18n-key='company'>公司名称</th>" +
+                        "<th class='--i18n--' data-i18n-key='address'>地址</th>" +
+                        (this.doAction ? "<th class='--i18n--' data-i18n-key='operate'>操作</th>" : "")
                     ).appendTo(thead);
                     partial.get("dealer-tr-partial");
                     dealers.forEach(function(d) {
