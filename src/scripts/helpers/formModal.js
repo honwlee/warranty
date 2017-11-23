@@ -51,6 +51,7 @@ define([
                     } else {
                         if(result.auth) {
                             toastr.error("未登录或者session失效，请登录后再操作！");
+                            window.go("/sigin");
                         } else if (result.validate) {
                             toastr.error("数据已存在：(" + result.key + ":" + result.value + ")");
                         } else {

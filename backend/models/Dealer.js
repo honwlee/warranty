@@ -10,6 +10,9 @@ exports.Dealer = class Dealer extends Model {
     static findBy(args) {
         return Model.findBy("dealers", args);
     }
+    static findAll(args) {
+        return Model.findAll("dealers", args);
+    }
     static findByReg(args) {
         return Model.findByReg("dealers", args);
     }

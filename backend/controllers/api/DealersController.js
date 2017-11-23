@@ -10,10 +10,8 @@ module.exports = {
     list: function(req, res) {
         let dealers;
         if (req.query.cityId) {
-            console.log(1111)
-            dealers = Dealer.findBy({ cityId: req.query.cityId });
+            dealers = Dealer.findAll({ cityId: req.query.cityId });
         } else {
-            console.log(2222)
             dealers = Dealer.list(req.query.sort);
         }
         if (dealers) {

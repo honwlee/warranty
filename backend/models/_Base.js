@@ -26,7 +26,6 @@ class Model {
         let results = jsondb.get(name).sortBy(sortKey).value();
         if (direction == "desc") results = results.reverse();
         return results;
-
     }
     static first(name) {
         return jsondb.get(name).first().value();
@@ -37,12 +36,21 @@ class Model {
     static findBy(name, args) {
         return jsondb.get(name).find(args).value();
     }
+    static findAll(name, args) {
+        return jsondb.get(name).filter(function(r) {
+            let result = true;
+            for (let key in args) {
+                result = result && r[key] == args[key];
+            }
+            return result;
+        }).value();
+    }
     static findByReg(name, args) {
         return jsondb.get(name).filter(function(r) {
             let result = true;
             for (let key in args) {
                 let reg = new RegExp(args[key], "i");
-                result = result && r[key].match(reg);
+                result = result && r[key].length == args[key].length && r[key].match(reg);
             }
             return result;
         }).value();

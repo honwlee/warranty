@@ -76,7 +76,7 @@ define([
                 return deferred.promise;
             },
 
-            connect: function(name, method, action, args) {
+            connect: function(name, method, action, args, opts) {
                 var main = $("#main")[0],
                     self = this,
                     deferred = new langx.Deferred(),
@@ -86,14 +86,15 @@ define([
                                 throb.remove();
                                 main.style.opacity = 1;
                                 if (data.status == false) {
+                                    deferred.resolve(null, data);
+                                    if (opts && opts.noMsg) return;
                                     if (data.auth) {
                                         toastr.error("未登录或者session失效，请登录后再操作！");
                                     } else if (data.validate) {
                                         toastr.error("数据已存在：(" + data.key + ":" + data.value + ")");
-                                    } else if(data.system) {
+                                    } else if (data.system) {
                                         toastr.error("系统错误，请截图并联系管理员，谢谢合作！");
                                     }
-                                    deferred.resolve(null, data);
                                 } else {
                                     self.memory[name][action] = data;
                                     deferred.resolve(data);
@@ -104,14 +105,15 @@ define([
                                 throb.remove();
                                 main.style.opacity = 1;
                                 if (data.status == false) {
+                                    deferred.resolve(null, data);
+                                    if (opts && opts.noMsg) return;
                                     if (data.auth) {
                                         toastr.error("未登录或者session失效，请登录后再操作！");
                                     } else if (data.validate) {
                                         toastr.error("数据已存在：(" + data.key + ":" + data.value + ")");
-                                     } else if(data.system) {
+                                    } else if (data.system) {
                                         toastr.error("系统错误，请截图并联系管理员，谢谢合作！");
                                     }
-                                    deferred.resolve(null, data);
                                 } else {
                                     if (self.memory[name]) self.memory[name][action] = data;
                                     deferred.resolve(data);

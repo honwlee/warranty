@@ -9,7 +9,9 @@ define([
     return spa.RouteController.inherit({
         klassName: "SigninController",
         preparing: function(e) {
-            e.result = server().connect("auth", "get", "check").then(function(result) {
+            e.result = server().connect("auth", "get", "check", null, {
+                noMsg: true
+            }).then(function(result) {
                 if (result)  window.go("/admin");
             });
         },
