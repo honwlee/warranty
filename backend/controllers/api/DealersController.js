@@ -10,11 +10,17 @@ module.exports = {
     list: function(req, res) {
         let dealers;
         if (req.query.cityId) {
+            console.log(1111)
             dealers = Dealer.findBy({ cityId: req.query.cityId });
         } else {
+            console.log(2222)
             dealers = Dealer.list(req.query.sort);
         }
-        res.json(dealers);
+        if (dealers) {
+            res.json(dealers);
+        } else {
+            res.json({ status: false, msg: "no results!" });
+        }
     },
 
     show: function(req, res) {

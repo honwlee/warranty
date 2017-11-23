@@ -17,7 +17,7 @@ define([
                 productionTime: product.productionTime,
                 producingPlace: product.producingPlace,
                 salePlace: product.salePlace,
-                warrantyID: product.warrantyID,
+                productRoll: product.productRoll,
                 inspectors: product.inspectors,
                 inspectionGround: product.inspectionGround
             }

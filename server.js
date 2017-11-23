@@ -27,6 +27,11 @@ function ensureAuthenticated(req, res, next) {
     res.json({ status: false, auth: true, msg: "please login!" });
 }
 
+function errorHandler(err, req, res, next) {
+    console.log("111111")
+    return res.json({ status: false, system: true, msg: err });
+}
+
 SlaxServer.prototype.startBackend = function(callback) {
     let app = this._express;
     if (app) {
@@ -76,6 +81,7 @@ SlaxServer.prototype.startBackend = function(callback) {
 
         routes(app, null, ensureAuthenticated, this.root);
 
+        app.use(errorHandler);
         backupDb();
     }
 }

@@ -30,7 +30,7 @@ define([
             var self = this;
             server().connect("warranties", "get", "show?" + dataString).then(function(warranties) {
                 selector.find("#warrantyData").empty();
-                if (warranties.length > 0) {
+                if (warranties && warranties.length > 0) {
                     warranties.forEach(function(warranty) {
                         self.fillItem(warranty, selector);
                     });
@@ -40,6 +40,7 @@ define([
                     selector.find(".no-result").removeClass("hide");
                     selector.find(".thanks").addClass("hide");
                 }
+                self.trigger("searched");
             });
         },
 

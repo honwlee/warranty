@@ -22,7 +22,7 @@ define([
             var self = this;
             server().connect("dealers", "get", "list?cityId=" + cityId).then(function(dealers) {
                 var table = selector.find("#dealerData").find("table").empty();
-                if (dealers.length > 0) {
+                if (dealers && dealers.length > 0) {
                     var thead = $("<thead>").attr({
                             class: "text-center"
                         }).appendTo(table),
@@ -57,6 +57,7 @@ define([
                 } else {
                     selector.find(".no-result").removeClass("hide");
                 }
+                self.trigger("searched");
             });
         },
         preparing: function(e) {

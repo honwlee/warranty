@@ -26,6 +26,15 @@ define([
             dealer.on("citiesLoaded", function() {
                 self.selectLanguage(selector.find("#cityS"), self.language);
             });
+            dealer.on("searched", function() {
+                self.selectLanguage(selector.find(".result-container"), self.language);
+            });
+            product.on("searched", function() {
+                self.selectLanguage(selector.find(".result-container"), self.language);
+            });
+            warranty.on("searched", function() {
+                self.selectLanguage(selector.find(".result-container"), self.language);
+            });
             e.result = dealer.preparing().then(function() {
                 dealer.getDom().appendTo(selector.find("#sDealerT .content").empty());
                 self.selectLanguage(selector, lang);

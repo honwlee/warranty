@@ -67,9 +67,9 @@ module.exports = function(app, router, ensureAuthenticated, rootPath) {
 
     app.get('/api/auth/check', function(req, res) {
         if (req.isAuthenticated()) {
-            res.json({ status: true });
+            res.json({ status: true, auth: true });
         } else {
-            res.json({ status: false });
+            res.json({ status: false, auth: true });
         }
     });
 };

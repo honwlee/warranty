@@ -30,7 +30,7 @@ define([
             var self = this;
             server().connect("products", "get", "show?" + dataString).then(function(products) {
                 selector.find("#productData").empty();
-                if (products.length > 0) {
+                if (products && products.length > 0) {
                     products.forEach(function(product){
                         self.fillItem(product, selector);
                     });
@@ -40,6 +40,7 @@ define([
                     selector.find(".thanks").addClass("hide");
                     selector.find(".no-result").removeClass("hide");
                 }
+                self.trigger("searched");
             });
         },
 

@@ -1,7 +1,8 @@
 define([
     "jquery",
+    "toastr",
     "skylarkjs",
-], function($, skylarkjs) {
+], function($, toastr, skylarkjs) {
     var spa = skylarkjs.spa,
         langx = skylarkjs.langx,
         Service = langx.klass({
@@ -82,19 +83,37 @@ define([
                     throb = window.addThrob(main, function() {
                         if (args) {
                             $[method]("/api/" + name + "/" + action, args, function(data) {
-                                self.memory[name][action] = data;
-                                throb.remove();
-                                main.style.opacity = 1;
-                                deferred.resolve(data);
-                            });
-                        } else {
-                            $[method]("/api/" + name + "/" + action, function(data) {
-                                if (self.memory[name]) self.memory[name][action] = data;
                                 throb.remove();
                                 main.style.opacity = 1;
                                 if (data.status == false) {
-                                    deferred.resolve(null);
+                                    if (data.auth) {
+                                        toastr.error("未登录或者session失效，请登录后再操作！");
+                                    } else if (data.validate) {
+                                        toastr.error("数据已存在：(" + data.key + ":" + data.value + ")");
+                                    } else if(data.system) {
+                                        toastr.error("系统错误，请截图并联系管理员，谢谢合作！");
+                                    }
+                                    deferred.resolve(null, data);
                                 } else {
+                                    self.memory[name][action] = data;
+                                    deferred.resolve(data);
+                                }
+                            });
+                        } else {
+                            $[method]("/api/" + name + "/" + action, function(data) {
+                                throb.remove();
+                                main.style.opacity = 1;
+                                if (data.status == false) {
+                                    if (data.auth) {
+                                        toastr.error("未登录或者session失效，请登录后再操作！");
+                                    } else if (data.validate) {
+                                        toastr.error("数据已存在：(" + data.key + ":" + data.value + ")");
+                                     } else if(data.system) {
+                                        toastr.error("系统错误，请截图并联系管理员，谢谢合作！");
+                                    }
+                                    deferred.resolve(null, data);
+                                } else {
+                                    if (self.memory[name]) self.memory[name][action] = data;
                                     deferred.resolve(data);
                                 }
                             });

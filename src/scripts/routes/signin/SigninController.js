@@ -10,11 +10,7 @@ define([
         klassName: "SigninController",
         preparing: function(e) {
             e.result = server().connect("auth", "get", "check").then(function(result) {
-                if (result) {
-                    window.go("/admin");
-                } else {
-                    toastr.error("请登录！");
-                }
+                if (result)  window.go("/admin");
             });
         },
         rendering: function(e) {
