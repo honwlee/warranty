@@ -10,7 +10,7 @@ module.exports = {
     show: function(req, res) {
         let opt = {};
         opt[req.query.key] = req.query.value;
-        let product = Product.findBy(opt);
+        let product = Product.findByReg(opt);
         if (product) {
             res.json(product);
         } else {

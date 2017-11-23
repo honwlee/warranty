@@ -10,7 +10,7 @@ module.exports = {
     show: function(req, res) {
         let opt = {};
         opt[req.query.key] = req.query.value;
-        let warranty = Warranty.findBy(opt);
+        let warranty = Warranty.findByReg(opt);
         if (warranty) {
             res.json(warranty);
         } else {

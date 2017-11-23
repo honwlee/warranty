@@ -10,6 +10,9 @@ exports.Warranty = class Warranty extends Model {
     static findBy(args) {
         return Model.findBy("warranties", args);
     }
+    static findByReg(args) {
+        return Model.findByReg("warranties", args);
+    }
     static create(args) {
         args.date = new Date();
         return Model.create("warranties", args);

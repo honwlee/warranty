@@ -24,7 +24,7 @@ function ensureAuthenticated(req, res, next) {
         return next();
     }
     // res.redirect('/signin')
-    res.json({ status: false, msg: "please login!" });
+    res.json({ status: false, auth: true, msg: "please login!" });
 }
 
 SlaxServer.prototype.startBackend = function(callback) {

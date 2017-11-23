@@ -10,6 +10,9 @@ exports.Product = class Product extends Model {
     static findBy(args) {
         return Model.findBy("products", args);
     }
+    static findByReg(args) {
+        return Model.findByReg("products", args);
+    }
     static create(args) {
         return Model.create("products", args);
     }

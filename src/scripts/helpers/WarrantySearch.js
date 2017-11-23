@@ -28,10 +28,12 @@ define([
 
         search: function(selector, dataString) {
             var self = this;
-            server().connect("warranties", "get", "show?" + dataString).then(function(warranty) {
+            server().connect("warranties", "get", "show?" + dataString).then(function(warranties) {
                 selector.find("#warrantyData").empty();
-                if (warranty) {
-                    self.fillItem(warranty, selector);
+                if (warranties.length > 0) {
+                    warranties.forEach(function(warranty) {
+                        self.fillItem(warranty, selector);
+                    });
                     selector.find(".no-result").addClass("hide");
                     selector.find(".thanks").removeClass("hide");
                 } else {

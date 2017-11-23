@@ -74,16 +74,16 @@ define([
         formatWData: function(warranty) {
             return {
                 id: warranty.id,
+                warrantyID: warranty.warrantyID,
                 imagePath: warranty.file ? warranty.file.path : null,
                 customerName: warranty.customerName,
                 customerPhone: warranty.customerPhone,
                 vehicleType: warranty.vehicleType,
-                type: warranty.type,
-                exeDate: warranty.exeDate,
-                shop: warranty.shop,
+                vehicleMounted: warranty.vehicleMounted,
                 licensePlate: warranty.licensePlate,
-                warrantyID: warranty.warrantyID,
+                constructionStore: warranty.constructionStore,
                 constructionTechnician: warranty.constructionTechnician,
+                constructionTime: warranty.constructionTime,
                 warrantyTime: warranty.warrantyTime
             }
         },

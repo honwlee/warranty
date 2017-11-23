@@ -14,24 +14,28 @@ define([
         selector = $(langx.trim(homeTpl));
     return spa.RouteController.inherit({
         klassName: "HomeController",
-        provinces: null,
+        language: "zh-CN",
         preparing: function(e) {
             var self = this,
-                lang = navigator.language || navigator.userLanguage,
+                lang = this.language = navigator.language || navigator.userLanguage,
                 dealer = new DealerSearch(),
                 product = new ProductSearch(),
                 warranty = new WarrantySearch();
             product.getDom().appendTo(selector.find("#sProductT .content").empty());
             warranty.getDom().appendTo(selector.find("#sWarrantyT .content").empty());
+            dealer.on("citiesLoaded", function() {
+                self.selectLanguage(selector.find("#cityS"), self.language);
+            });
             e.result = dealer.preparing().then(function() {
                 dealer.getDom().appendTo(selector.find("#sDealerT .content").empty());
-                self.selectLanguage(lang);
+                self.selectLanguage(selector, lang);
                 $("#headerNav").find('selector').val(lang);
             });
         },
 
-        selectLanguage: function(name) {
-            i18n.select(selector, name);
+        selectLanguage: function(container, name) {
+            container = container || selector;
+            i18n.select(container, name);
         },
 
         rendering: function(e) {
@@ -52,7 +56,8 @@ define([
                 '</select>' +
                 '</li>'
             ).find("select").off("change").on("change", function(e) {
-                self.selectLanguage(this.value);
+                self.language = this.value;
+                self.selectLanguage(selector, this.value);
             });
         },
         exited: function() {}

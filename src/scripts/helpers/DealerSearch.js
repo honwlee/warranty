@@ -93,12 +93,14 @@ define([
                 _cs = selector.find("#cityS");
 
             selector.find("#provinceS").on("change", function() {
-                if (!this.value) toastr.warning("请选择省份！");
-                server().getCities(this.value, _cs);
+                if (!this.value) return toastr.warning("请选择省份！");
+                server().getCities(this.value, _cs).then(function() {
+                    self.trigger("citiesLoaded");
+                });
             });
             var _searchFunc = function() {
                 var val = _cs.val();
-                if (!val) toastr.warning("请选择城市！");
+                if (!val) return toastr.warning("请选择城市！");
                 self.search(val, selector);
                 selector.find(".panel-heading").removeClass("hide");
             };

@@ -37,6 +37,17 @@ class Model {
     static findBy(name, args) {
         return jsondb.get(name).find(args).value();
     }
+    static findByReg(name, args) {
+        return jsondb.get(name).filter(function(r) {
+            let result = true;
+            for (let key in args) {
+                let reg = new RegExp(args[key], "i");
+                result = result && r[key].match(reg);
+            }
+            return result;
+        }).value();
+    }
+
     static create(name, args) {
         args.id = shortid.generate();
         args.createdAt = new Date();

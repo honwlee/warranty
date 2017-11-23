@@ -8,20 +8,19 @@ module.exports = {
     },
 
     list: function(req, res) {
-        let dealers = Dealer.list(req.query.sort);
+        let dealers;
         if (req.query.cityId) {
-            res.json(dealers.filter(function(d) {
-                return d.cityId == req.query.cityId;
-            }));
+            dealers = Dealer.findBy({ cityId: req.query.cityId });
         } else {
-            res.json(dealers);
+            dealers = Dealer.list(req.query.sort);
         }
+        res.json(dealers);
     },
 
     show: function(req, res) {
         let opt = {};
         opt[req.query.key] = req.query.value;
-        let dealer = Dealer.findBy(opt);
+        let dealer = Dealer.findByReg(opt);
         if (dealer) {
             res.json(dealer);
         } else {

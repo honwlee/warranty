@@ -10,6 +10,9 @@ exports.Dealer = class Dealer extends Model {
     static findBy(args) {
         return Model.findBy("dealers", args);
     }
+    static findByReg(args) {
+        return Model.findByReg("dealers", args);
+    }
     static create(args) {
         args.createdAt = new Date();
         args.updatedAt = new Date();

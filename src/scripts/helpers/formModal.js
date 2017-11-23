@@ -49,11 +49,16 @@ define([
                     if (result.status) {
                         callback(result.result);
                     } else {
-                        toastr.error("数据已存在：(" + result.key + ":" + result.value + ")");
-                        // selector.modal('hide');
+                        if(result.auth) {
+                            toastr.error("未登录或者session失效，请登录后再操作！");
+                        } else if (result.validate) {
+                            toastr.error("数据已存在：(" + result.key + ":" + result.value + ")");
+                        } else {
+                            toastr.error("系统错误，请截图并联系管理员，谢谢合作！");
+                        }
                     }
                 } else {
-                    toastr.error("系统错误，请联系管理员！");
+                    toastr.error("系统错误，请请截图并联系管理员，谢谢合作！");
                     // selector.modal('hide');
                 }
             }
