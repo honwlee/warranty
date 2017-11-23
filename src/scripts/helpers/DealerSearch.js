@@ -23,6 +23,7 @@ define([
             server().connect("dealers", "get", "list?cityId=" + cityId).then(function(dealers) {
                 var table = selector.find("#dealerData").find("table").empty();
                 if (dealers && dealers.length > 0) {
+                    table.removeClass("hide");
                     var thead = $("<thead>").attr({
                             class: "text-center"
                         }).appendTo(table),
@@ -83,7 +84,7 @@ define([
         },
 
         _buildDom: function(provinces) {
-            partial.get("search-no-result-partial");
+            // partial.get("search-no-result-partial");
             partial.get("dealer-search-partial");
             var self = this,
                 tpl = handlebars.compile("{{> dealer-search-partial}}"),
