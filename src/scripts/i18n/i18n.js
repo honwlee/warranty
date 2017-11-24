@@ -10,13 +10,14 @@ define([
     };
     return {
         select: function(selector, name) {
+            var lan = i18n[name] || i18n["zh-CN"];
             selector.find(".--i18n--").each(function(index, el) {
                 var key = $(el).data('i18nKey');
                 if(key) {
                     if (key.match(/--html$/)) {
-                        $(el).html(i18n[name][key]);
+                        $(el).html(lan[key]);
                     } else {
-                        $(el).text(i18n[name][key]);
+                        $(el).text(lan[key]);
                     }
                 }
             });

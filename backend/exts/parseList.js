@@ -38,9 +38,13 @@ module.exports = {
             // Full-text search
             // q = q.toLowerCase();
             chain = chain.filter(function(obj) {
-                for (var key in queryKeys) {
-                    if (obj[queryKeys[key]] === q) return true;
+                var result = false;
+                for (var index in queryKeys) {
+                    var key = queryKeys[index];
+                    var reg = new RegExp(q, "i");
+                    result = result || (obj[key].length == q.length && obj[key].match(reg));
                 }
+                return result;
             });
         }
 
