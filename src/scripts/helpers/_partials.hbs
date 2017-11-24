@@ -29,9 +29,9 @@
         <div class="panel panel-default result-container">
             <div class="panel-heading hide"><h3 class="panel-title --i18n--" data-i18n-key="searchResult">查询结果</h3></div>
             <div class="result-info">
-             {{!--    <div class="thanks text-left hide" >
+                <div class="thanks text-left hide" >
                     <p class="--i18n--" data-i18n-key="thanksInformation">谢谢您对Acme的支持与关注，您的授权经销商查询信息如下：</p>
-                </div> --}}
+                </div> 
                 <div id="dealerData" class="panel-body">
                     <table class="table table-striped table-bordered table-hover hide">
                     </table>
@@ -58,11 +58,11 @@
     <script id="dealer-result-partial"  type="text/x-handlebars-template">
     <div class="col-md-12 col-sm-12 col-xs-12" id="term">
         <p class="company">
-            <label class="--i18n--" data-i18n-key="company">公司名称：</label>
+            <label class="--i18n--" data-i18n-key="company">公司名称</label>
             <span>{{company}}</span>
         </p>
         <p class="address">
-            <label class="--i18n--" data-i18n-key="address">地址：</label>
+            <label class="--i18n--" data-i18n-key="address">地址</label>
             <span>{{address}}</span>
         </p>
     </div>
@@ -116,7 +116,7 @@
                         <select class="form-control" name="warrantyS" id="warrantyS">
                             {{!-- <option value="">请选择</option> --}}
                             <option select="true" value="warrantyID" class="--i18n--" data-i18n-key="warrantyID">客户姓名</option>
-                            <option select="true" value="customerName" class="--i18n--" data-i18n-key="customerName">客户电话</option>
+                            <!-- <option select="true" value="customerName" class="--i18n--" data-i18n-key="customerName">客户电话</option> -->
                             <option select="true" value="customerPhone" class="--i18n--" data-i18n-key="customerPhone">质保 ID</option>
                             <option value="licensePlate" class="--i18n--" data-i18n-key="licensePlate">车牌号/车架号</option>
                         </select>
@@ -162,45 +162,45 @@
         </div>
         <div class="col-md-4 col-sm-6 col-xs-6 content">
             <p class="customerName">
-                <label class="--i18n--" data-i18n-key="customerName">客户姓名：</label>
+                <label class="--i18n--" data-i18n-key="customerName">客户姓名</label><span class="--i18n--" data-i18n-key="colon">：</span>
                 <span>{{customerName}}</span>
             </p>
             <p class="customerPhone">
-                <label class="--i18n--" data-i18n-key="customerPhone">客户电话：</label>
+                <label class="--i18n--" data-i18n-key="customerPhone">客户电话</label><span class="--i18n--" data-i18n-key="colon">：</span>
                 <span>{{customerPhone}}</span>
             </p>
             <p class="vehicleType">
-                <label class="--i18n--" data-i18n-key="vehicleType">装贴种类：</label>
+                <label class="--i18n--" data-i18n-key="vehicleType">装贴种类</label><span class="--i18n--" data-i18n-key="colon">：</span>
                 <span>{{vehicleType}}</span>
             </p>
             <p class="vehicleMounted">
-                <label class="--i18n--" data-i18n-key="vehicleMounted">装贴车型：</label>
+                <label class="--i18n--" data-i18n-key="vehicleMounted">装贴车型</label><span class="--i18n--" data-i18n-key="colon">：</span>
                 <span>{{vehicleMounted}}</span>
             </p>
             <p class="constructionTime">
-                <label class="--i18n--" data-i18n-key="constructionTime">施工时间：</label>
+                <label class="--i18n--" data-i18n-key="constructionTime">施工时间</label><span class="--i18n--" data-i18n-key="colon">：</span>
                 <span>{{constructionTime}}</span>
             </p>
             <p class="constructionStore">
-                <label class="--i18n--" data-i18n-key="constructionStore">施工门店：</label>
+                <label class="--i18n--" data-i18n-key="constructionStore">施工门店</label><span class="--i18n--" data-i18n-key="colon">：</span>
                 <span>{{constructionStore}}</span>
             </p>
             <p class="licensePlate">
-                <label class="--i18n--" data-i18n-key="licensePlate">车牌号/车架号：</label>
+                <label class="--i18n--" data-i18n-key="licensePlate">车牌号/车架号</label><span class="--i18n--" data-i18n-key="colon">：</span>
                 <span>{{licensePlate}}</span>
             </p>
         </div>
         <div class="col-md-4 col-sm-6 col-xs-6 content">
             <p class="warrantyID">
-                <label class="--i18n--" data-i18n-key="warrantyID">质保 ID：</label>
+                <label class="--i18n--" data-i18n-key="warrantyID">质保 ID</label><span class="--i18n--" data-i18n-key="colon">：</span>
                 <span>{{warrantyID}}</span>
             </p>
             <p id="constructionTechnician">
-                <label class="--i18n--" data-i18n-key="constructionTechnician">施工技师：</label>
+                <label class="--i18n--" data-i18n-key="constructionTechnician">施工技师</label><span class="--i18n--" data-i18n-key="colon">：</span>
                 <span>{{constructionTechnician}}</span>
             </p>
             <p id="warrantyTime">
-                <label class="--i18n--" data-i18n-key="warrantyTime">质保时间：</label>
+                <label class="--i18n--" data-i18n-key="warrantyTime">质保时间</label><span class="--i18n--" data-i18n-key="colon">：</span>
                 <span>{{warrantyTime}}</span>
             </p>
         </div>
@@ -315,10 +315,10 @@
                 <h3 class="panel-title">查询结果</h3>
             </div>
             <div class="result-info">
-                {{!-- <div class="thanks text-left hide">
+               <div class="thanks text-left hide">
                     <p lass="--i18n--" data-i18n-key="thanksProduct">谢谢您对Acme的支持与关注，您的产品真伪查询信息如下：</p>
-                </div> --}}
-                <div id="productData" class="panel-body"></div>
+                </div> 
+                                <div id="productData" class="panel-body"></div>
             </div>
             <div class="no-result  text-danger panel-body hide --i18n--" data-i18n-key="productEmptyResult--html">
                 <p>很抱歉，无此产品信息，您购买的可能为假冒产品，请确认输入正确后再次查询。</p>
@@ -335,33 +335,33 @@
         </div>
         <div class="col-md-4 col-sm-6 col-xs-6 content">
             <p class="model">
-                <label class="--i18n--" data-i18n-key="model">型号：</label>
+                <label class="--i18n--" data-i18n-key="model">型号</label><span class="--i18n--" data-i18n-key="colon">：</span>
                 <span>{{model}}</span>
             </p>
             <p class="productionTime">
-                <label class="--i18n--" data-i18n-key="productionTime">生产时间：</label>
+                <label class="--i18n--" data-i18n-key="productionTime">生产时间</label><span class="--i18n--" data-i18n-key="colon">：</span>
                 <span>{{productionTime}}</span>
             </p>
             <p class="producingPlace">
-                <label class="--i18n--" data-i18n-key="producingPlace">生产地：</label>
+                <label class="--i18n--" data-i18n-key="producingPlace">生产地</label><span class="--i18n--" data-i18n-key="colon">：</span>
                 <span>{{producingPlace}}</span>
             </p>
             <p class="salePlace">
-                <label class="--i18n--" data-i18n-key="salePlace">销售地：</label>
+                <label class="--i18n--" data-i18n-key="salePlace">销售地</label><span class="--i18n--" data-i18n-key="colon">：</span>
                 <span>{{salePlace}}</span>
             </p>
         </div>
         <div class="col-md-4 col-sm-6 col-xs-6 content">
             <p class="productRoll">
-                <label class="--i18n--" data-i18n-key="productRoll">产品卷号：</label>
+                <label class="--i18n--" data-i18n-key="productRoll">产品卷号</label><span class="--i18n--" data-i18n-key="colon">：</span>
                 <span>{{productRoll}}</span>
             </p>
             <p id="inspectors">
-                <label class="--i18n--" data-i18n-key="inspectors">检验人员：</label>
+                <label class="--i18n--" data-i18n-key="inspectors">检验人员</label><span class="--i18n--" data-i18n-key="colon">：</span>
                 <span>{{inspectors}}</span>
             </p>
             <p id="inspectionGround">
-                <label class="--i18n--" data-i18n-key="inspectionGround">检验地：</label>
+                <label class="--i18n--" data-i18n-key="inspectionGround">检验地</label><span class="--i18n--" data-i18n-key="colon">：</span>
                 <span>{{inspectionGround}}</span>
             </p>
         </div>
