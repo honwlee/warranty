@@ -30,8 +30,8 @@
             <div class="panel-heading hide"><h3 class="panel-title --i18n--" data-i18n-key="searchResult">查询结果</h3></div>
             <div class="result-info">
                 <div class="thanks text-left hide" >
-                    <p class="--i18n--" data-i18n-key="thanksInformation">谢谢您对Acme的支持与关注，您的授权经销商查询信息如下：</p>
-                </div> 
+                    <p class="--i18n--" data-i18n-key="thanksInformation">谢谢您对Acme的支持与关注，您的授权经销商查询信息如下<span class="--i18n--" data-i18n-key="colon">：</span></p>
+                </div>
                 <div id="dealerData" class="panel-body">
                     <table class="table table-striped table-bordered table-hover hide">
                     </table>
@@ -137,7 +137,7 @@
             <div class="panel-heading hide"><h3 class="panel-title --i18n--" data-i18n-key="searchResult">查询结果</h3></div>
             <div class="result-info">
                 <div class="thanks text-left hide">
-                    <p class="--i18n--" data-i18n-key="thanksWarranty">谢谢您对Acme的支持与关注，您的质保信息如下：</p>
+                    <p class="--i18n--" data-i18n-key="thanksWarranty">谢谢您对Acme的支持与关注，您的质保信息如下<span class="--i18n--" data-i18n-key="colon">：</span></p>
                 </div>
                 <div id="warrantyData" class="panel-body"></div>
             </div>
@@ -312,13 +312,13 @@
         </div>
         <div class="panel panel-default result-container">
             <div class="panel-heading hide">
-                <h3 class="panel-title">查询结果</h3>
+                <h3 class="panel-title --i18n--"  data-i18n-key="searchResult">查询结果</h3>
             </div>
             <div class="result-info">
                <div class="thanks text-left hide">
-                    <p lass="--i18n--" data-i18n-key="thanksProduct">谢谢您对Acme的支持与关注，您的产品真伪查询信息如下：</p>
-                </div> 
-                                <div id="productData" class="panel-body"></div>
+                    <p class="--i18n--" data-i18n-key="thanksProduct">谢谢您对Acme的支持与关注，您的产品真伪查询信息如下<span class="--i18n--" data-i18n-key="colon">：</span></p>
+                </div>
+                <div id="productData" class="panel-body"></div>
             </div>
             <div class="no-result  text-danger panel-body hide --i18n--" data-i18n-key="productEmptyResult--html">
                 <p>很抱歉，无此产品信息，您购买的可能为假冒产品，请确认输入正确后再次查询。</p>
@@ -432,19 +432,6 @@
     <div class="actions text-right">
         <button class="btn blue del-btn" type="button"><i class="fa fa-time"></i>删除</button>
         <button class="btn blue edit-btn" type="button"><i class="fa fa-edit"></i>编辑</button>
-    </div>
-    </script>
-    <script id="search-no-result-partial"  type="text/x-handlebars-template">
-    <div class="no-result  text-danger panel-body hide">
-        <p>很抱歉，您输入的数字在Acme官方电子质保系统中并无相关信息，请查明后重新输入。</p>
-        <p>Acme保证对我们的产品和客户提供最高品质的服务！</p>
-        <ol>
-            <li>凡经由Acme授权认证的店家及经销商安装的车身透明保护膜产品皆享有XPEL官方提供的10年质保。 </li>
-            <li>在质保期间内，除人为，自然衰退或其他不可抗拒因素发生产品故障，客户均可享受Acme提供的免费维修服务; </li>
-            <li>受保瑕疵范围包括：不起斑点，不染色，不变黄，不起泡，不脱胶。如有其他因素导致产品损坏，请至Acme授权店家及经销商寻求维修及服务。
-            </li>
-        </ol>
-        <p>请访问：<a target="_blank" href="http://www.acme-car.com">http://www.acme-car.com</a></p>
     </div>
     </script>
 </div>

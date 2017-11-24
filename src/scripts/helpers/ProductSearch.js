@@ -73,7 +73,6 @@ define([
         },
 
         _buildDom: function(provinces) {
-            // partial.get("search-no-result-partial");
             partial.get("product-search-partial");
             var self = this,
                 tpl = handlebars.compile("{{> product-search-partial}}"),

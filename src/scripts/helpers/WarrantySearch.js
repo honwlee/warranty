@@ -74,7 +74,6 @@ define([
         },
 
         _buildDom: function(provinces) {
-            // partial.get("search-no-result-partial");
             partial.get("warranty-search-partial");
             var self = this,
                 tpl = handlebars.compile("{{> warranty-search-partial}}"),

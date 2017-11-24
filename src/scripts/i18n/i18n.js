@@ -12,10 +12,12 @@ define([
         select: function(selector, name) {
             selector.find(".--i18n--").each(function(index, el) {
                 var key = $(el).data('i18nKey');
-                if (key.match(/--html$/)) {
-                    $(el).html(i18n[name][key]);
-                } else {
-                    $(el).text(i18n[name][key]);
+                if(key) {
+                    if (key.match(/--html$/)) {
+                        $(el).html(i18n[name][key]);
+                    } else {
+                        $(el).text(i18n[name][key]);
+                    }
                 }
             });
         }

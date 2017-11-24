@@ -84,7 +84,6 @@ define([
         },
 
         _buildDom: function(provinces) {
-            // partial.get("search-no-result-partial");
             partial.get("dealer-search-partial");
             var self = this,
                 tpl = handlebars.compile("{{> dealer-search-partial}}"),
