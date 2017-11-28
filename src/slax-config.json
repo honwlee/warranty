@@ -12,12 +12,12 @@
         {
             "server": "scripts/services/server",
             "jquery": "https://cdn.bootcss.com/jquery/2.2.0/jquery.min",
-            "toastr": "https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min",
-            "bootstrapTb": "https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.1/bootstrap-table",
-            "bootstrapTbZh": "https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.1/locale/bootstrap-table-zh-CN.min",
+            "toastr": "https://cdn.bootcss.com/toastr.js/latest/js/toastr.min",
+            "bootstrapTb": "https://cdn.bootcss.com/bootstrap-table/1.11.1/bootstrap-table.min",
+            "bootstrapTbZh": "https://cdn.bootcss.com/bootstrap-table/1.11.1/locale/bootstrap-table-zh-CN.min",
             "bootstrap": "https://cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.min",
-            "handlebars": "https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.amd.min",
-            "text": "https://cdnjs.cloudflare.com/ajax/libs/require-text/2.0.12/text"
+            "handlebars": "https://cdn.bootcss.com/handlebars.js/4.0.11/handlebars.amd.min",
+            "text": "https://cdn.bootcss.com/require-text/2.0.12/text.min"
         }
     },
     "spaModule": "scripts/helpers/spa",

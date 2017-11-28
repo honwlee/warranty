@@ -1,6 +1,7 @@
 define([
+    "jquery",
     "skylarkjs"
-], function(skylarkjs) {
+], function($, skylarkjs) {
     var spa = skylarkjs.spa,
         router = skylarkjs.router,
         langx = skylarkjs.langx,
@@ -24,22 +25,11 @@ define([
         }
     });
     spa.Page = spa.Page.inherit({
-        init: function(params) {
-            params = langx.mixin({
-                "routeViewer": "body"
-            }, params);
-
-            this._params = params;
-            this._$rvc = velm.find(params.routeViewer);
-            this._router = router;
-
-            router.on("routed", langx.proxy(this, "refresh"));
-        },
         refresh: function() {
             var curCtx = router.current(),
                 prevCtx = router.previous(),
                 content = curCtx.route.render(curCtx);
-            this._$rvc.html(content);
+            $(this._rvc).html(content);
             curCtx.route.trigger(createEvent("rendered", {
                 route: curCtx.route,
                 content: content

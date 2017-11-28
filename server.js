@@ -2,6 +2,7 @@
 const SlaxServer = require('skylark-slax-nodeserver'),
     path = require('path'),
     logger = require('morgan'),
+    favicon = require('serve-favicon'),
     cookieParser = require('cookie-parser'),
     bodyParser = require('body-parser'),
     session = require('express-session'),
@@ -28,7 +29,6 @@ function ensureAuthenticated(req, res, next) {
 }
 
 function errorHandler(err, req, res, next) {
-    console.log("111111")
     return res.json({ status: false, system: true, msg: err });
 }
 
@@ -44,7 +44,7 @@ SlaxServer.prototype.startBackend = function(callback) {
         app.set('view engine', 'handlebars');
 
         // uncomment after placing your favicon in /public
-        // app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+        app.use(favicon(path.join(__dirname, 'src/assets/images', 'favicon.ico')));
         app.use(logger('dev'));
         app.use(bodyParser.urlencoded({ extended: true }));
         app.use(bodyParser.json());

@@ -24,24 +24,8 @@ define([
                 data[s.attr("name")] = s.val();
             }
         });
-        // data.file = file;
         if (data.id) action = "update";
-        //将文件信息追加到其中
         if (file) formData.append('thumbnail', file);
-        // //利用split切割，拿到上传文件的格式
-        // var src = file.name,
-        //     formart = src.split(".")[1];
-        // //使用if判断上传文件格式是否符合
-        // if (formart == "jpg" || formart == "png") {
-
-        // }
-        // server().connect(name, "post", action, formData).then(function(cbData) {
-        //     if (data.id) {
-
-        //     } else {
-
-        //     }
-        // });
 
         var url = "/api/" + name + "/" + action;
         var xhr = new XMLHttpRequest();
@@ -63,24 +47,30 @@ define([
     return spa.RouteController.inherit({
         klassName: "AdminController",
         preparing: function(e) {
-            var self = this;
-            e.result = server().connect("auth", "get", "check").then(function(result) {
-                if (result) {
-                    selector.delegate(".add-btn", "click", function(e) {
-                        var type = $(e.currentTarget).data("type");
-                        formModal.show(type, {}, function(data) {
-                            selector.find("#" + type + "Table").bootstrapTable('refresh');
-                        });
+            var self = this,
+                deferred = new langx.Deferred();
+            require(["bootstrapTb"], function() {
+                require(["bootstrapTbZh"], function() {
+                    server().connect("auth", "get", "check").then(function(result) {
+                        if (result) {
+                            selector.delegate(".add-btn", "click", function(e) {
+                                var type = $(e.currentTarget).data("type");
+                                formModal.show(type, {}, function(data) {
+                                    selector.find("#" + type + "Table").bootstrapTable('refresh');
+                                });
+                            });
+                            selector.find('.admin-nav a').on('shown.bs.tab', function(e) {
+                                var type = $(e.currentTarget).data("type");
+                                list.initTable(type, selector.find("#" + type + "Table"), true);
+                            });
+                        } else {
+                            window.go("/signin");
+                        }
+                        deferred.resolve();
                     });
-                    selector.find('.admin-nav a').on('shown.bs.tab', function(e) {
-                        var type = $(e.currentTarget).data("type");
-                        list.initTable(type, selector.find("#" + type + "Table"), true);
-                    });
-                    return langx.Deferred.when(true);
-                } else {
-                    window.go("/signin");
-                }
+                });
             });
+            e.result = deferred.promise;
         },
 
         fill: function() {

@@ -13,18 +13,10 @@ module.exports = function() {
 
     return gulp.src(src)
         .pipe(sourcemaps.init())
-        .pipe(sass({}).on('error', sass.logError))
-        .pipe(rename("main.css"))
+        .pipe(sass({
+            outputStyle: 'compressed'
+        }).on('error', sass.logError))
+        .pipe(rename("main.min.css"))
         .pipe(sourcemaps.write())
         .pipe(gulp.dest(util.assetSrc + "stylesheets"));
 };
-
-// return gulp.src(src)
-//         .pipe(sourcemaps.init())
-//         .pipe(sass({
-//             outputStyle: 'compressed'
-//         }).on('error', sass.logError))
-//         .pipe(rename("main.min.css"))
-//         .pipe(sourcemaps.write())
-//         .pipe(gulp.dest(util.assetSrc + "stylesheets"));
-// };
