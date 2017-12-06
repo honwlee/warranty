@@ -12,7 +12,7 @@ define([
             e.result = server().connect("auth", "get", "check", null, {
                 noMsg: true
             }).then(function(result) {
-                if (result)  window.go("/admin");
+                if (result) window.go("/admin");
             });
         },
         rendering: function(e) {
@@ -33,12 +33,13 @@ define([
                 })
             };
             $("#loginBtn").on("click", signin);
-            $(document.body).off('keypress').on('keypress', function(e) {
+            $(".signin-container").off('keypress').on('keypress', function(e) {
                 if (e.keyCode === 13) signin();
             });
         },
 
         entered: function() {},
+
         exited: function() {}
     });
 });

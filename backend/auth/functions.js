@@ -46,7 +46,6 @@ exports.localAuth = function(username, password) {
     let result = User.findBy({
         username: username
     });
-    console.log("@@@@@@@@@@@@@@")
     if (null == result) {
         deferred.resolve({
             status: false,

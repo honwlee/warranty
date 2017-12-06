@@ -18,7 +18,7 @@ module.exports = function(app, router, ensureAuthenticated, rootPath) {
     // api
     let storage = multer.diskStorage({
             destination: function(req, file, cb) {
-                let _p = path.join(rootPath, 'assets/images/upload/');
+                let _p = path.join(rootPath, 'upload');
                 if (!fs.existsSync(_p)) fs.mkdirSync(_p);
                 cb(null, _p);
             },

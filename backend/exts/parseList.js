@@ -94,7 +94,7 @@ module.exports = {
                 return _.get(element, _sort);
             });
 
-            if (_order === 'DESC') {
+            if (_order.match(/desc/g)) {
                 chain = chain.reverse();
             }
         }

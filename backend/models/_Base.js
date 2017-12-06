@@ -13,7 +13,8 @@ const path = require('path'),
         jsondb = dbms(dbpath, {
             master_file_name: "master.json"
         });
-    };
+    },
+    relacedPath = path.join(__dirname, "../../public");
 //used in local-signup strategy
 class Model {
     constructor() {
@@ -61,7 +62,7 @@ class Model {
         args.createdAt = new Date();
         args.updatedAt = new Date();
         if (args.file && args.file.path) {
-            args.file.path = args.file.path.replace(path.join(__dirname, "../../src"), "");
+            args.file.path = args.file.path.replace(relacedPath, "");
         }
         let result = jsondb.get(name).push(args).last().write();
         return result;
@@ -75,7 +76,7 @@ class Model {
             args.createdAt = new Date();
             args.updatedAt = new Date();
             if (args.file && args.file.path) {
-                args.file.path = args.file.path.replace(path.join(__dirname, "../../src"), "");
+                args.file.path = args.file.path.replace(relacedPath, "");
             }
             result = Model.create(name, args);
         }
@@ -89,10 +90,10 @@ class Model {
         if (args.file && args.file.path) {
             let file = result.value().file;
             if (file && file.path) {
-                let fPath = path.join(__dirname, "../../src", file.path);
+                let fPath = path.join(relacedPath, file.path);
                 if (fs.existsSync(fPath)) fs.unlinkSync(fPath);
             }
-            args.file.path = args.file.path.replace(path.join(__dirname, "../../src"), "");
+            args.file.path = args.file.path.replace(relacedPath, "");
         } else {
             args.file = result.value().file;
         }
@@ -104,7 +105,7 @@ class Model {
         if (result.value()) {
             let file = result.value().file;
             if (file && file.path) {
-                let fPath = path.join(__dirname, "../../src", file.path);
+                let fPath = path.join(relacedPath, file.path);
                 if (fs.existsSync(fPath)) fs.unlinkSync(fPath);
             }
         }

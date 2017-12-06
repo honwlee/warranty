@@ -1,5 +1,6 @@
 'use strict';
 const SlaxServer = require('skylark-slax-nodeserver'),
+    express = require('express'),
     path = require('path'),
     logger = require('morgan'),
     favicon = require('serve-favicon'),
@@ -16,6 +17,7 @@ const SlaxServer = require('skylark-slax-nodeserver'),
     chalk = require('chalk'),
     slaxAppName = "warranty",
     routes = require('./backend/routes/routes'),
+    publicPath = path.join(__dirname, "public"),
     replacestream = require('replacestream');
 
 require('./backend/auth/passport.js');
@@ -61,7 +63,7 @@ SlaxServer.prototype.startBackend = function(callback) {
         }));
         app.use(passport.initialize());
         app.use(passport.session());
-
+        app.use(express.static(publicPath));
         // Session-persisted message middleware
         app.use(function(req, res, next) {
             let err = req.session.error,
@@ -79,7 +81,7 @@ SlaxServer.prototype.startBackend = function(callback) {
             next();
         });
 
-        routes(app, null, ensureAuthenticated, this.root);
+        routes(app, null, ensureAuthenticated, publicPath);
 
         app.use(errorHandler);
         backupDb();
@@ -118,5 +120,5 @@ if (!(npm_argv && npm_argv.cooked instanceof Array)) {
 
 serve("deploy/" + slaxAppName + ".slax", {
     port: npm_argv.cooked[3] || 8087,
-    root: path.join(__dirname, 'src')
+    // root: path.join(__dirname, "src")
 });

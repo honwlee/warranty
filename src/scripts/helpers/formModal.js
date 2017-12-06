@@ -143,10 +143,13 @@ define([
             return itemActions.formatWData(warranty);
         },
         show: function(type, data, callback, prepareData) {
-            this.modal = $("#formModal");
+            var modal = this.modal = $("#formModal");
             this["show_" + type](data, callback, prepareData);
-            this.modal.modal('show');
-            return this.modal;
+            modal.modal('show');
+            modal.off('keypress').on('keypress', function(e) {
+                if (e.keyCode === 13) modal.find(".save-btn").click();
+            });
+            return modal;
         },
 
         show_product: function(data, callback) {
@@ -207,6 +210,7 @@ define([
                     }
                 }
             });
+
             modal.find("#wForm input.thumbnail").on("change", function(e) {
                 self.files.warranty = this.files[0];
             });

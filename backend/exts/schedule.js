@@ -1,5 +1,8 @@
 const schedule = require('node-schedule');
 const rule = new schedule.RecurrenceRule();
+const copydir = require('copy-dir');
+const rimraf = require('rimraf');
+const mkdirp = require('mkdirp');
 const path = require('path');
 const fs = require("fs-extra");
 
@@ -31,13 +34,34 @@ function backupDb() {
     rule.second = 0;
 
     schedule.scheduleJob(rule, function() {
-    // schedule.scheduleJob('1-10 * * * * *', function() {
+        //schedule.scheduleJob('1-10 * * * * *', function() {
         let date = new Date();
-        let dateF = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate();
-        fs.copy(path.join(__dirname, '../dbs'), path.join(__dirname, '../backup/dbs.' + dateF), function(err) {
-            if (err) return console.error(err)
-            console.log('success!')
+
+        let dateF = date.getFullYear() + ("0" + (date.getMonth() + 1)).slice(-2) + ("0" + date.getDate()).slice(-2);
+        let backupPath = path.join(__dirname, '../../backup');
+        console.log("备份文件只保留最近6条数据");
+        fs.readdir(backupPath, function(err, files) {
+            files.filter(function(f) {
+                return f.match(/\d+/);
+            }).sort(function(a, b) {
+                return a < b ? 1 : -1;
+            }).forEach(function(file, index) {
+                if (index > 5) {
+                    let dp = path.join(backupPath, file);
+                    if (fs.existsSync(dp)) {
+                        rimraf.sync(dp);
+                    }
+                }
+            });
         });
+        let bp = path.join(backupPath, dateF);
+        mkdirp.sync(bp + "/dbs");
+        mkdirp.sync(bp + "/public");
+        console.log(path.join(__dirname, '../dbs'));
+        console.log(path.join(__dirname, '../../public'));
+
+        copydir.sync(path.join(__dirname, '../dbs'), path.join(bp, "dbs"));
+        copydir.sync(path.join(__dirname, '../../public'), path.join(bp, "public"));
         console.log(dateF);
         console.log('scheduleCronstyle:' + new Date());
     });

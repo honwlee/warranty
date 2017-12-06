@@ -5,5 +5,6 @@ require('./gulp')([
     'lib',
     'import',
     'sass',
+    'minify',
     'deploy'
 ]);
