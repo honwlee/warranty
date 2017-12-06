@@ -6,17 +6,17 @@ define([
 ], function($, skylarkjs, partialsTpl, handlebars) {
     var langx = skylarkjs.langx;
     var partials = {};
-    var selector = $(langx.trim(partialsTpl));
-    var _registryPartial = function(name, _selector) {
-        selector = _selector || selector;
+    var __selector = $(langx.trim(partialsTpl));
+    var _registryPartial = function(name, selector) {
+        selector = selector || __selector;
         selector.find("#" + name).each(function(index, partial) {
             handlebars.registerPartial(name, langx.trim($(partial).html()).replace(/\{\{&gt;/g, "{{>"));
             partials[name] = true;
         });
     }
     return {
-        get: function(name, _selector) {
-            if (!partials[name]) _registryPartial(name, _selector);
+        get: function(name, selector) {
+            if (!partials[name]) _registryPartial(name, selector);
         }
     }
 });

@@ -1,6 +1,7 @@
 ::-webkit-scrollbar {
     display: none;
 }
+
 .shadow {
     -webkit-box-shadow: 0px 0px 20px 5px rgba(0, 0, 0, 0.2);
     -moz-box-shadow: 0px 0px 20px 5px rgba(0, 0, 0, 0.2);
@@ -11,9 +12,11 @@
     text-align: center;
 }
 
+#mainWrapper {
+    opacity: 0;
+}
 
 .main {
-    opacity: 0;
     min-height: 530px;
     padding: 20px 0;
     overflow: hidden;
@@ -64,6 +67,6 @@
     border-radius: 50%;
     animation: pulsate 2s ease-out;
     animation-iteration-count: infinite;
-    opacity: 0;
+    opacity: 1;
     z-index: 999;
 }

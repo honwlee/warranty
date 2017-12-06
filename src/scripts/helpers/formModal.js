@@ -33,8 +33,8 @@ define([
             if (!(/(gif|jpg|jpeg|png)$/i).test(formart)) {
                 return toastr.error("缩略图格式只支持gif、jpg或者png！");
             }
-            delete opt.file;
         }
+        delete opt.file;
         for (var key in opt) {
             formData.append(key, opt[key]);
         }
@@ -49,7 +49,7 @@ define([
                     if (result.status) {
                         callback(result.result);
                     } else {
-                        if(result.auth) {
+                        if (result.auth) {
                             toastr.error("未登录或者session失效，请登录后再操作！");
                             window.go("/sigin");
                         } else if (result.validate) {
@@ -211,8 +211,6 @@ define([
                 self.files.warranty = this.files[0];
             });
         },
-
-
 
         show_dealer: function(data, callback, prepareData) {
             var self = this,

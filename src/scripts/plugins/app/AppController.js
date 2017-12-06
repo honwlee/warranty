@@ -65,7 +65,7 @@ define([
                     }
                 });
             };
-            var main = $("#main")[0];
+            var main = skylarkjs.finder.find("#mainWrapper");
             if (main) {
                 throb = window.addThrob(main, function() {
                     require(["bootstrap"], function() {

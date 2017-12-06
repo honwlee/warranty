@@ -51,7 +51,7 @@ SlaxServer.prototype.startBackend = function(callback) {
         app.use(cookieParser());
         app.use(methodOverride('X-HTTP-Method-Override'));
         app.use(session({
-            secret: 'supernova',
+            secret: 'warrantysupernova',
             saveUninitialized: true,
             resave: false,
             cookie: {

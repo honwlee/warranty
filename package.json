@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "browse": "sjs browse ./deploy/warranty.slax",
-    "serve": "pm2 start server.js",
+    "serve": "node server.js",
     "build": "sjs build .",
     "deploy": "sjs deploy .",
     "route-add": "sjs routes add . ",
