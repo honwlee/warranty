@@ -1,8 +1,4 @@
-define([
-    "text!./en.json",
-    "text!./zh-cn.json",
-    "text!./zh-tw.json"
-], function(en, zhCn, zhTw) {
+define([], function() {
     var locale = {
         zhCn: {
             "warrantySearch": "质保查询",
