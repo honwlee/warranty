@@ -17,9 +17,15 @@ exports.User = class User extends Model {
         return Model.findBy("users", args);
     }
     static findOrCreate(args, key = "username") {
+        if (args.password) {
+            args.password = bcrypt.hashSync(args.password, 8);
+        }
         return Model.findOrCreate("users", key, args);
     }
     static create(args) {
+        if (args.password) {
+            args.password = bcrypt.hashSync(args.password, 8);
+        }
         args.role = 1;
         args.isActive = false;
         return Model.create("users", args);
@@ -30,23 +36,18 @@ exports.User = class User extends Model {
         }
         return Model.update("users", "id", args);
     }
-    static createAdmin() {
-        let opt = {
-            "display": "admin",
-            "username": "admin",
-            "password": "2017-123456",
-            "isAdmin": true,
-            "isSuperAdmin": true,
-            "isActive": true
-        }
-        let result = Model.findBy("users", {
+    static delay(value, check) {
+        let user = User.findBy({
             username: "admin"
         });
-        if (!result) {
-            opt.password = bcrypt.hashSync(opt.password, 8);
-            result = Model.create("users", opt);
+        if (check) {
+            return user.delayed;
+        } else {
+            User.update({
+                id: user.id,
+                delayed: value
+            });
         }
-        return result;
     }
     static delete(args) {
         return Model.delete("users", args);

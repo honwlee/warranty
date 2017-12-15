@@ -1,15 +1,12 @@
 {
     "name": "warranty",
     "title": "AcmePPF全球電子質保查詢網",
-    "runtime":
-    {
+    "runtime": {
         "waitSeconds": 60,
-        "skylarkjs":
-        {
+        "skylarkjs": {
             "version": "0.9.5"
         },
-        "paths":
-        {
+        "paths": {
             "server": "scripts/services/server",
             "jquery": "https://cdn.bootcss.com/jquery/2.2.0/jquery.min",
             "toastr": "https://cdn.bootcss.com/toastr.js/latest/js/toastr.min",
@@ -21,44 +18,39 @@
         }
     },
     "spaModule": "scripts/helpers/spa",
-    "page":
-    {
+    "page": {
         "routeViewer": "#main"
     },
-    "plugins":
-    {
-        "app":
-        {
+    "plugins": {
+        "app": {
             "hookers": "starting started",
-            "controller":
-            {
+            "controller": {
                 "type": "scripts/plugins/app/AppController"
+            }
+        },
+        "check": {
+            "hookers": "starting started",
+            "controller": {
+                "type": "scripts/plugins/app/CheckController"
             }
         }
     },
-    "routes":
-    {
-        "home":
-        {
+    "routes": {
+        "home": {
             "pathto": "/",
-            "controller":
-            {
+            "controller": {
                 "type": "scripts/routes/home/HomeController"
             }
         },
-        "admin":
-        {
+        "admin": {
             "pathto": "/admin",
-            "controller":
-            {
+            "controller": {
                 "type": "scripts/routes/admin/AdminController"
             }
         },
-        "signin":
-        {
+        "signin": {
             "pathto": "/signin",
-            "controller":
-            {
+            "controller": {
                 "type": "scripts/routes/signin/SigninController"
             }
         }

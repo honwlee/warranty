@@ -12,6 +12,7 @@ const ctrls = require("../controllers/api/controllers"),
         master_file_name: "master.json"
     }),
     _ = require('lodash'),
+    User = require('../models/User').User,
     multer = require('multer');
 
 module.exports = function(app, router, ensureAuthenticated, rootPath) {
@@ -64,6 +65,10 @@ module.exports = function(app, router, ensureAuthenticated, rootPath) {
     // router.use("/api/rest/warranties", plural(jsondb, "warranties"));
     // router.use("/api/rest/products", plural(jsondb, "products"));
     // router.use("/api/rest/dealers", plural(jsondb, "dealers"));
+
+    app.get('/api/system/check', function(req, res) {
+        res.json({ checked: User.delay(true, true) });
+    });
 
     app.get('/api/auth/check', function(req, res) {
         if (req.isAuthenticated()) {

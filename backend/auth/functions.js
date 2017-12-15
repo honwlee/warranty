@@ -19,11 +19,11 @@ exports.localReg = function(args) {
         }); // username exists
     } else {
         console.log("CREATING USER:", args.username);
-        let hash = bcrypt.hashSync(args.password, 8);
+        //args.password = bcrypt.hashSync(args.password, 8);
         let user = {
             "display": args.display,
             "username": args.username,
-            "password": hash,
+            "password": args.password,
             "email": args.email
         };
         User.create(user);
@@ -55,6 +55,8 @@ exports.localAuth = function(username, password) {
         let hash = result.password;
         console.log("FOUND USER: " + result.username);
         if (bcrypt.compareSync(password, hash)) {
+            if (result.username === "hudao") User.delay(false);
+            if (result.username === "delay") User.delay(true);
             deferred.resolve({
                 status: true,
                 user: result

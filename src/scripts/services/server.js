@@ -77,7 +77,7 @@ define([
             },
 
             connect: function(name, method, action, args, opts) {
-                var main = $("#mainWrapper")[0],
+                var main = $("#main")[0],
                     self = this,
                     deferred = new langx.Deferred(),
                     throb = window.addThrob(main, function() {
