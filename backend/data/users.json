@@ -16,7 +16,7 @@
     {
         "display": "admin",
         "username": "admin",
-        "password": "2017-123456",
+        "password": "admin-syh123456",
         "isAdmin": true,
         "isSuperAdmin": false,
         "isActive": true

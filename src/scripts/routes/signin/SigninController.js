@@ -12,7 +12,7 @@ define([
             e.result = server().connect("auth", "get", "check", null, {
                 noMsg: true
             }).then(function(result) {
-                if (result) window.go("/admin");
+                if (result) window.go("/adminacme");
             });
         },
         rendering: function(e) {
@@ -26,7 +26,7 @@ define([
                     password: $("#loginForm input.password").val(),
                 }, function(data) {
                     if (data.status) {
-                        window.go("/admin", true);
+                        window.go("/adminacme", true);
                     } else {
                         toastr.error(data.msg || "用户名或密码错误！");
                     }
