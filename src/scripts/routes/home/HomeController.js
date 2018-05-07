@@ -14,7 +14,7 @@ define([
         selector = $(langx.trim(homeTpl));
     return spa.RouteController.inherit({
         klassName: "HomeController",
-        language: "zh-CN",
+        language: "zh-TW",
         preparing: function(e) {
             var self = this,
                 lang = this.language = navigator.language || navigator.userLanguage,
@@ -60,8 +60,8 @@ define([
             $("#headerNav").html('<li>' +
                 '<select name="language" class="form-control">' +
                 '<option value="en">English</option>' +
-                '<option value="zh-TW"> 繁體 </option>' +
-                '<option selected="" value="zh-CN"> 简体 </option>' +
+                '<option selected="" value="zh-TW"> 繁體 </option>' +
+                '<option value="zh-CN"> 简体 </option>' +
                 '</select>' +
                 '</li>'
             ).find("select").off("change").on("change", function(e) {
