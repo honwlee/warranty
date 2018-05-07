@@ -17,7 +17,8 @@ define([
         language: "zh-TW",
         preparing: function(e) {
             var self = this,
-                lang = this.language = navigator.language || navigator.userLanguage,
+                // lang = this.language = navigator.language || navigator.userLanguage,
+                lang = this.language,
                 dealer = new DealerSearch(),
                 product = new ProductSearch(),
                 warranty = new WarrantySearch();
