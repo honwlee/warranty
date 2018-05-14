@@ -20,8 +20,13 @@ module.exports = {
 
     update: function(req, res) {
         req.body.file = req.file;
+        // if (req.body.override) {
+        // delete req.body.override;
         let product = Product.update(req.body);
         res.json({ status: true, result: product });
+        // } else {
+        // validate(Product, { productRoll: req.body.productRoll }, req, res, "update");
+        // }
     },
 
     create: function(req, res) {

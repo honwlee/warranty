@@ -112,13 +112,13 @@ function serve(slaxApp, options) {
     });
     server.startBackend();
 }
-const npm_argv = JSON.parse(process.env.npm_config_argv || "{}");
+// const npm_argv = JSON.parse(process.env.npm_config_argv || "{}");
 
-if (!(npm_argv && npm_argv.cooked instanceof Array)) {
-    throw TypeError("npm argv Error"); // 异常的抛出会终止npm install命令
-}
+// if (!(npm_argv && npm_argv.cooked instanceof Array)) {
+//     throw TypeError("npm argv Error"); // 异常的抛出会终止npm install命令
+// }
 
 serve("deploy/" + slaxAppName + ".slax", {
-    port: npm_argv.cooked[3] || 8087,
+    port: 8087,
     // root: path.join(__dirname, "src")
 });

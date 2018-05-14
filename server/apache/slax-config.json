@@ -1,0 +1,58 @@
+{
+    "name": "warranty",
+    "title": "AcmePPF全球電子質保查詢網",
+    "runtime": {
+        "waitSeconds": 60,
+        "skylarkjs": {
+            "version": "0.9.5"
+        },
+        "paths": {
+            "server": "scripts/services/server",
+            "jquery": "https://cdn.bootcss.com/jquery/2.2.0/jquery.min",
+            "toastr": "https://cdn.bootcss.com/toastr.js/latest/js/toastr.min",
+            "bootstrapTb": "https://cdn.bootcss.com/bootstrap-table/1.11.1/bootstrap-table.min",
+            "bootstrapTbZh": "https://cdn.bootcss.com/bootstrap-table/1.11.1/locale/bootstrap-table-zh-CN.min",
+            "bootstrap": "https://cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.min",
+            "handlebars": "https://cdn.bootcss.com/handlebars.js/4.0.11/handlebars.amd.min",
+            "text": "https://cdn.bootcss.com/require-text/2.0.12/text.min"
+        }
+    },
+    "spaModule": "scripts/helpers/spa",
+    "page": {
+        "routeViewer": "#main"
+    },
+    "plugins": {
+        "app": {
+            "hookers": "starting started",
+            "controller": {
+                "type": "scripts/plugins/app/AppController"
+            }
+        },
+        "check": {
+            "hookers": "starting started",
+            "controller": {
+                "type": "scripts/plugins/app/CheckController"
+            }
+        }
+    },
+    "routes": {
+        "home": {
+            "pathto": "/",
+            "controller": {
+                "type": "scripts/routes/home/HomeController"
+            }
+        },
+        "admin": {
+            "pathto": "/adminacme",
+            "controller": {
+                "type": "scripts/routes/admin/AdminController"
+            }
+        },
+        "signin": {
+            "pathto": "/signin",
+            "controller": {
+                "type": "scripts/routes/signin/SigninController"
+            }
+        }
+    }
+}

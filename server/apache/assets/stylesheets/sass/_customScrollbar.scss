@@ -1,0 +1,27 @@
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #eaeaea;
+    border-left: 1px solid #cecece;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #cecece;
+    &:hover {
+        background-color: #aaa;
+    }
+}
+
+::-webkit-scrollbar-track,
+::-webkit-scrollbar-thumb {
+    border-radius: 0;
+    box-shadow: none;
+    border: 0;
+}
+/* overides metro scrolbars in IE10 and makes them look like a default scrollbar */
+
+@-ms-viewport {
+    width: auto !important;
+}

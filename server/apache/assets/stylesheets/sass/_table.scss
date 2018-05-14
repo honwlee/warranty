@@ -1,0 +1,29 @@
+table {
+    border-collapse: collapse;
+    border: 1px solid #eee;
+    border-bottom: 2px solid #ddd;
+    tr {
+        &:hover {
+            background: #f4f4f4;
+
+            td {
+                color: #555;
+            }
+        }
+    }
+    th,
+    td {
+        color: #999;
+        border: 1px solid #ccc;
+        padding: 12px 35px;
+        border-collapse: collapse;
+    }
+    th {
+        color: #333;
+        text-transform: uppercase;
+        font-size: 12px;
+        &.last {
+            border-right: none;
+        }
+    }
+}

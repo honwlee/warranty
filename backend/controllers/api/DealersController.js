@@ -34,8 +34,13 @@ module.exports = {
 
     update: function(req, res) {
         req.body.file = req.file;
+        // if (req.body.override) {
+        // delete req.body.override;
         let dealer = Dealer.update(req.body);
         res.json({ status: true, result: dealer });
+        // } else {
+        // validate(Dealer, { company: req.body.company }, req, res, "update");
+        // }
     },
 
     create: function(req, res) {

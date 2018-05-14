@@ -20,15 +20,23 @@ module.exports = {
 
     update: function(req, res) {
         req.body.file = req.file;
+        // if (req.body.override) {
+        // delete req.body.override;
         let warranty = Warranty.update(req.body);
         res.json({ status: true, result: warranty });
+        // } else {
+        //     validate(Warranty, {
+        //         warrantyID: req.body.warrantyID,
+        //         // licensePlate: req.body.licensePlate
+        //     }, req, res, "update");
+        // }
     },
 
     create: function(req, res) {
         req.body.file = req.file;
         validate(Warranty, {
             warrantyID: req.body.warrantyID,
-            licensePlate: req.body.licensePlate
+            // licensePlate: req.body.licensePlate
         }, req, res);
     },
 
