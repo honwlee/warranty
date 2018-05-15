@@ -22,12 +22,16 @@ const SlaxServer = require('skylark-slax-nodeserver'),
 
 require('./backend/auth/passport.js');
 
-function ensureAuthenticated(req, res, next) {
+function ensureAuthenticated(req, res, next, redirect) {
     if (req.isAuthenticated()) {
         return next();
     }
-    // res.redirect('/signin')
-    res.json({ status: false, auth: true, msg: "please login!" });
+    console.log(2222222);
+    if (redirect) {
+        res.redirect('/signin');
+    } else {
+        res.json({ status: false, auth: true, msg: "please login!" });
+    }
 }
 
 function errorHandler(err, req, res, next) {

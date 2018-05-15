@@ -70,7 +70,7 @@ passport.use('local-signup', new LocalStrategy({ passReqToCallback: true }, //al
 ));
 
 // Simple route middleware to ensure user is authenticated.
-function ensureAuthenticated(req, res, next) {
+function ensureAuthenticated(req, res, next, redirect) {
     return next();
     // if (req.isAuthenticated()) {
     //     return next();
