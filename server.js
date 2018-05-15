@@ -38,11 +38,11 @@ SlaxServer.prototype.startBackend = function(callback) {
     let app = this._express;
     if (app) {
         app.set('views', path.join(__dirname, 'views'));
-        app.engine('handlebars', exphbs.create({
-            defaultLayout: 'main',
-            layoutsDir: path.join(__dirname, 'views/layouts'),
-            partialsDir: path.join(__dirname, 'views/partials')
-        }).engine);
+        var hbs = exphbs.create({
+            defaultLayout: 'main'
+        });
+        app.set('views', path.join(__dirname, 'backend/views'));
+        app.engine('handlebars', hbs.engine);
         app.set('view engine', 'handlebars');
 
         // uncomment after placing your favicon in /public

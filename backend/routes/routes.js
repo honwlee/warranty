@@ -36,6 +36,11 @@ module.exports = function(app, router, ensureAuthenticated, rootPath) {
     // }));
     //
 
+    app.get('/password', ensureAuthenticated, function(req, res, next) {
+        res.render('password', { layout: null, isSuperAdmin: req.user.isSuperAdmin, userId: req.user.id });
+        //res.sendFile(path.join(__dirname, "../views/auth/signin.html"));
+    });
+
     app.post('/login', function(req, res, next) {
         passport.authenticate('local-signin', function(err, user, info) {
             if (err) { return res.json({ status: false, msg: err }); }

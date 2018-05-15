@@ -163,7 +163,7 @@ define([
             modal.find(".modal-title").html(text);
             modal.find(".save-btn").off("click").on("click", function() {
                 var result = validates.productRoll.check();
-                if (result.error) {
+                if (!data.productRoll && result.error) {
                     toastr.error(result.msg);
                 } else {
                     save("products", modal, {
@@ -192,7 +192,7 @@ define([
             modal.find(".modal-title").html(text);
             modal.find(".save-btn").off("click").on("click", function() {
                 var result = validates.warrantyID.check();
-                if (result.error) {
+                if (!data.warrantyID && result.error) {
                     toastr.error(result.msg);
                 } else {
                     var result = validates.licensePlate.check();
@@ -245,7 +245,7 @@ define([
                 modal.find(".modal-title").html(text);
                 modal.find(".save-btn").off("click").on("click", function() {
                     var result = validates.company.check();
-                    if (result.error) {
+                    if (!data.company && result.error) {
                         toastr.error(result.msg);
                     } else {
                         save("dealers", modal, {

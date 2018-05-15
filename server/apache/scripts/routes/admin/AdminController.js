@@ -56,7 +56,10 @@ define([
         },
 
         entered: function() {
-            $("#headerNav").html('<li><a class="nav-item" data-spa-router="false" href="/logout">退出</a></li>');
+            $("#headerNav").html(
+                '<li><a class="nav-item" data-spa-router="false" href="/logout">退出</a></li>' +
+                '<li><a class="nav-item" data-spa-router="false" href="/password">更改密码</a></li>'
+            );
         },
         exited: function() {}
     });
