@@ -17,6 +17,7 @@ const ctrls = require("../controllers/api/controllers"),
 
 module.exports = function(app, router, ensureAuthenticated, rootPath) {
     // api
+    if (!fs.existsSync(rootPath)) mkdirp(rootPath);
     let storage = multer.diskStorage({
             destination: function(req, file, cb) {
                 let _p = path.join(rootPath, 'upload');

@@ -3,12 +3,12 @@ var runSequence = require('run-sequence');
 
 
 module.exports = function(callback) {
-	return runSequence(
-    	'clean',
-    	'src',
-    	'lib',
-    	'sass',
-    	'deploy',
-    	callback
-  	);
+    return runSequence(
+        'clean',
+        'minify',
+        'lib',
+        'sass',
+        'deploy',
+        callback
+    );
 };

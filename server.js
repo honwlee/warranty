@@ -26,7 +26,6 @@ function ensureAuthenticated(req, res, next, redirect) {
     if (req.isAuthenticated()) {
         return next();
     }
-    console.log(2222222);
     if (redirect) {
         res.redirect('/signin');
     } else {

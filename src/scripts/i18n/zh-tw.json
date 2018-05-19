@@ -2,7 +2,7 @@
     "warrantySearch": "保護查詢",
     "productAuthenticityQuery": "產品真偽查詢",
     "province": "省",
-    "city": "市",    
+    "city": "市",
     "operate": "操作",
     "colon": "：",
     "warrantyID": "保護 ID",
@@ -401,11 +401,11 @@
     "xiangGang": "香港",
     "heZeShi": "菏澤市",
     "aoMen": "澳門",
-    "dealerEmptyResult--html": "<p>我們建議您去我們ACME的授權經銷商，獲取我們提供質保的十年產品。</p><p>所有的產品都是在我們ACME經銷商的授權，請訪問我們的網站找到你附近的ACME授權經銷商和更多產品資訊。</p><p>請訪問：：<a target=\"_blank\" href=\"http://www.acme-car.com\">http://www.acme-car.com</a></p>",
+    "dealerEmptyResult--html": "<p>我們建議您去我們ACME的授權經銷商，獲取我們提供質保的十年產品。</p><p>所有的產品都是在我們ACME經銷商的授權，請訪問我們的網站找到你附近的ACME授權經銷商和更多產品資訊。</p><p>請訪問：<a target=\"_blank\" href=\"http://www.acme-car.com\">http://www.acme-car.com</a></p>",
     "thanksInformation": "謝謝您對Acme的支持與關注，您的授權經銷商査詢資訊如下：",
     "thanksWarranty": "謝謝您對Acme的支持與關注，您的質保資訊如下:",
     "warrantyEmptyResult--html": "<p>很抱歉，您輸入的數位在Acme官方電子質保系統中並無相關資訊，請查明後重新輸入。</p><p>Acme保證對我們的產品和客戶提供最高品質的服務！</p> <ol> <li>凡經由Acme授權認證的店家及經銷商安裝的車身透明保護膜產品皆享有XPEL官方提供的10年質保。 </li><li>在質保期間內，除人為，自然衰退或其他不可抗拒因素發生產品故障，客戶均可享受Acme提供的免費維修服務； </li><li>受保瑕疵範圍包括：不起斑點，不染色，不變黃，不起泡，不脫膠。如有其他因素導致產品損壞，請至Acme授權店家及經銷商尋求維修及服務。</li></ol><p>請訪問：<a target=\"_blank\" href=\"http://www.acme-car.com\">http://www.acme-car.com</a></p>",
     "thanksProduct": "謝謝您對Acme的支持與關注，您的產品真偽查詢資訊如下：",
-    "productEmptyResult--html": "<p>很抱歉，無此產品資訊，您購買的可能為假冒產品，請確認輸入正確後再次査詢。</p><p>我們建議您到Acme授權認證的店家施工，以保障您10年質保的權益。所有Acme授權認證的經銷商及施工店家都可在官網上找到資訊。</p><p>請訪問：<a target=\"_blank\" href=\"http://www..acme-car.com\">http://www.acme-car.com</a></p>"
+    "productEmptyResult--html": "<p>很抱歉，無此產品資訊，您購買的可能為假冒產品，請確認輸入正確後再次査詢。</p><p>我們建議您到Acme授權認證的店家施工，以保障您10年質保的權益。所有Acme授權認證的經銷商及施工店家都可在官網上找到資訊。</p><p>請訪問：<a target=\"_blank\" href=\"http://www.acme-car.com\">http://www.acme-car.com</a></p>"
 
 }

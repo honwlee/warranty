@@ -409,7 +409,7 @@ define([], function() {
             "thanksWarranty": "谢谢您对Acme的支持与关注，您的质保信息如下：",
             "warrantyEmptyResult--html": "<p>很抱歉，您输入的数字在Acme官方电子质保系统中并无相关信息，请查明后重新输入。</p><p>Acme保证对我们的产品和客户提供最高品质的服务！</p> <ol> <li>凡经由Acme授权认证的店家及经销商安装的车身透明保护膜产品皆享有XPEL官方提供的10年质保。 </li><li>在质保期间内，除人为，自然衰退或其他不可抗拒因素发生产品故障，客户均可享受Acme提供的免费维修服务; </li><li>受保瑕疵范围包括：不起斑点，不染色，不变黄，不起泡，不脱胶。如有其他因素导致产品损坏，请至Acme授权店家及经销商寻求维修及服务。</li></ol><p>请访问：<a target=\"_blank\" href=\"http://www.acme-car.com\">http://www.acme-car.com</a></p>",
             "thanksProduct": "谢谢您对Acme的支持与关注，您的产品真伪查询信息如下：",
-            "productEmptyResult--html": "<p>很抱歉，无此产品信息，您购买的可能为假冒产品，请确认输入正确后再次查询。</p><p>我们建议您到Acme授权认证的店家施工，以保障您10年质保的权益。 所有Acme授权认证的经销商及施工店家都可在官网上找到信息。</p><p>请访问：<a target=\"_blank\" href=\"http://www..acme-car.com\">http://www.acme-car.com</a></p>"
+            "productEmptyResult--html": "<p>很抱歉，无此产品信息，您购买的可能为假冒产品，请确认输入正确后再次查询。</p><p>我们建议您到Acme授权认证的店家施工，以保障您10年质保的权益。 所有Acme授权认证的经销商及施工店家都可在官网上找到信息。</p><p>请访问：<a target=\"_blank\" href=\"http://www.acme-car.com\">http://www.acme-car.com</a></p>"
 
         },
         en: {
@@ -821,7 +821,7 @@ define([], function() {
             "thanksWarranty": "Thank you for your support and attention to Acme, your warranty information is as follows:",
             "warrantyEmptyResult--html": "<p>The number you entered did not match any of our recordIt doesnt seem that the installation was performed by an authorized ACME dealer Please check the number and enter it again.</p><p>An installation performed by our authorized ACME dealer is eligible for 10 year product To find more information and to find an authorized ACME dealer</p> <p>Please visit：<a target=\"_blank\" href=\"http://www.acme-car.com\">http://www.acme-car.com</a></p>",
             "thanksProduct": "Thank you for your support and attention to Acme, your product authenticity inquiry information is as follows：",
-            "productEmptyResult--html": "<p>We are sorry Your entry does not match any of our record. Please verify the number and enter it again.</p><p>We recommend you to go to one of our authorized ACME dealers to get your installation done. We provide 10 years warranty to all our products that are done in our ACME authorized dealership. Please visit our website to find an authorized dealer near you and more information about ACME products.</p><p>Please visit：<a target=\"_blank\" href=\"http://www..acme-car.com\">http://www.acme-car.com</p>"
+            "productEmptyResult--html": "<p>We are sorry Your entry does not match any of our record. Please verify the number and enter it again.</p><p>We recommend you to go to one of our authorized ACME dealers to get your installation done. We provide 10 years warranty to all our products that are done in our ACME authorized dealership. Please visit our website to find an authorized dealer near you and more information about ACME products.</p><p>Please visit：<a target=\"_blank\" href=\"http://www.acme-car.com\">http://www.acme-car.com</p>"
 
         },
         zhTw: {
@@ -1227,12 +1227,12 @@ define([], function() {
             "xiangGang": "香港",
             "heZeShi": "菏澤市",
             "aoMen": "澳門",
-            "dealerEmptyResult--html": "<p>我們建議您去我們ACME的授權經銷商，獲取我們提供質保的十年產品。</p><p>所有的產品都是在我們ACME經銷商的授權，請訪問我們的網站找到你附近的ACME授權經銷商和更多產品資訊。</p><p>請訪問：：<a target=\"_blank\" href=\"http://www.acme-car.com\">http://www.acme-car.com</a></p>",
+            "dealerEmptyResult--html": "<p>我們建議您去我們ACME的授權經銷商，獲取我們提供質保的十年產品。</p><p>所有的產品都是在我們ACME經銷商的授權，請訪問我們的網站找到你附近的ACME授權經銷商和更多產品資訊。</p><p>請訪問：<a target=\"_blank\" href=\"http://www.acme-car.com\">http://www.acme-car.com</a></p>",
             "thanksInformation": "謝謝您對Acme的支持與關注，您的授權經銷商査詢資訊如下：",
             "thanksWarranty": "謝謝您對Acme的支持與關注，您的質保資訊如下:",
             "warrantyEmptyResult--html": "<p>很抱歉，您輸入的數位在Acme官方電子質保系統中並無相關資訊，請查明後重新輸入。</p><p>Acme保證對我們的產品和客戶提供最高品質的服務！</p> <ol> <li>凡經由Acme授權認證的店家及經銷商安裝的車身透明保護膜產品皆享有XPEL官方提供的10年質保。 </li><li>在質保期間內，除人為，自然衰退或其他不可抗拒因素發生產品故障，客戶均可享受Acme提供的免費維修服務； </li><li>受保瑕疵範圍包括：不起斑點，不染色，不變黃，不起泡，不脫膠。如有其他因素導致產品損壞，請至Acme授權店家及經銷商尋求維修及服務。</li></ol><p>請訪問：<a target=\"_blank\" href=\"http://www.acme-car.com\">http://www.acme-car.com</a></p>",
             "thanksProduct": "謝謝您對Acme的支持與關注，您的產品真偽查詢資訊如下：",
-            "productEmptyResult--html": "<p>很抱歉，無此產品資訊，您購買的可能為假冒產品，請確認輸入正確後再次査詢。</p><p>我們建議您到Acme授權認證的店家施工，以保障您10年質保的權益。所有Acme授權認證的經銷商及施工店家都可在官網上找到資訊。</p><p>請訪問：<a target=\"_blank\" href=\"http://www..acme-car.com\">http://www.acme-car.com</a></p>"
+            "productEmptyResult--html": "<p>很抱歉，無此產品資訊，您購買的可能為假冒產品，請確認輸入正確後再次査詢。</p><p>我們建議您到Acme授權認證的店家施工，以保障您10年質保的權益。所有Acme授權認證的經銷商及施工店家都可在官網上找到資訊。</p><p>請訪問：<a target=\"_blank\" href=\"http://www.acme-car.com\">http://www.acme-car.com</a></p>"
         }
     };
     // var i18n = {

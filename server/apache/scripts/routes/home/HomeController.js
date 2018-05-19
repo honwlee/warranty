@@ -1,75 +1,8 @@
-define([
-    "jquery",
-    "skylarkjs",
-    "toastr",
-    "scripts/i18n/i18n",
-    "scripts/helpers/DealerSearch",
-    "scripts/helpers/ProductSearch",
-    "scripts/helpers/WarrantySearch",
-    "text!scripts/routes/home/home.html"
-], function($, skylarkjs, toastr, i18n, DealerSearch, ProductSearch, WarrantySearch, homeTpl) {
-
-    var spa = skylarkjs.spa,
-        langx = skylarkjs.langx,
-        selector = $(langx.trim(homeTpl));
-    return spa.RouteController.inherit({
-        klassName: "HomeController",
-        language: "zh-TW",
-        preparing: function(e) {
-            var self = this,
-                // lang = this.language = navigator.language || navigator.userLanguage,
-                lang = this.language,
-                dealer = new DealerSearch(),
-                product = new ProductSearch(),
-                warranty = new WarrantySearch();
-            product.getDom().appendTo(selector.find("#sProductT .content").empty());
-            warranty.getDom().appendTo(selector.find("#sWarrantyT .content").empty());
-            dealer.on("citiesLoaded", function() {
-                self.selectLanguage(selector.find("#cityS"), self.language);
-            });
-            dealer.on("searched", function() {
-                self.selectLanguage(selector.find(".result-container"), self.language);
-            });
-            product.on("searched", function() {
-                self.selectLanguage(selector.find(".result-container"), self.language);
-            });
-            warranty.on("searched", function() {
-                self.selectLanguage(selector.find(".result-container"), self.language);
-            });
-            e.result = dealer.preparing().then(function() {
-                dealer.getDom().appendTo(selector.find("#sDealerT .content").empty());
-                self.selectLanguage(selector, lang);
-                $("#headerNav").find('selector').val(lang);
-            });
-        },
-
-        selectLanguage: function(container, name) {
-            container = container || selector;
-            i18n.select(container, name);
-        },
-
-        rendering: function(e) {
-            e.content = selector;
-        },
-
-        rendered: function() {
-            selector.find('#tabUl a[href="#sWarrantyT"]').tab('show');
-        },
-
-        entered: function() {
-            var self = this;
-            $("#headerNav").html('<li>' +
-                '<select name="language" class="form-control">' +
-                '<option value="en">English</option>' +
-                '<option selected="" value="zh-TW"> 繁體 </option>' +
-                '<option value="zh-CN"> 简体 </option>' +
-                '</select>' +
-                '</li>'
-            ).find("select").off("change").on("change", function(e) {
-                self.language = this.value;
-                self.selectLanguage(selector, this.value);
-            });
-        },
-        exited: function() {}
-    });
-});
+/**
+ * warranty - 
+ * @author 
+ * @version v0.0.0
+ * @link 
+ * @license 
+ */
+define(["jquery","skylarkjs","toastr","scripts/i18n/i18n","scripts/helpers/DealerSearch","scripts/helpers/ProductSearch","scripts/helpers/WarrantySearch","text!scripts/routes/home/home.html"],function(e,n,t,a,o,r,i,s){var c=n.spa,l=n.langx,u=e(l.trim(s));return c.RouteController.inherit({klassName:"HomeController",language:"zh-TW",preparing:function(n){var t=this,a=this.language,s=new o,c=new r,l=new i;c.getDom().appendTo(u.find("#sProductT .content").empty()),l.getDom().appendTo(u.find("#sWarrantyT .content").empty()),s.on("citiesLoaded",function(){t.selectLanguage(u.find("#cityS"),t.language)}),s.on("searched",function(){t.selectLanguage(u.find(".result-container"),t.language)}),c.on("searched",function(){t.selectLanguage(u.find(".result-container"),t.language)}),l.on("searched",function(){t.selectLanguage(u.find(".result-container"),t.language)}),n.result=s.preparing().then(function(){s.getDom().appendTo(u.find("#sDealerT .content").empty()),t.selectLanguage(u,a),e("#headerNav").find("selector").val(a)})},selectLanguage:function(e,n){e=e||u,a.select(e,n)},rendering:function(e){e.content=u},rendered:function(){u.find('#tabUl a[href="#sWarrantyT"]').tab("show")},entered:function(){var n=this;e("#headerNav").html('<li><select name="language" class="form-control"><option value="en">English</option><option selected="" value="zh-TW"> 繁體 </option><option value="zh-CN"> 简体 </option></select></li>').find("select").off("change").on("change",function(e){n.language=this.value,n.selectLanguage(u,this.value)})},exited:function(){}})});

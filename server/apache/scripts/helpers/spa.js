@@ -1,40 +1,8 @@
-define([
-    "jquery",
-    "skylarkjs"
-], function($, skylarkjs) {
-    var spa = skylarkjs.spa,
-        router = skylarkjs.router,
-        langx = skylarkjs.langx,
-        velm = skylarkjs.velm;
-
-    function createEvent(type, props) {
-        var e = new CustomEvent(type, props);
-        return langx.safeMixin(e, props);
-    }
-    spa.Application = spa.Application.inherit({
-        showPopPage: function(node) {
-            this.getPlugin("popPage").controller.show(node);
-        },
-
-        hidePopPage: function() {
-            this.getPlugin("popPage").controller.hide();
-        },
-
-        getPlugin: function(key) {
-            return key ? this._plugins[key] : this._plugins;
-        }
-    });
-    spa.Page = spa.Page.inherit({
-        refresh: function() {
-            var curCtx = router.current(),
-                prevCtx = router.previous(),
-                content = curCtx.route.render(curCtx);
-            $(this._rvc).html(content);
-            curCtx.route.trigger(createEvent("rendered", {
-                route: curCtx.route,
-                content: content
-            }));
-        }
-    });
-    return spa;
-});
+/**
+ * warranty - 
+ * @author 
+ * @version v0.0.0
+ * @link 
+ * @license 
+ */
+define(["jquery","skylarkjs"],function(e,n){function r(e,n){var r=new CustomEvent(e,n);return o.safeMixin(r,n)}var t=n.spa,i=n.router,o=n.langx;n.velm;return t.Application=t.Application.inherit({showPopPage:function(e){this.getPlugin("popPage").controller.show(e)},hidePopPage:function(){this.getPlugin("popPage").controller.hide()},getPlugin:function(e){return e?this._plugins[e]:this._plugins}}),t.Page=t.Page.inherit({refresh:function(){var n=i.current(),t=(i.previous(),n.route.render(n));e(this._rvc).html(t),n.route.trigger(r("rendered",{route:n.route,content:t}))}}),t});
